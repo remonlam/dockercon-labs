@@ -1,0 +1,617 @@
+<!-- Remove the comments to compress html
+
+---
+layout: compress
+--- 
+
+-->
+<!DOCTYPE html>
+<html>
+
+  <head>
+<title>Docker 101 - Windows</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Docker 101 - Windows" />
+<meta name="twitter:description" content="Learn docker through online trainings in training.play-with-docker.com" />
+<meta name="twitter:image" content="http://birthday.play-with-docker.com/images/simple-logo.jpg" />
+
+  
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+<style>
+          
+          html,body{height:100%}img{max-width:100%}.mt50{margin-top:50px}.mt20{margin-top:20px}.mt10{margin-top:10px}.mb10{margin-bottom:10px}body{display:flex;flex-direction:column}body>*{flex:none}.navbar{border-radius:0px;margin-bottom:0px}.navbar.navbar-inverse{background-color:#1488C6;border-color:#1488C6}.navbar.navbar-inverse a,.navbar.navbar-inverse .navbar-nav li a{color:white}.navbar.navbar-inverse a:hover,.navbar.navbar-inverse .navbar-nav li a:hover{text-decoration:underline}.navbar-brand{font-weight:900}@media screen and (max-width: 600px){.navbar-brand{font-size:1.5em}}.post-meta{color:#828282}div.post-content{max-width:1200px}.panel{border:none;box-shadow:0px 0px 1px #828282}.panel:hover{box-shadow:0px 0px 6px #828282}footer{border-top:1px solid #e8e8e8}.social-share{margin-top:10px;margin-bottom:15px;text-align:center}.social{list-style:none;display:inline;margin-left:10px;padding:5px 8px}.social:hover{opacity:0.7}.social img{width:20px}.quora img{width:17px}.facebook img{width:16px}.recent ul{list-style:none;padding:0;text-align:justify}.recent li{margin:20px}.recent img{display:block;margin:auto}.recent{padding:10px;border:1px solid #e8e8e8}.post-img img{width:100%}.announce{margin-top:10px;margin-bottom:60px;text-align:center}.pack{display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;flex-wrap:wrap;-webkit-flex-wrap:wrap}.banner{display:block;margin:auto}.panel-container{display:flex;flex-direction:row;overflow:hidden;height:100%;flex:1 1 auto;xtouch-action:none}.terminal{font-size:15px}.panel-left{flex:0 0 auto;width:50%;min-width:150px}.content{padding:0 15px;overflow-y:auto}.content{padding:0 15px}.panel-singular{margin:0 auto;max-width:1200}.splitter{flex:0 0 auto;width:18px;background:url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #2fa8c3;min-height:200px;cursor:col-resize}.panel-right{display:flex;flex-direction:column;flex:1 1 auto;width:100%;background:#565656}.panel-right>div{flex:1 1 auto;margin-bottom:15px;overflow-y:auto}.panel-right>div:last-of-type{margin-bottom:0px}.panel-right>div.initialized{background-color:black}.getting-started ul{list-style-type:none;font-size:36px}.card{float:none}code[class*="."]{cursor:pointer}.resize-warning{background-color:black;color:white;text-align:center}.tab{display:none}.site-title{color:white}.post-tag{display:inline-block;background:rgba(42,122,226,0.15);padding:0 .5rem;margin-right:.5rem;border-radius:4px;color:#2a7ae2;font-family:"Open Sans",serif;font-size:90%}.post-tag:before{content:"\f02b";font-family:FontAwesome;padding-right:.5em}.post-tag:hover{text-decoration:none;background:#2a7ae2;color:#fff}small .post-tag{background:#eee;color:#000}small .post-tag:before{content:none}small .post-tag:hover{text-decoration:none;background:#000;color:#fff;cursor:default}.tags-expo :target:before{content:"";display:block;height:72px;margin:-72px 0 0}@media (min-width: 38em){.tags-expo .tags-expo-list{font-size:2.9rem}.tags-expo .tags-expo-list .post-tag{margin:.2em .3em}}.tags-expo .tags-expo-section{font-family:"Open Sans",serif}.tags-expo .tags-expo-section ul{list-style-type:circle;list-style-position:inside;padding:0}.tags-expo .tags-expo-section ul li{padding:0 1rem}.tags-expo .tags-expo-section ul li:hover{list-style-type:disc}.tags-expo .tags-expo-section a{font-size:20px}.tags-expo .tags-expo-section .post-date{display:inline-block;font-size:80%;color:#000;margin:0;padding:0}
+
+</style>  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="Hands-on Labs: DockerCon EU 2017" href="http://dockersamples.github.io/dceu-labs/dceu-labs/feed.xml">  
+<link rel="stylesheet" href="/dceu-labs/css/quiz.css">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h3 class="site-title">Hands-on Labs: DockerCon EU 2017</h3>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/dceu-labs/about/">About</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</header>
+
+
+    
+<div class="panel-container">
+    
+    <div class="panel-left content">
+    
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name headline">Docker 101 - Windows</h1>
+                <p class="post-meta"><time datetime="2017-10-10T00:00:00+00:00" itemprop="datePublished">Oct 10, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@mikegcoleman</span></span></p>
+
+            </header>
+
+            <div class="post-content" itemprop="articleBody">
+                <p>In this lab we’ll help you get familiar with running Docker on Windows. We’ll look at different ways to run Windows containers, and we’ll build a couple applications and deploy them.</p>
+
+<blockquote>
+  <p><strong>Difficulty</strong>: Beginner (assumes no familiarity with Docker)</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Time</strong>: Approximately 30 minutes</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Tasks</strong>:</p>
+
+  <ul>
+    <li><a href="#Task_0">Task 0: Prerequisites</a></li>
+    <li><a href="#Task_1">Task 1: Run some simple Windows Docker containers</a></li>
+    <li><a href="#Task_2">Task 2: Explore the filesystem and users in Windows containers</a></li>
+    <li><a href="#Task_3">Task 3: Package and run a custom app using Docker</a></li>
+  </ul>
+</blockquote>
+
+<h2 id="task-0-prerequisites"><a name="task0"></a>Task 0: Prerequisites</h2>
+
+<p>You will need all of the following to complete this lab:</p>
+<ul>
+  <li>A clone of the lab’s GitHub repo.</li>
+  <li>A DockerID.</li>
+</ul>
+
+<h3 id="clone-the-labs-github-repo">Clone the Lab’s GitHub Repo</h3>
+
+<p>Use the following command to clone the lab’s repo from GitHub (you can click the command or manually type it). This will make a copy of the lab’s repo in a new sub-directory called <code class="highlighter-rouge">docker101-windows</code>.</p>
+
+<pre><code class="language-.term1">git clone https://github.com/dockersamples/docker101-windows
+</code></pre>
+
+<h3 id="make-sure-you-have-a-dockerid">Make sure you have a DockerID</h3>
+
+<p>If you do not have a DockerID (a free login used to access Docker Cloud, Docker Store, and Docker Hub), please visit <a href="https://cloud.docker.com">Docker Cloud</a> and register for one. You will need this for later steps.</p>
+
+<h2 id="task-1-run-some-simple-windows-docker-containers"><a name="Task_1"></a>Task 1: Run some simple Windows Docker containers</h2>
+
+<p>There are different ways to use containers. These include:</p>
+
+<ol>
+  <li><strong>To run a single task:</strong> This could be a PowerShell script or a custom app.</li>
+  <li><strong>Interactively:</strong> This connects you to the shell of a container similar to the way you connect to a remote server.</li>
+  <li><strong>In the background:</strong> For long-running services like websites and databases.</li>
+</ol>
+
+<p>In this section you’ll try each of these options.</p>
+
+<h2 id="run-a-task-in-a-windows-nano-server-container">Run a task in a Windows Nano Server container</h2>
+
+<p>In this step, we’ll start a new container and tell it to run the <code class="highlighter-rouge">hostname</code> command. The container will start, execute the <code class="highlighter-rouge">hostname</code> command, then exit.</p>
+
+<ol>
+  <li>Run the following command on your Windows Docker host.</li>
+</ol>
+
+<p>The command may take a few seconds to complete.</p>
+
+<pre><code class="language-.term1">  docker container run microsoft/nanoserver hostname
+</code></pre>
+
+<p>The return-code will be the output from the <code class="highlighter-rouge">hostname</code> command executed within the container.</p>
+
+<p>Docker keeps a container running as long as the process it started inside the container is still running. If the process inside the container exits, the container also exits. In this case, the <code class="highlighter-rouge">hostname</code> process exits as soon as the output is written. This means the container exits. However, Docker doesn’t delete resources by default, so the container still exists in the <code class="highlighter-rouge">Exited</code> state.
+1.
+  List <strong>all</strong> containers.</p>
+
+<pre><code class="language-.term1">  docker container ls --all
+</code></pre>
+
+<p>The Nano Server container will be listed in the <code class="highlighter-rouge">Exited</code> state:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  CONTAINER ID        IMAGE                  COMMAND             CREATED             STATUS                     PORTS               NAMES
+  18876defb3d6        microsoft/nanoserver   "hostname"          7 seconds ago       Exited (0) 5 seconds ago
+</code></pre>
+</div>
+
+<blockquote>
+  <p><strong>Note:</strong> The container ID <em>is</em> the hostname that the container displayed. In the example above it’s <code class="highlighter-rouge">18876defb3d6</code>.</p>
+</blockquote>
+
+<p>Containers which do one task and then exit can be very useful. For example, you could build a Docker image which installs the Azure PowerShell module and bundles a set of scripts to create a cloud deployment. Anyone can execute that task by simply running the container - they don’t need the scripts or the right version of the Azure module, they just need to pull the Docker image and run a container from it.</p>
+
+<h2 id="run-an-interactive-windows-server-core-container">Run an interactive Windows Server Core container</h2>
+
+<p>The <a href="https://hub.docker.com/r/microsoft/windowsservercore">microsoft/windowsservercore</a> image is effectively a full Windows Server 2016 OS, without the UI. You can explore an image by running an interactive container from it.</p>
+
+<ol>
+  <li>Run the following command to start a Windows Server Core container.</li>
+</ol>
+
+<p>The command may take a few seconds to complete, and it might not be obvious that the command was successful. If it is successful, you will have a new blank PowerShell terminal on the right of the screen with the cursor repositioned at the top of the screen.</p>
+
+<pre><code class="language-.term1">  docker container run --interactive --tty --rm microsoft/windowsservercore powershell
+</code></pre>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>* `--interactive` tells Docker to create an interactive container session.
+* `--tty` allocates a psuedo-tty.
+* `--rm` tells Docker to go ahead and remove the container when it's done executing.
+* `microsoft/windowsservercore` is the image that the container will start from.
+* `powershell` is the main process that will run inside the container.
+</code></pre>
+</div>
+
+<p>When the container starts, you’ll drop into a PowerShell session with the default PowerShell prompt <code class="highlighter-rouge">PS C:\&gt;</code>. Docker has attached to the console in the container, relaying input and output between your PowerShell session on your Windows Docker host, and the PowerShell session in the container.</p>
+
+<ol>
+  <li>Run the following commands to see a little bit about how the Windows Server Core image is built:</li>
+</ol>
+
+<p>The <code class="highlighter-rouge">ls c:\</code> command will list the contents of the container’s C: drive. You can see this is a minimal installation of Windows.</p>
+
+<pre><code class="language-.term1">  ls C:\
+</code></pre>
+
+<p>The <code class="highlighter-rouge">Get-Process</code> cmdlet will show all running processes in the container. There are a number of background Windows Services, as well as the <code class="highlighter-rouge">powershell</code> process that you instructed the container to run.</p>
+
+<pre><code class="language-.term1">  Get-Process
+</code></pre>
+
+<p>The <code class="highlighter-rouge">Get-WindowsFeature</code> cmdlet will show which Windows features are available or already installed.</p>
+
+<pre><code class="language-.term1">  Get-WindowsFeature
+</code></pre>
+
+<ol>
+  <li>Type <code class="highlighter-rouge">exit</code> to quit the PowerShell session. This will terminate the container’s main process (<code class="highlighter-rouge">powershell</code>), causing the container to exit.</li>
+</ol>
+
+<pre><code class="language-.term1">  exit
+</code></pre>
+
+<p>Because we used the <code class="highlighter-rouge">--rm</code> flag when we started the container, Docker will delete the container when it stops/exits. If you run another <code class="highlighter-rouge">docker container ls --all</code> you won’t see the Windows Server Core container.</p>
+
+<p>Interactive containers are useful when you are putting together your own image. You can run a container and verify all the steps you need to deploy your app, and capture them in a Dockerfile.</p>
+
+<h2 id="run-a-background-sql-server-container">Run a background SQL Server container</h2>
+
+<p>Background containers are how you’ll run most applications.
+In this section we’ll demonstrate a simple example using another image from Microsoft - <a href="https://hub.docker.com/r/microsoft/mssql-server-windows-express/">microsoft/mssql-server-windows-express</a>. This image builds on top of the Windows Server Core image and comes with SQL Server Express installed.</p>
+
+<ol>
+  <li>Run the new container with the following command.</li>
+</ol>
+
+<pre><code class="language-.term1">  docker container run `
+    --detach `
+    --name sql `
+    --env ACCEPT_EULA=Y `
+    --env sa_password=DockerCon!!! `
+    microsoft/mssql-server-windows-express
+
+</code></pre>
+
+<ul>
+  <li><code class="highlighter-rouge">--detach</code> will run the container in the background.</li>
+  <li><code class="highlighter-rouge">--name</code> will name it <strong>sql</strong>.</li>
+  <li><code class="highlighter-rouge">--env</code> is used to accept the EULA and specify the <code class="highlighter-rouge">sa</code> password (NOTE: You should never expose passwords like this in production, use Docker Secrets instead).</li>
+  <li>The image that the container is started from has a default application to run (SQL Server Express). This means we do not need to specify the application on the command line at run-time.</li>
+</ul>
+
+<p>As long as the SQL Server process keeps running, Docker will keep the container running in the background.</p>
+
+<ol>
+  <li>Use the following two commands to view container logs and view processes running inside the container.</li>
+</ol>
+
+<p>There may be no logs.</p>
+
+<pre><code class="language-.term1">  docker container logs sql
+</code></pre>
+
+<pre><code class="language-.term1">  docker container top sql
+</code></pre>
+
+<p>Although SQL Server Express is running, it is isolated within the container because no network ports have been published on the host. Network traffic cannot reach containers from the host unless ports are explicitly published.</p>
+
+<ol>
+  <li>Use the <code class="highlighter-rouge">docker container exec</code> command to check what the time is inside the container:</li>
+</ol>
+
+<pre><code class="language-.term1">  docker container exec sql `
+ powershell "Invoke-SqlCmd -Query 'SELECT GETDATE()' -Database Master"
+</code></pre>
+
+<p><code class="highlighter-rouge">docker container exec</code> is commonly used to execute commands ans shells inside of running containers.</p>
+
+<h2 id="task-2-explore-the-filesystem-and-users-in-windows-containers"><a name="Task_2"></a>Task 2: Explore the filesystem and users in Windows containers</h2>
+
+<p>The SQL Server container is still running in the background. You can connect a new interactive PowerShell session to the container by running <code class="highlighter-rouge">docker container exec</code>.</p>
+
+<ol>
+  <li>Run the following <code class="highlighter-rouge">docker container exec</code> command.</li>
+</ol>
+
+<pre><code class="language-.term1">  docker container exec --interactive --tty sql powershell
+</code></pre>
+
+<ol>
+  <li>Have a look at the <code class="highlighter-rouge">Program Files</code> directory, and then drill down into the SQL Server default file locations.</li>
+</ol>
+
+<pre><code class="language-.term1">  ls 'C:\Program Files'
+</code></pre>
+
+<pre><code class="language-.term1">  cd 'C:\Program Files\Microsoft SQL Server'
+</code></pre>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  ls .\MSSQL14.SQLEXPRESS\MSSQL\data
+</code></pre>
+</div>
+
+<p>If the <code class="highlighter-rouge">ls</code> command fails, it is probably because the version of SQL Server Express inside your container is different to the example in the lab.</p>
+
+<p>The <code class="highlighter-rouge">.mdf</code> and <code class="highlighter-rouge">.ldf</code> files are stored inside the container. You can run SQL statements to store data, but when you remove (delete) the container, the data is lost. For stateful services, like databases, you should store persistent data outside of the container in a Docker volume. This allows you to replace the container but retain the data. This is an advanced topic outside the scope of this lab. But, you’re encouraged to research <code class="highlighter-rouge">Docker Volumes</code> for more information on how to do this.</p>
+
+<ol>
+  <li>List the processes running in the container.</li>
+</ol>
+
+<pre><code class="language-.term1">  Get-Process
+</code></pre>
+
+<p>You’ll see one of the processes is <code class="highlighter-rouge">sqlservr</code>. This is the database engine.</p>
+
+<p>There are also two <code class="highlighter-rouge">powershell</code> processes. One is the default process that runs inside the container. The other is your current PowerShell session that was created with the <code class="highlighter-rouge">docker container exec</code> command.</p>
+
+<ol>
+  <li>Compare the user accounts (contexts) that each of the processes are running under.</li>
+</ol>
+
+<pre><code class="language-.term1">  Get-Process -Name sqlservr -IncludeUserName
+</code></pre>
+
+<pre><code class="language-.term1">  Get-Process -Name powershell -IncludeUserName
+</code></pre>
+
+<p>These accounts/contexts are present inside the container.</p>
+
+<p>The SQL Server process runs under the normal <code class="highlighter-rouge">NT AUTHORITY\SYSTEM</code> account. All the default user groups and accounts are present in the Windows Server Core Docker image, with all the usual access permissions. The PowerShell processes are running as <code class="highlighter-rouge">User Manager\ContainerAdministrator</code>. That’s the default account for processes running in Windows Docker containers, and it has admin privileges.</p>
+
+<ol>
+  <li>Leave the  interactive container session.</li>
+</ol>
+
+<pre><code class="language-.term1">  exit
+</code></pre>
+
+<ol>
+  <li>Clean up, by removing all containers.</li>
+</ol>
+
+<pre><code class="language-.term1">  docker container rm --force $(docker container ls --quiet --all)
+</code></pre>
+
+<h2 id="task-3-package-and-run-a-custom-app-using-docker"><a name="2"></a>Task 3: Package and run a custom app using Docker</h2>
+
+<p>In this step you’ll learn how to package your own apps as Docker images using a <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a>.</p>
+
+<p>The Dockerfile syntax is straightforward. In this task you’ll walk through two Dockerfiles which package websites to run in Windows Docker containers. The first example is very simple, and the second is more involved. By the end of this task you’ll have a good understanding of the main Dockerfile instructions and how to build images from Dockerfiles.</p>
+
+<h2 id="build-a-simple-website-image">Build a simple website image</h2>
+
+<p>The Dockerfile that we’ll use in this example is in the <code class="highlighter-rouge">hostname-app</code> directory of the GitHub repo you pulled earlier. It builds a simple ASP.NET website that displays the hostname of the server/container it is running on.</p>
+
+<p>Run the following commands from within the <code class="highlighter-rouge">C:\docker101-windows\hostname-app</code> directory.</p>
+
+<ol>
+  <li>Display the contents of the <code class="highlighter-rouge">hostname-app</code> Dockerfile.</li>
+</ol>
+
+<pre><code class="language-.term1">  cat Dockerfile
+</code></pre>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  FROM microsoft/aspnet
+  COPY default.aspx C:/inetpub/wwwroot
+</code></pre>
+</div>
+
+<p>This is a simple Dockerfile that contains two simple instructions:</p>
+
+<ul>
+  <li><a href="https://docs.docker.com/engine/reference/builder/#from">FROM</a> specifies the base-image to use as the starting point for this new image. The <code class="highlighter-rouge">microsoft/aspnet</code> image that we are using in this example comes with IIS and ASP.NET pre-installed on top of Windows Server Core.</li>
+  <li><a href="https://docs.docker.com/engine/reference/builder/#copy">COPY</a> is used to copy files from the host into the image. This example copies the <code class="highlighter-rouge">default.aspx</code> file from the current working directory on your Windows Docker host (<code class="highlighter-rouge">c:\docker101-windows\hostname-app</code>) to <code class="highlighter-rouge">C:\inetpub\wwwroot</code> inside the image.</li>
+</ul>
+
+<ol>
+  <li>
+    <p>In order to make the following commands more copy/paste friendly, export an environment variable containing your DockerID (if you don’t have a DockerID you can get one for free via <a href="https://cloud.docker.com">Docker Cloud</a>).</p>
+
+    <p>You will have to manually type this command is it requires your unique DockerID.</p>
+  </li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  $env:dockerId=&lt;your docker id&gt;
+</code></pre>
+</div>
+
+<blockquote>
+  <p>You need to type this into the terminal yourself, using your own Docker ID.</p>
+</blockquote>
+
+<ol>
+  <li>Check that the variable was created correctly by echoing it back to the terminal.</li>
+</ol>
+
+<pre><code class="language-.term1">  echo $env:dockerId
+</code></pre>
+
+<ol>
+  <li>Use the <code class="highlighter-rouge">docker image build</code> command to create a new Docker image using the instructions in the Dockerfile.</li>
+</ol>
+
+<p>This command has to be run form the <code class="highlighter-rouge">c:\docker101-windows\hostname-app</code> directory on your Windows Docker host. Be sure to include the period (<code class="highlighter-rouge">.</code>) at the end of the command.</p>
+
+<pre><code class="language-.term1">  docker image build --tag "$env:dockerId/hostname-app" .
+</code></pre>
+
+<p>The output shows Docker executing each instruction in the Dockerfile, and tagging the final image with your Docker ID.</p>
+
+<ol>
+  <li>Launch a new container from the newly built image.</li>
+</ol>
+
+<p>Run the container (web server) as a detached container, and publish the HTTP port so traffic can be passed from the host into the container. The format of the <code class="highlighter-rouge">--publish</code> flag is <code class="highlighter-rouge">host_port</code>:<code class="highlighter-rouge">container_port</code>.</p>
+
+<pre><code class="language-.term1">  docker container run --detach --publish 80:80 --name app "$env:dockerId/hostname-app"
+</code></pre>
+
+<p>Any external traffic coming into the server on port 80 will now be directed to port 80 on the container.</p>
+
+<p>After a minute or so the website should be up and running.</p>
+
+<blockquote>
+  <p><a href="/" data-term=".term1" data-port="80">Browse to the website here</a></p>
+</blockquote>
+
+<p>This is a simple ASP.NET website running in a Docker container. We created the image it runs from with just two simple instructions in a Dockerfile. But it has some drawbacks. First, there are no logs - IIS stores request logs in the container filesystem, but Docker is only listening for logs on the standard output from the startup program. There’s no automatic relay from the log files to the console output, so there are no HTTP access log entries in the containers:</p>
+
+<pre><code class="language-.term1">docker container logs app
+</code></pre>
+
+<p>You learn how to redirect IIS logs to Docker in the lab <a href="/dceu-labs/mta-aspnet-itpro/.">Modernizing ASP.NET Applications - for IT Pros</a></p>
+
+<p>The other issue is that it took a few seconds for the website to show. That’s because the IIS service doesn’t start a worker process until the first HTTP request comes in. The first website user takes the hit of starting the worker process. We can use a more advanced Dockerfile to address that.</p>
+
+<h2 id="build-and-run-a-more-complex-website-image">Build and run a more complex website image</h2>
+
+<p>For the next example, the <a href="part-1/tweet-app/Dockerfile">Dockerfile</a> adds more instructions to produce a more usable image.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>FROM microsoft/iis:windowsservercore
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'"]
+
+HEALTHCHECK --interval=5s `
+ CMD powershell -command `
+    try { `
+     $response = Invoke-WebRequest http://localhost -UseBasicParsing; `
+     if ($response.StatusCode -eq 200) { return 0} `
+     else {return 1}; `
+    } catch { return 1 }
+
+COPY index.html C:\inetpub\wwwroot
+</code></pre>
+</div>
+
+<p>The <a href="https://docs.docker.com/engine/reference/builder/#healthcheck">HEALTHCHECK</a> instruction makes an HTTP <code class="highlighter-rouge">GET</code> request to the site and returns whether it got a 200 response code.</p>
+
+<ol>
+  <li>Change to the <code class="highlighter-rouge">tweet-app</code> directory.</li>
+</ol>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  cd C:\docker101-windows\tweet-app
+</code></pre>
+</div>
+
+<ol>
+  <li>Build an image from the Dockerfile in your current directory.</li>
+</ol>
+
+<p>Be sure to include the period (<code class="highlighter-rouge">.</code>) at the end of the command.</p>
+
+<pre><code class="language-.term1">  docker image build --tag "$env:dockerId/tweet-app" .
+</code></pre>
+
+<p>You’ll see output on the screen as Docker runs each instruction in the Dockerfile. Once the iamge is built you’ll see a <code class="highlighter-rouge">Successfully built...</code> message. If you repeat the <code class="highlighter-rouge">docker image build</code> command again, it will complete in seconds. That’s because Docker caches the <a href="https://docs.docker.com/engine/userguide/storagedriver/imagesandcontainers/">image layers</a> and only runs instructions if the Dockerfile has changed since the cached version.</p>
+
+<ol>
+  <li>Run a new web server container from the newly created image.</li>
+</ol>
+
+<pre><code class="language-.term1">  docker container run --detach --publish 8080:80 --name tweet-app "$env:dockerId/tweet-app"
+</code></pre>
+
+<p>The new website will be available on your Windows Docker host via port 8080.</p>
+
+<blockquote>
+  <p><a href="/" data-term=".term1" data-port="8080">Browse to the website here</a></p>
+</blockquote>
+
+<p>Feel free to hit the Tweet button, sign in and share your lab progress :)</p>
+
+<h2 id="push-your-images-to-docker-hub">Push your images to Docker Hub</h2>
+
+<ol>
+  <li>List the images you created on your Docker host.</li>
+</ol>
+
+<pre><code class="language-.term1">  docker image ls -f reference="$env:dockerId/*"
+</code></pre>
+
+<p>These images are only stored in your Docker host’s local repository. You Docker host will be deleted after the workshop. In this step we’ll push the images to a public repository so you can run them from any Windows Server running Docker.</p>
+
+<p>Distribution is built into the Docker platform. You can build images locally and make them available to others users by pushing them to a public or private <a href="https://docs.docker.com/registry/">registry</a>.</p>
+
+<p><a href="https://hub.docker.com">Docker Hub</a> is the default public registry for Docker images.</p>
+
+<ol>
+  <li>Before you can push your images, you’ll need to login to Docker Hub.</li>
+</ol>
+
+<pre><code class="language-.term1">  docker login
+</code></pre>
+
+<p>You will need to supply your Docker ID credentials when prompted.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  Username: &lt;your docker id&gt;
+  Password: &lt;your docker id password&gt;
+  Login Succeeded
+</code></pre>
+</div>
+
+<ol>
+  <li>Push the images.</li>
+</ol>
+
+<pre><code class="language-.term1">  docker image push $env:dockerId/hostname-app
+  docker image push $env:dockerId/tweet-app
+</code></pre>
+
+<p>You’ll see the upload progress for each layer in the Docker image. The images upload quickly as they only add small layers on top of Microsoft’s base images.</p>
+
+<p>You can browse to <em>https://hub.docker.com/r/_my-docker-Id_/</em> and see your newly-pushed Docker images. These are public repositories, so anyone can pull the image - you don’t even need a Docker ID to pull public images. Docker Hub also support private repositories.</p>
+
+<hr />
+
+<h2 id="survey">Survey</h2>
+<p>We’re grateful you’ve chosen to spend some time with us today. We’d appreciate the opportunity to hear from  you about what you liked and what we might improve.</p>
+
+<p>If you could please fill out this very short survey, it’d be greatly appreciated.</p>
+
+<p>Thanks, the DockerCon Hands-on Labs team.</p>
+
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfu5jatKvKLdGZviRQ7SdXaCKKUmLNYGz2-WyvQKVoIpGMaDQ/viewform?usp=pp_url&amp;entry.413124055=Docker+101+-+Windows&amp;entry.879050699">Click Here for the survey</a></p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+<p>In this lab we took a look at the basics of how Docker containers work on Windows server 2016. There is still plenty more to learn, you might want to check out Hybrid Application lab where you will learn how to deploy Windows, Linux, and hybrid-OS apps with Docker EE.</p>
+
+            </div>
+        </article>
+    </div>
+
+    
+    <div class="splitter">
+    </div>
+
+    <div class="panel-right">
+        <span class="resize-warning">If the commandline doesn't appear in the terminal, try resizing the browser window.</span>
+        
+        <div class="term1"></div>
+        
+    </div>
+    
+
+</div>
+
+<script>
+    (function() {
+        var font3 = document.createElement('link');
+        font3.type = 'text/css';
+        font3.rel = 'stylesheet';
+        font3.href = '/dceu-labs/css/syntax-highlighting.css';
+        var q = document.getElementsByTagName('link')[0];
+        q.parentNode.insertBefore(font3, q);
+    })();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://rawgit.com/RickStrahl/jquery-resizable/master/dist/jquery-resizable.min.js"></script>
+<script src="https://rawgit.com/play-with-docker/sdk/hybrid/dist/pwd.js"></script>
+<script>
+    pwd.newSession([{selector: '.term1', type: 'windows'}, {selector: '.term2', type: 'windows'}, {selector: '.term3', type: 'windows'}], {ImageName: '', baseUrl: 'https://dockercon.play-with-docker.com'});
+      $(".panel-left").resizable({
+      handleSelector: ".splitter",
+      resizeHeight: false,
+      onDragEnd: pwd.resize.bind(pwd)
+  });
+
+  window.onbeforeunload = function(e) {
+        pwd.closeSession(function(){});
+        return;
+    }
+</script>
+
+
+    
+<script async>
+    (function() {
+        var font = document.createElement('link'); 
+        font.type = 'text/css'; 
+        font.rel = 'stylesheet';
+        font.href = '//fonts.googleapis.com/css?family=Raleway:400,700';
+        var s = document.getElementsByTagName('link')[0]; 
+        s.parentNode.insertBefore(font, s);
+      })();
+</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-6096819-32"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-6096819-32');
+</script>
+
+
+  </body>
+
+</html>

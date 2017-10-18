@@ -1,0 +1,865 @@
+<!-- Remove the comments to compress html
+
+---
+layout: compress
+--- 
+
+-->
+<!DOCTYPE html>
+<html>
+
+  <head>
+<title>Docker 101 - Linux</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Docker 101 - Linux" />
+<meta name="twitter:description" content="Learn docker through online trainings in training.play-with-docker.com" />
+<meta name="twitter:image" content="http://birthday.play-with-docker.com/images/simple-logo.jpg" />
+
+  
+
+
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" />
+
+<style>
+          
+          html,body{height:100%}img{max-width:100%}.mt50{margin-top:50px}.mt20{margin-top:20px}.mt10{margin-top:10px}.mb10{margin-bottom:10px}body{display:flex;flex-direction:column}body>*{flex:none}.navbar{border-radius:0px;margin-bottom:0px}.navbar.navbar-inverse{background-color:#1488C6;border-color:#1488C6}.navbar.navbar-inverse a,.navbar.navbar-inverse .navbar-nav li a{color:white}.navbar.navbar-inverse a:hover,.navbar.navbar-inverse .navbar-nav li a:hover{text-decoration:underline}.navbar-brand{font-weight:900}@media screen and (max-width: 600px){.navbar-brand{font-size:1.5em}}.post-meta{color:#828282}div.post-content{max-width:1200px}.panel{border:none;box-shadow:0px 0px 1px #828282}.panel:hover{box-shadow:0px 0px 6px #828282}footer{border-top:1px solid #e8e8e8}.social-share{margin-top:10px;margin-bottom:15px;text-align:center}.social{list-style:none;display:inline;margin-left:10px;padding:5px 8px}.social:hover{opacity:0.7}.social img{width:20px}.quora img{width:17px}.facebook img{width:16px}.recent ul{list-style:none;padding:0;text-align:justify}.recent li{margin:20px}.recent img{display:block;margin:auto}.recent{padding:10px;border:1px solid #e8e8e8}.post-img img{width:100%}.announce{margin-top:10px;margin-bottom:60px;text-align:center}.pack{display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;flex-wrap:wrap;-webkit-flex-wrap:wrap}.banner{display:block;margin:auto}.panel-container{display:flex;flex-direction:row;overflow:hidden;height:100%;flex:1 1 auto;xtouch-action:none}.terminal{font-size:15px}.panel-left{flex:0 0 auto;width:50%;min-width:150px}.content{padding:0 15px;overflow-y:auto}.content{padding:0 15px}.panel-singular{margin:0 auto;max-width:1200}.splitter{flex:0 0 auto;width:18px;background:url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #2fa8c3;min-height:200px;cursor:col-resize}.panel-right{display:flex;flex-direction:column;flex:1 1 auto;width:100%;background:#565656}.panel-right>div{flex:1 1 auto;margin-bottom:15px;overflow-y:auto}.panel-right>div:last-of-type{margin-bottom:0px}.panel-right>div.initialized{background-color:black}.getting-started ul{list-style-type:none;font-size:36px}.card{float:none}code[class*="."]{cursor:pointer}.resize-warning{background-color:black;color:white;text-align:center}.tab{display:none}.site-title{color:white}.post-tag{display:inline-block;background:rgba(42,122,226,0.15);padding:0 .5rem;margin-right:.5rem;border-radius:4px;color:#2a7ae2;font-family:"Open Sans",serif;font-size:90%}.post-tag:before{content:"\f02b";font-family:FontAwesome;padding-right:.5em}.post-tag:hover{text-decoration:none;background:#2a7ae2;color:#fff}small .post-tag{background:#eee;color:#000}small .post-tag:before{content:none}small .post-tag:hover{text-decoration:none;background:#000;color:#fff;cursor:default}.tags-expo :target:before{content:"";display:block;height:72px;margin:-72px 0 0}@media (min-width: 38em){.tags-expo .tags-expo-list{font-size:2.9rem}.tags-expo .tags-expo-list .post-tag{margin:.2em .3em}}.tags-expo .tags-expo-section{font-family:"Open Sans",serif}.tags-expo .tags-expo-section ul{list-style-type:circle;list-style-position:inside;padding:0}.tags-expo .tags-expo-section ul li{padding:0 1rem}.tags-expo .tags-expo-section ul li:hover{list-style-type:disc}.tags-expo .tags-expo-section a{font-size:20px}.tags-expo .tags-expo-section .post-date{display:inline-block;font-size:80%;color:#000;margin:0;padding:0}
+
+</style>  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="Hands-on Labs: DockerCon EU 2017" href="http://dockersamples.github.io/dceu-labs/dceu-labs/feed.xml">  
+<link rel="stylesheet" href="css/quiz.css.html">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h3 class="site-title">Hands-on Labs: DockerCon EU 2017</h3>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="about/index.html">About</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</header>
+
+
+    
+<div class="panel-container">
+    
+    <div class="panel-left content">
+    
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name headline">Docker 101 - Linux</h1>
+                <p class="post-meta"><time datetime="2017-10-10T00:00:00+00:00" itemprop="datePublished">Oct 10, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@mikegcoleman</span></span></p>
+
+            </header>
+
+            <div class="post-content" itemprop="articleBody">
+                <p>In this lab, we will look at some basic Docker commands and a simple build-ship-run workflow. We’ll start by running some simple containers, then we’ll use a Dockerfile to build a custom app. Finally, we’ll look at how to use bind mounts to modify a running container as you might if you were actively developing using Docker.</p>
+
+<blockquote>
+  <p><strong>Difficulty</strong>: Beginner (assumes no familiarity with Docker)</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Time</strong>: Approximately 30 minutes</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Tasks</strong>:</p>
+
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><a href="linux-101.html#Task_0">Task 0: Prerequisites</a></li>
+    <li><a href="linux-101.html#Task_1">Task 1: Run some simple Docker containers</a></li>
+    <li><a href="linux-101.html#Task_2">Task 2: Package and run a custom app using Docker</a></li>
+    <li><a href="linux-101.html#Task_3">Task 3: Modify a Running Website</a></li>
+  </ul>
+</blockquote>
+
+<h2 id="task-0-prerequisites"><a name="task0"></a>Task 0: Prerequisites</h2>
+
+<p>You will need all of the following to complete this lab:</p>
+<ul>
+  <li>A clone of the lab’s GitHub repo.</li>
+  <li>A DockerID.</li>
+</ul>
+
+<h3 id="clone-the-labs-github-repo">Clone the Lab’s GitHub Repo</h3>
+
+<p>Use the following command to clone the lab’s repo from GitHub (you can click the command or manually type it). This will make a copy of the lab’s repo in a new sub-directory called <code class="highlighter-rouge">linux_tweet_app</code>.</p>
+
+<pre><code class="language-.term1">	git clone https://github.com/dockersamples/linux_tweet_app
+</code></pre>
+
+<h3 id="make-sure-you-have-a-dockerid">Make sure you have a DockerID</h3>
+
+<p>If you do not have a DockerID (a free login used to access Docker Cloud, Docker Store, and Docker Hub), please visit <a href="https://cloud.docker.com">Docker Cloud</a> and register for one. You will need this for later steps.</p>
+
+<h2 id="task-1-run-some-simple-docker-containers"><a name="Task_1"></a>Task 1: Run some simple Docker containers</h2>
+
+<p>There are different ways to use containers. These include:</p>
+
+<ol>
+  <li><strong>To run a single task:</strong> This could be a shell script or a custom app.</li>
+  <li><strong>Interactively:</strong> This connects you to the container similar to the way you SSH into a remote server.</li>
+  <li><strong>In the background:</strong> For long-running services like websites and databases.</li>
+</ol>
+
+<p>In this section you’ll try each of those options and see how Docker manages the workload.</p>
+
+<h3 id="run-a-single-task-in-an-alpine-linux-container">Run a single task in an Alpine Linux container</h3>
+
+<p>In this step we’re going to start a new container and tell it to run the <code class="highlighter-rouge">hostname</code> command. The container will start, execute the <code class="highlighter-rouge">hostname</code> command, then exit.</p>
+
+<ol>
+  <li>
+    <p>Run the following command in your Linux console.</p>
+
+    <pre><code class="language-.term1"> docker container run alpine hostname
+</code></pre>
+
+    <p>The output below shows that the <code class="highlighter-rouge">alpine:latest</code> image could not be found locally. When this happens, Docker automatically <em>pulls</em> it form Docker Hub.</p>
+
+    <p>After the image is pulled, the container’s hostname is displayed (<code class="highlighter-rouge">888e89a3b36b</code> in the example below).</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> Unable to find image 'alpine:latest' locally
+ latest: Pulling from library/alpine
+ 88286f41530e: Pull complete
+ Digest: sha256:f006ecbb824d87947d0b51ab8488634bf69fe4094959d935c0c103f4820a417d
+ Status: Downloaded newer image for alpine:latest
+ 888e89a3b36b
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Docker keeps a container running as long as the process it started inside the container is still running. In this case the <code class="highlighter-rouge">hostname</code> process exits as soon as the output is written. This means the container stops. However, Docker doesn’t delete resources by default, so the container still exists in the <code class="highlighter-rouge">Exited</code> state.</p>
+
+    <p>List all containers.</p>
+
+    <pre><code class="language-.term1"> docker container ls --all
+</code></pre>
+
+    <p>Notice that your Alpine Linux container is in the <code class="highlighter-rouge">Exited</code> state.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS            PORTS               NAMES
+ 888e89a3b36b        alpine              "hostname"          50 seconds ago      Exited (0) 49 seconds ago                       awesome_elion
+</code></pre>
+    </div>
+
+    <blockquote>
+      <p><strong>Note:</strong> The container ID <em>is</em> the hostname that the container displayed. In the example above it’s <code class="highlighter-rouge">888e89a3b36b</code>.</p>
+    </blockquote>
+  </li>
+</ol>
+
+<p>Containers which do one task and then exit can be very useful. You could build a Docker image that executes a script to configure something. Anyone can execute that task just by running the container - they don’t need the actual scripts or configuration information.</p>
+
+<h3 id="run-an-interactive-ubuntu-container">Run an interactive Ubuntu container</h3>
+
+<p>You can run a container based on a different version of Linux than is running on your Docker host.</p>
+
+<p>In the next example, we are going to run an Ubuntu Linux container on top of an Alpine Linux Docker host (Play With Docker uses Alpine Linux for its nodes).</p>
+
+<ol>
+  <li>
+    <p>Run a Docker container and access its shell.</p>
+
+    <pre><code class="language-.term1"> docker container run --interactive --tty --rm ubuntu bash
+</code></pre>
+
+    <p>In this example, we’re giving Docker three parameters:</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">--interactive</code> says you want an interactive session.</li>
+      <li><code class="highlighter-rouge">--tty</code> allocates a psuedo-tty.</li>
+      <li><code class="highlighter-rouge">--rm</code> tells Docker to go ahead and remove the container when it’s done executing.</li>
+    </ul>
+
+    <p>The first two parameters allow you to interact with the Docker container.</p>
+
+    <p>We’re also telling the container to run <code class="highlighter-rouge">bash</code> as its main process (PID 1).</p>
+  </li>
+</ol>
+
+<p>When the container starts you’ll drop into the bash shell with the default prompt <code class="highlighter-rouge">root@&lt;container id&gt;:/#</code>. Docker has attached to the shell in the container, relaying input and output between your local session and the shell session in the container.</p>
+
+<ol>
+  <li>
+    <p>Run the following commands in the container.</p>
+
+    <p><code class="highlighter-rouge">ls /</code> will list the contents of the root director in the container, <code class="highlighter-rouge">ps aux</code> will show running processes in the container, <code class="highlighter-rouge">cat /etc/issue</code> will show which Linux distro the container is running, in this case Ubuntu 16.04.3 LTS.</p>
+
+    <pre><code class="language-.term1">ls /
+</code></pre>
+
+    <pre><code class="language-.term1">ps aux
+</code></pre>
+
+    <pre><code class="language-.term1">cat /etc/issue
+</code></pre>
+  </li>
+  <li>
+    <p>Type <code class="highlighter-rouge">exit</code> to leave the shell session. This will terminate the <code class="highlighter-rouge">bash</code> process, causing the container to exit.</p>
+
+    <pre><code class="language-.term1"> exit
+</code></pre>
+
+    <blockquote>
+      <p><strong>Note:</strong> As we used the <code class="highlighter-rouge">--rm</code> flag when we started the container, Docker removed the container when it stopped. This means if you run another <code class="highlighter-rouge">docker container ls --all</code> you won’t see the Ubuntu container.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>For fun, let’s check the version of our host VM.</p>
+
+    <pre><code class="language-.term1"> cat /etc/issue
+</code></pre>
+
+    <p>You should see:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> Welcome to Alpine Linux 3.6
+ Kernel \r on an \m (\l)
+</code></pre>
+    </div>
+
+    <p>Notice that our host VM is running Alpine Linux, yet we were able to run an Ubuntu container. As previously mentioned, the distribution of Linux inside the container does not need to match the distribution of Linux running on the Docker host.</p>
+
+    <p>However, Linux containers require the Docker host to be running a Linux kernel. For example, Linux containers cannot run directly on Windows Docker hosts. The same is true of Windows containers - they need to run on a Docker host with a Windows kernel.</p>
+  </li>
+</ol>
+
+<p>Interactive containers are useful when you are putting together your own image. You can run a container and verify all the steps you need to deploy your app, and capture them in a Dockerfile.</p>
+
+<blockquote>
+  <p>You <em>can</em> <a href="https://docs.docker.com/engine/reference/commandline/commit/">commit</a> a container to make an image from it - but you should avoid that wherever possible. It’s much better to use a repeatable <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a> to build your image. You’ll see that shortly.</p>
+</blockquote>
+
+<h3 id="run-a-background-mysql-container">Run a background MySQL container</h3>
+
+<p>Background containers are how you’ll run most applications. Here’s a simple example using MySQL.</p>
+
+<ol>
+  <li>
+    <p>Run a new MySQL container with the following command.</p>
+
+    <pre><code class="language-.term1"> docker container run \
+ --detach \
+ --name mydb \
+ -e MYSQL_ROOT_PASSWORD=my-secret-pw \
+ mysql:latest
+</code></pre>
+
+    <ul>
+      <li><code class="highlighter-rouge">--detach</code> will run the container in the background.</li>
+      <li><code class="highlighter-rouge">--name</code> will name it <strong>mydb</strong>.</li>
+      <li><code class="highlighter-rouge">-e</code> will use an environment variable to specify the root password (NOTE: This should never be done in production).</li>
+    </ul>
+
+    <p>As the MySQL image was not available locally, Docker automatically pulled it from Docker Hub.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> Unable to find image 'mysql:latest' locallylatest: Pulling from library/mysql
+ aa18ad1a0d33: Pull complete
+ fdb8d83dece3: Pull complete
+ 75b6ce7b50d3: Pull complete
+ ed1d0a3a64e4: Pull complete
+ 8eb36a82c85b: Pull complete
+ 41be6f1a1c40: Pull complete
+ 0e1b414eac71: Pull complete
+ 914c28654a91: Pull complete
+ 587693eb988c: Pull complete
+ b183c3585729: Pull complete
+ 315e21657aa4: Pull complete
+ Digest: sha256:0dc3dacb751ef46a6647234abdec2d47400f0dfbe77ab490b02bffdae57846ed
+ Status: Downloaded newer image for mysql:latest
+ 41d6157c9f7d1529a6c922acb8167ca66f167119df0fe3d86964db6c0d7ba4e0
+</code></pre>
+    </div>
+
+    <p>As long as the MySQL process is running, Docker will keep the container running in the background.</p>
+  </li>
+  <li>
+    <p>List the running containers.</p>
+
+    <pre><code class="language-.term1"> docker container ls
+</code></pre>
+
+    <p>Notice your container is running.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS            NAMES
+ 3f4e8da0caf7        mysql:latest        "docker-entrypoint..."   52 seconds ago      Up 51 seconds       3306/tcp            mydb
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>You can check what’s happening in your containers by using a couple of built-in Docker commands: <code class="highlighter-rouge">docker container logs</code> and <code class="highlighter-rouge">docker container top</code>.</p>
+  </li>
+</ol>
+
+<pre><code class="language-.term1">  docker container logs mydb
+</code></pre>
+
+<p>This shows the logs from the MySQL Docker container.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>	&lt;output truncated&gt;
+	2017-09-29T16:02:58.605004Z 0 [Note] Executing 'SELECT * FROM INFORMATION_SCHEMA.TABLES;' to get a list of tables using the deprecated partition engine. You may use the startup option '--disable-partition-engine-check' to skip this check.
+	2017-09-29T16:02:58.605026Z 0 [Note] Beginning of list of non-natively partitioned tables
+	2017-09-29T16:02:58.616575Z 0 [Note] End of list of non-natively partitioned tables
+</code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Let's look at the processes running inside the container.
+</code></pre>
+</div>
+
+<pre><code class="language-.term1">	docker container top mydb
+</code></pre>
+
+<p>You should see the MySQL demon (<code class="highlighter-rouge">mysqld</code>) is running in the container.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>  PID                 USER                TIME                COMMAND
+  2876                999                 0:00                mysqld
+</code></pre>
+</div>
+
+<p>Although MySQL is running, it is isolated within the container because no network ports have been published to the host. Network traffic cannot reach containers from the host unless ports are explicitly published.</p>
+
+<ol>
+  <li>
+    <p>List the MySQL version using <code class="highlighter-rouge">docker container exec</code>.</p>
+
+    <p><code class="highlighter-rouge">docker container exec</code> allows you to run a command inside a container. In this example, we’ll use <code class="highlighter-rouge">docker container exec</code> to run the command-line equivalent of <code class="highlighter-rouge">mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version</code> inside our MySQL container.</p>
+
+    <pre><code class="language-.term1"> docker exec -it mydb \
+ mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version
+</code></pre>
+
+    <p>You will see the MySQL version number, as well as a handy warning.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> mysql: [Warning] Using a password on the command line interface can be insecure.
+ mysql  Ver 14.14 Distrib 5.7.19, for Linux (x86_64) using  EditLine wrapper
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>You can also use <code class="highlighter-rouge">docker container exec</code> to connect to a new shell process inside an already-running container. Executing the command below will give you an interactive shell (<code class="highlighter-rouge">sh</code>) inside your MySQL container.</p>
+
+    <pre><code class="language-.term1"> docker exec -it mydb sh
+</code></pre>
+
+    <p>Notice that your shell prompt has changed. This is because your shell is now connected to the <code class="highlighter-rouge">sh</code> process running inside of your container.</p>
+  </li>
+  <li>
+    <p>Let’s check the version number by running the same command again, only this time from within the new shell session in the container.</p>
+
+    <pre><code class="language-.term1"> mysql --user=root --password=$MYSQL_ROOT_PASSWORD --version
+</code></pre>
+
+    <p>Notice the output is the same as before.</p>
+  </li>
+  <li>
+    <p>Type <code class="highlighter-rouge">exit</code> to leave the interactive shell session.</p>
+
+    <pre><code class="language-.term1"> exit
+</code></pre>
+  </li>
+</ol>
+
+<h2 id="task-2-package-and-run-a-custom-app-using-docker"><a name="Task_2"></a>Task 2: Package and run a custom app using Docker</h2>
+
+<p>In this step you’ll learn how to package your own apps as Docker images using a <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a>.</p>
+
+<p>The Dockerfile syntax is straightforward. In this task, we’re going to create a simple NGINX website from a Dockerfile.</p>
+
+<h3 id="build-a-simple-website-image">Build a simple website image</h3>
+
+<p>Let’s have a look at the  Dockerfile we’ll be using, which builds a simple website that allows you to send a tweet.</p>
+
+<ol>
+  <li>
+    <p>Make sure you’re in the <code class="highlighter-rouge">linux_tweet_app</code> directory.</p>
+
+    <pre><code class="language-.term1"> cd ~/linux_tweet_app
+</code></pre>
+  </li>
+  <li>
+    <p>Display the contents of the Dockerfile.</p>
+
+    <pre><code class="language-.term1"> cat Dockerfile
+</code></pre>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> FROM nginx:latest
+
+ COPY index.html /usr/share/nginx/html
+ COPY linux.png /usr/share/nginx/html
+
+ EXPOSE 80 443 	
+
+ CMD ["nginx", "-g", "daemon off;"]
+</code></pre>
+    </div>
+
+    <p>Let’s see what each of these lines in the Dockerfile do.</p>
+
+    <ul>
+      <li><a href="https://docs.docker.com/engine/reference/builder/#from">FROM</a> specifies the base image to use as the starting point for this new image you’re creating. For this example we’re starting from <code class="highlighter-rouge">nginx:latest</code>.</li>
+      <li><a href="https://docs.docker.com/engine/reference/builder/#copy">COPY</a> copies files from the Docker host into the image, at a known location. In this example, <code class="highlighter-rouge">COPY</code> is used to copy two files into the image: <code class="highlighter-rouge">index.html</code>. and a graphic that will be used on our webpage.</li>
+      <li><a href="https://docs.docker.com/engine/reference/builder/#expose">EXPOSE</a> documents which ports the application uses.</li>
+      <li><a href="https://docs.docker.com/engine/reference/builder/#cmd">CMD</a> specifies what command to run when a container is started from the image. Notice that we can specify the command, as well as run-time arguments.</li>
+    </ul>
+  </li>
+  <li>
+    <p>In order to make the following commands more copy/paste friendly, export an environment variable containing your DockerID (if you don’t have a DockerID you can get one for free via <a href="https://cloud.docker.com">Docker Cloud</a>).</p>
+
+    <p>You will have to manually type this command is it requires your unique DockerID.</p>
+
+    <p><code class="highlighter-rouge">export DOCKERID=&lt;your docker id&gt;</code></p>
+  </li>
+  <li>
+    <p>Echo the value of the variable back to the terminal to ensure it was stored correctly.</p>
+
+    <pre><code class="language-.term1"> echo $DOCKERID
+</code></pre>
+  </li>
+  <li>
+    <p>Use the <code class="highlighter-rouge">docker image build</code> command to create a new Docker image using the instructions in the Dockerfile.</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">--tag</code> allows us to give the image a custom name. In this case it’s comprised of our DockerID, the application name, and a version. Having the Docker ID attached to the name will allow us to store it on Docker Hub in a later step</li>
+      <li><code class="highlighter-rouge">.</code> tells Docker to use the current directory as the build context</li>
+    </ul>
+
+    <p>Be sure to include period (<code class="highlighter-rouge">.</code>) at the end of the command.</p>
+
+    <pre><code class="language-.term1"> docker image build --tag $DOCKERID/linux_tweet_app:1.0 .
+</code></pre>
+
+    <p>The output below shows the Docker daemon executing each line in the Dockerfile</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> Sending build context to Docker daemon  32.77kB
+ Step 1/5 : FROM nginx:latest
+ latest: Pulling from library/nginx
+ afeb2bfd31c0: Pull complete
+ 7ff5d10493db: Pull complete
+ d2562f1ae1d0: Pull complete
+ Digest: sha256:af32e714a9cc3157157374e68c818b05ebe9e0737aac06b55a09da374209a8f9
+ Status: Downloaded newer image for nginx:latest
+ ---&gt; da5939581ac8
+ Step 2/5 : COPY index.html /usr/share/nginx/html
+ ---&gt; eba2eec2bea9
+ Step 3/5 : COPY linux.png /usr/share/nginx/html
+ ---&gt; 4d080f499b53
+ Step 4/5 : EXPOSE 80 443
+ ---&gt; Running in 47232cb5699f
+ ---&gt; 74c968a9165f
+ Removing intermediate container 47232cb5699f
+ Step 5/5 : CMD nginx -g daemon off;
+ ---&gt; Running in 4623761274ac
+ ---&gt; 12045a0df899
+ Removing intermediate container 4623761274ac
+ Successfully built 12045a0df899
+ Successfully tagged &lt;your docker ID&gt;/linux_tweet_app:latest
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Use the <code class="highlighter-rouge">docker container run</code> command to start a new container from the image you created.</p>
+
+    <p>As this container will be running an NGINX web server, we’ll use the <code class="highlighter-rouge">--publish</code> flag to publish port 80 inside the container onto port 80 on the host. This will allow traffic coming in to the Docker host on port 80 to be directed to port 80 in the container. The format of the <code class="highlighter-rouge">--publish</code> flag is <code class="highlighter-rouge">host_port</code>:<code class="highlighter-rouge">container_port</code>.</p>
+
+    <pre><code class="language-.term1"> docker container run \
+ --detach \
+ --publish 80:80 \
+ --name linux_tweet_app \
+ $DOCKERID/linux_tweet_app:1.0
+</code></pre>
+
+    <p>Any external traffic coming into the server on port 80 will now be directed into the container on port 80.</p>
+
+    <p>In a later step you will see how to map traffic from two different ports - this is necessary when to containers use the same port to communicate since you can only expose the port once on the host.</p>
+  </li>
+  <li>
+    <p><a href="http://dockersamples.github.io/" data-term=".term1" data-port="80">Click here to load the website</a> which should be running.</p>
+  </li>
+  <li>
+    <p>Once you’ve accessed your website, shut it down and  remove it.</p>
+
+    <pre><code class="language-.term1"> docker container rm --force linux_tweet_app
+</code></pre>
+
+    <blockquote>
+      <p><strong>Note:</strong> We used the <code class="highlighter-rouge">--force</code> parameter to remove the running container without shutting it down. This will ungracefully shutdown the container and permanently remove it from the Docker host.</p>
+
+      <p>In a production environment you may want to use <code class="highlighter-rouge">docker container stop</code> to gracefully stop the container and leave it on the host. You can then use <code class="highlighter-rouge">docker container rm</code> to permanently remove it.</p>
+    </blockquote>
+  </li>
+</ol>
+
+<h2 id="task-3-modify-a-running-website"><a name="Task_3"></a>Task 3: Modify a running website</h2>
+
+<p>When you’re actively working on an application it is inconvenient to have to stop the container, rebuild the image, and run a new version every time you make a change to your source code.</p>
+
+<p>One way to streamline this process is to mount the source code directory on the local machine into the running container. This will allow any changes made to the files on the host to be immediately reflected in the container.</p>
+
+<p>We do this using something called a <a href="https://docs.docker.com/engine/admin/volumes/bind-mounts/">bind mount</a>.</p>
+
+<p>When you use a bind mount, a file or directory on the host machine is mounted into a container running on the same host.</p>
+
+<h3 id="start-our-web-app-with-a-bind-mount">Start our web app with a bind mount</h3>
+
+<ol>
+  <li>Let’s start the web app and mount the current directory into the container.</li>
+</ol>
+
+<p>In this example we’ll use the <code class="highlighter-rouge">--mount</code> flag to mount the current directory on the host into <code class="highlighter-rouge">/usr/share/nginx/html</code> inside the container.</p>
+
+<p>Be sure to run this command from within the <code class="highlighter-rouge">linux_tweet_app</code> directory on your Docker host.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>```.term1
+docker container run \
+--detach \
+--publish 80:80 \
+--name linux_tweet_app \
+--mount type=bind,source="$(pwd)",target=/usr/share/nginx/html \
+$DOCKERID/linux_tweet_app:1.0
+```
+
+&gt; Remember from the Dockerfile, `usr/share/nginx/html` is where are html files are stored for the web app.
+</code></pre>
+</div>
+
+<ol>
+  <li>The <a href="http://dockersamples.github.io/" data-term=".term1" data-port="80">website</a> should be running</li>
+</ol>
+
+<h3 id="modify-the-running-website">Modify the running website</h3>
+
+<p>Bind mounts mean that any changes made to the local file system are immediately reflected in the running container.</p>
+
+<ol>
+  <li>Copy a new <code class="highlighter-rouge">index.html</code> into the container.</li>
+</ol>
+
+<p>The Git repo that you pulled earlier contains several different versions of an index.html file. You can manually run an <code class="highlighter-rouge">ls</code> command from within the <code class="highlighter-rouge">~/linux_tweet_app</code> directory to see a list of them. In this step we’ll replace <code class="highlighter-rouge">index.html</code> with <code class="highlighter-rouge">index-new.html</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>```.term1
+cp index-new.html index.html
+```
+</code></pre>
+</div>
+
+<ol>
+  <li>
+    <p>Go to the running <a href="http://dockersamples.github.io/" data-term=".term1" data-port="80">website</a> and <strong>refresh the page</strong>. Notice that the site has changed.</p>
+
+    <blockquote>
+      <p>If you are comfortable with <code class="highlighter-rouge">vi</code> you can use it to load the local <code class="highlighter-rouge">index.html</code> file and make additional changes. Those too would be reflected when you reload the webpage.
+If you are really adventurous, why not try using <code class="highlighter-rouge">exec</code> to access the running container and modify the files stored there.</p>
+    </blockquote>
+  </li>
+</ol>
+
+<p>Even though we’ve modified the <code class="highlighter-rouge">index.html</code> local filesystem and seen it reflected in the running container, we’ve not actually changed the Docker image that the container was started from.</p>
+
+<p>To show this, stop the current container and re-run the <code class="highlighter-rouge">1.0</code> image without a bind mount.</p>
+
+<ol>
+  <li>
+    <p>Stop and remove the currently running container.</p>
+
+    <pre><code class="language-.term1"> docker rm --force linux_tweet_app
+</code></pre>
+  </li>
+  <li>
+    <p>Rerun the current version without a bind mount.</p>
+
+    <pre><code class="language-.term1"> docker container run \
+ --detach \
+ --publish 80:80 \
+ --name linux_tweet_app \
+ $DOCKERID/linux_tweet_app:1.0
+</code></pre>
+  </li>
+  <li>
+    <p>Notice  the <a href="http://dockersamples.github.io/" data-term=".term1" data-port="80">website</a> is back to the original version.</p>
+  </li>
+  <li>
+    <p>Stop and remove the current container</p>
+
+    <pre><code class="language-.term1">docker rm --force linux_tweet_app
+</code></pre>
+  </li>
+</ol>
+
+<h3 id="update-the-image">Update the image</h3>
+
+<p>To persist the changes you made to the <code class="highlighter-rouge">index.html</code> file into the image, you need to build a new version of the image.</p>
+
+<ol>
+  <li>Build a new image and tag it as <code class="highlighter-rouge">2.0</code></li>
+</ol>
+
+<p>Remember that you previously modified the <code class="highlighter-rouge">index.html</code> file on the Docker hosts local filesystem. This means that running another <code class="highlighter-rouge">docker image build</code> command will build a new image with the updated <code class="highlighter-rouge">index.html</code></p>
+
+<p>Be sure to include the period (<code class="highlighter-rouge">.</code>) at the end of the command.</p>
+
+<pre><code class="language-.term1">  docker image build --tag $DOCKERID/linux_tweet_app:2.0 .
+</code></pre>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Notice how fast that built! This is because Docker only modified the portion of the image that changed vs. rebuilding the whole image.
+</code></pre>
+</div>
+
+<ol>
+  <li>
+    <p>Let’s look at the images on the system.</p>
+
+    <pre><code class="language-.term1"> docker image ls
+</code></pre>
+
+    <p>You now have both versions of the web app on your host.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE
+ &lt;your docker id&gt;/linux_tweet_app   2.0                 01612e05312b        16 seconds ago      108MB
+ &lt;your docker id&gt;/linux_tweet_app   1.0                 bb32b5783cd3        4 minutes ago       108MB
+ mysql                          latest              b4e78b89bcf3        2 weeks ago         412MB
+ ubuntu                         latest              2d696327ab2e        2 weeks ago         122MB
+ nginx                          latest              da5939581ac8        3 weeks ago         108MB
+ alpine                         latest              76da55c8019d        3 weeks ago         3.97MB
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h3 id="test-the-new-version">Test the new version</h3>
+
+<ol>
+  <li>
+    <p>Run a new container from the new version of the image.</p>
+
+    <pre><code class="language-.term1"> docker container run \
+ --detach \
+ --publish 80:80 \
+ --name linux_tweet_app \
+ $DOCKERID/linux_tweet_app:2.0
+</code></pre>
+  </li>
+  <li>
+    <p>Check the new version of the <a href="http://dockersamples.github.io/" data-term=".term1" data-port="80">website</a> (<strong>You may need to refresh your browser to get the new version to load</strong>).</p>
+
+    <p>The web page will have an orange background.</p>
+
+    <p>We can run both versions side by side. The only thing we need to be aware of is that we cannot have two containers using port 80 on the same host.</p>
+
+    <p>As we’re already using port 80 for the container running from the <code class="highlighter-rouge">2.0</code> version of the image, we will start a new container and publish it on port 8080. Additionally, we need to give our container a unique name (<code class="highlighter-rouge">old_linux_tweet_app</code>)</p>
+  </li>
+  <li>
+    <p>Run another new container, this time from the old version of the image.</p>
+
+    <p>Notice that this command maps the new container to port 8080 on the host. This is because two containers cannot map to the same port on a single Docker host.</p>
+
+    <pre><code class="language-.term1"> docker container run \
+ --detach \
+ --publish 8080:80 \
+ --name old_linux_tweet_app \
+ $DOCKERID/linux_tweet_app:1.0
+</code></pre>
+  </li>
+  <li>
+    <p>View the old version of the <a href="http://dockersamples.github.io/" data-term=".term1" data-port="8080">website</a>.</p>
+  </li>
+</ol>
+
+<h3 id="push-your-images-to-docker-hub">Push your images to Docker Hub</h3>
+
+<ol>
+  <li>
+    <p>List the images on your Docker host.</p>
+
+    <pre><code class="language-.term1"> docker image ls -f reference="$DOCKERID/*"
+</code></pre>
+
+    <p>You will see that you now have two <code class="highlighter-rouge">linux_tweet_app</code> images - one tagged as <code class="highlighter-rouge">1.0</code> and the other as <code class="highlighter-rouge">2.0</code>.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE
+ mikegcoleman/linux_tweet_app   2.0                 01612e05312b        3 minutes ago       108MB
+ mikegcoleman/linux_tweet_app   1.0                 bb32b5783cd3        7 minutes ago       108MB
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<p>These images are only stored in your Docker hosts local repository. You Docker host will be deleted after the workshop. In this step we’ll push the images to a public repository so you can run them from any Linux machine with Docker.</p>
+
+<p>Distribution is built into the Docker platform. You can build images locally and push them to a public or private <a href="https://docs.docker.com/registry/">registry</a>, making them available to other users. Anyone with access can pull that image and run a container from it. The behavior of the app in the container will be the same for everyone, because the image contains the fully-configured app - the only requirements to run it are Linux and Docker.</p>
+
+<p><a href="https://hub.docker.com">Docker Hub</a> is the default public registry for Docker images.</p>
+
+<ol>
+  <li>
+    <p>Before you can push your images, you will need to log into Docker Hub.</p>
+
+    <pre><code class="language-.term1"> docker login
+</code></pre>
+
+    <p>You will need to supply your Docker ID credentials when prompted.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> Username: &lt;your docker id&gt;
+ Password: &lt;your docker id password&gt;
+ Login Succeeded
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Push version <code class="highlighter-rouge">1.0</code> of your web app using <code class="highlighter-rouge">docker image push</code>.</p>
+
+    <pre><code class="language-.term1"> docker image push $DOCKERID/linux_tweet_app:1.0
+</code></pre>
+
+    <p>You’ll see the progress as the image is pushed up to Docker Hub.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> The push refers to a repository [docker.io/&lt;your docker id&gt;/linux_tweet_app]
+ 910e84bcef7a: Pushed
+ 1dee161c8ba4: Pushed
+ 110566462efa: Pushed
+ 305e2b6ef454: Pushed
+ 24e065a5f328: Pushed
+ 1.0: digest: sha256:51e937ec18c7757879722f15fa1044cbfbf2f6b7eaeeb578c7c352baba9aa6dc size: 1363
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Now push version <code class="highlighter-rouge">2.0</code>.</p>
+
+    <pre><code class="language-.term1"> docker image push $DOCKERID/linux_tweet_app:2.0
+</code></pre>
+
+    <p>Notice that several lines of the output say <code class="highlighter-rouge">Layer already exists</code>. This is because Docker will leverage read-only layers that are the same as any previously uploaded image layers.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> The push refers to a repository [docker.io/&lt;your docker id&gt;/linux_tweet_app]
+ 0b171f8fbe22: Pushed
+ 70d38c767c00: Pushed
+ 110566462efa: Layer already exists
+ 305e2b6ef454: Layer already exists
+ 24e065a5f328: Layer already exists
+ 2.0: digest: sha256:7c51f77f90b81e5a598a13f129c95543172bae8f5850537225eae0c78e4f3add size: 1363
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<p>You can browse to <code class="highlighter-rouge">https://hub.docker.com/r/&lt;your docker id&gt;/</code> and see your newly-pushed Docker images. These are public repositories, so anyone can pull the image - you don’t even need a Docker ID to pull public images. Docker Hub also support private repositories.</p>
+
+<hr />
+
+<h2 id="survey">Survey</h2>
+<p>We’re grateful you’ve chosen to spend some time with us today. We’d appreciate the opportunity to hear from  you about what you liked and what we might improve.</p>
+
+<p>If you could please fill out this very short survey, it’d be greatly appreciated.</p>
+
+<p>Thanks, the DockerCon Hands-on Labs team.</p>
+
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfu5jatKvKLdGZviRQ7SdXaCKKUmLNYGz2-WyvQKVoIpGMaDQ/viewform?usp=pp_url&amp;entry.413124055=Docker+101+-+Linux&amp;entry.879050699">Click Here for the survey</a></p>
+
+<hr />
+
+<p>Thanks for completing the Docker 101 - Linux lab. There are several other labs available, feel free to check them out if you have time.</p>
+
+            </div>
+        </article>
+    </div>
+
+    
+    <div class="splitter">
+    </div>
+
+    <div class="panel-right">
+        <span class="resize-warning">If the commandline doesn't appear in the terminal, try resizing the browser window.</span>
+        
+        <div class="term1"></div>
+        
+    </div>
+    
+
+</div>
+
+<script>
+    (function() {
+        var font3 = document.createElement('link');
+        font3.type = 'text/css';
+        font3.rel = 'stylesheet';
+        font3.href = '/dceu-labs/css/syntax-highlighting.css';
+        var q = document.getElementsByTagName('link')[0];
+        q.parentNode.insertBefore(font3, q);
+    })();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://rawgit.com/RickStrahl/jquery-resizable/master/dist/jquery-resizable.min.js"></script>
+<script src="https://rawgit.com/play-with-docker/sdk/hybrid/dist/pwd.js"></script>
+<script>
+    pwd.newSession([{selector: '.term1', type: ''}, {selector: '.term2', type: ''}, {selector: '.term3', type: ''}], {ImageName: '', baseUrl: 'https://dockercon.play-with-docker.com'});
+      $(".panel-left").resizable({
+      handleSelector: ".splitter",
+      resizeHeight: false,
+      onDragEnd: pwd.resize.bind(pwd)
+  });
+
+  window.onbeforeunload = function(e) {
+        pwd.closeSession(function(){});
+        return;
+    }
+</script>
+
+
+    
+<script async>
+    (function() {
+        var font = document.createElement('link'); 
+        font.type = 'text/css'; 
+        font.rel = 'stylesheet';
+        font.href = '//fonts.googleapis.com/css?family=Raleway:400,700';
+        var s = document.getElementsByTagName('link')[0]; 
+        s.parentNode.insertBefore(font, s);
+      })();
+</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-6096819-32"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-6096819-32');
+</script>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,174 @@
+<!-- Remove the comments to compress html
+
+---
+layout: compress
+--- 
+
+-->
+<!DOCTYPE html>
+<html>
+
+  <head>
+<title>DCEU 2017 Hands-on Labs</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="DCEU 2017 Hands-on Labs" />
+<meta name="twitter:description" content="Learn docker through online trainings in training.play-with-docker.com" />
+<meta name="twitter:image" content="http://birthday.play-with-docker.com/images/simple-logo.jpg" />
+
+  
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+<style>
+          
+          html,body{height:100%}img{max-width:100%}.mt50{margin-top:50px}.mt20{margin-top:20px}.mt10{margin-top:10px}.mb10{margin-bottom:10px}body{display:flex;flex-direction:column}body>*{flex:none}.navbar{border-radius:0px;margin-bottom:0px}.navbar.navbar-inverse{background-color:#1488C6;border-color:#1488C6}.navbar.navbar-inverse a,.navbar.navbar-inverse .navbar-nav li a{color:white}.navbar.navbar-inverse a:hover,.navbar.navbar-inverse .navbar-nav li a:hover{text-decoration:underline}.navbar-brand{font-weight:900}@media screen and (max-width: 600px){.navbar-brand{font-size:1.5em}}.post-meta{color:#828282}div.post-content{max-width:1200px}.panel{border:none;box-shadow:0px 0px 1px #828282}.panel:hover{box-shadow:0px 0px 6px #828282}footer{border-top:1px solid #e8e8e8}.social-share{margin-top:10px;margin-bottom:15px;text-align:center}.social{list-style:none;display:inline;margin-left:10px;padding:5px 8px}.social:hover{opacity:0.7}.social img{width:20px}.quora img{width:17px}.facebook img{width:16px}.recent ul{list-style:none;padding:0;text-align:justify}.recent li{margin:20px}.recent img{display:block;margin:auto}.recent{padding:10px;border:1px solid #e8e8e8}.post-img img{width:100%}.announce{margin-top:10px;margin-bottom:60px;text-align:center}.pack{display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;flex-wrap:wrap;-webkit-flex-wrap:wrap}.banner{display:block;margin:auto}.panel-container{display:flex;flex-direction:row;overflow:hidden;height:100%;flex:1 1 auto;xtouch-action:none}.terminal{font-size:15px}.panel-left{flex:0 0 auto;width:50%;min-width:150px}.content{padding:0 15px;overflow-y:auto}.content{padding:0 15px}.panel-singular{margin:0 auto;max-width:1200}.splitter{flex:0 0 auto;width:18px;background:url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #2fa8c3;min-height:200px;cursor:col-resize}.panel-right{display:flex;flex-direction:column;flex:1 1 auto;width:100%;background:#565656}.panel-right>div{flex:1 1 auto;margin-bottom:15px;overflow-y:auto}.panel-right>div:last-of-type{margin-bottom:0px}.panel-right>div.initialized{background-color:black}.getting-started ul{list-style-type:none;font-size:36px}.card{float:none}code[class*="."]{cursor:pointer}.resize-warning{background-color:black;color:white;text-align:center}.tab{display:none}.site-title{color:white}.post-tag{display:inline-block;background:rgba(42,122,226,0.15);padding:0 .5rem;margin-right:.5rem;border-radius:4px;color:#2a7ae2;font-family:"Open Sans",serif;font-size:90%}.post-tag:before{content:"\f02b";font-family:FontAwesome;padding-right:.5em}.post-tag:hover{text-decoration:none;background:#2a7ae2;color:#fff}small .post-tag{background:#eee;color:#000}small .post-tag:before{content:none}small .post-tag:hover{text-decoration:none;background:#000;color:#fff;cursor:default}.tags-expo :target:before{content:"";display:block;height:72px;margin:-72px 0 0}@media (min-width: 38em){.tags-expo .tags-expo-list{font-size:2.9rem}.tags-expo .tags-expo-list .post-tag{margin:.2em .3em}}.tags-expo .tags-expo-section{font-family:"Open Sans",serif}.tags-expo .tags-expo-section ul{list-style-type:circle;list-style-position:inside;padding:0}.tags-expo .tags-expo-section ul li{padding:0 1rem}.tags-expo .tags-expo-section ul li:hover{list-style-type:disc}.tags-expo .tags-expo-section a{font-size:20px}.tags-expo .tags-expo-section .post-date{display:inline-block;font-size:80%;color:#000;margin:0;padding:0}
+
+</style>  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="Hands-on Labs: DockerCon EU 2017" href="http://dockersamples.github.io/dceu-labs/dceu-labs/feed.xml">  
+<link rel="stylesheet" href="/dceu-labs/css/quiz.css">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h3 class="site-title">Hands-on Labs: DockerCon EU 2017</h3>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/dceu-labs/about/">About</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</header>
+
+
+    <div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <article class="post">
+
+        <header class="post-header">
+          <h1 class="post-title">DCEU 2017 Hands-on Labs</h1>
+        </header>
+
+        <div class="post-content">
+          <img src="/dceu-labs/images/dceu.jpg">
+<div style="list-style-type:none;font-size:18px">
+  <span><p>This is the official site of the hands-on labs for DockerCon EU 2017. They are designed to help you gain experience in various Docker features, products, and solutions. 
+    Depending on your experience, each lab requires between 30-45 minutes to complete. They range in difficulty from easy to advanced.
+     Simply choose whichever lab you want. If you are new to Docker, we recommend starting with the Docker 101 lab</p></span>
+  <span>  
+  <h3>General Instructions for Labs</h3>
+  <em><p>The labs below will guide you through a series of steps. The lab will may have a terminal embedded in the page:</p>
+    <br/>
+    <img src="/images/terminal-in-page.png">
+    <br/><p>This is a full terminal, either Bash for Linux or Powershell for Windows. In it you will be able to enter any command that you could enter into either Bash or Powershell.</p>
+    <p>Or the lab will direct you to open a separate site if it uses Docker Enterprise Edition and you just follow the direction in the lab.</p>
+    <p>In the case of an inline terminal, if you see a code block in grey, like this:</p></em>
+    <pre>
+      <code class="language-.term1">
+        docker run example/myimage
+      </code></pre>
+      <em>
+      <p>if you click on the code block, it will automatically populate the code into the terminal.</p></em>
+  </span>
+  <h3>Select a lab to get started</h3>
+  <ul style="list-style-type: none;">
+    <li><a href="/dceu-labs/linux-101">Docker 101 - Linux</a></li>
+    <p><em>In this lab we will take a look at some basic Docker commands and a simple build-ship-run workflow. We'll start by running some simple docker containers, then we'll use a Dockerfile to build a custom app, and then finally we'll look at how to use bind mounts to modify a running container as you might if you were actively developing using Docker.</em></p><br/>
+    
+    <li><a href="/dceu-labs/windows-101">Docker 101 - Windows</a></li>
+    <p><em>In this lab we'll start help you get familiar with running Docker on Windows. We'll look at different ways to run containers, and then move into looking a bit at how the filesystem and user accounts work. Finally, we'll build a couple applications and deploy them. </em></p><br/>
+
+    <li><a href="/dceu-labs/dtr-deep-dive">Docker Trusted Registry Deep Dive</a></li>
+    <p><em>In this lab we will be exploring Docker Trusted Registry, which is an on-premises Docker Registry that has many advanced features for enterprise workloads, like, image scanning, immutable repos, and image promotion. The focus of this lab is to get our hands dirty and explore these advanced features.</em></p><br/>
+    
+    <li><a href="/dceu-labs/application-lifecycle">Managing the Application Lifecycle with Docker EE</a></li>
+    <p><em>In this lab we'll deploy a multi-service application that includes both Windows and Linux components. Then we will then look at upgrades and rollback, scaling up, and how Docker EE handles system interruptions.</em></p><br/>
+    
+    <li><a href="/dceu-labs/managing-application-access">Managing Application Access with Docker EE</a></li>
+    <p><em>In this lab you will learn the tools that are available to you in Docker EE to build a multi-tenant container platforms. Including integrating with an identitig backend, seting up RBAC policies, and using those polices to restrict application access.</em></p><br/>
+
+    <li><a href="/dceu-labs/hybrid-apps">Deploying Hybrid-OS Applications with Docker EE</a></li>
+    <p><em>In this lab we'll take a look at how to deploy a variety of different applications with Docker EE. We'll start with a tradtional build, ship, run workflow of a Linux appliation. We'll then use Image2Docker to extract a Windows application from an existing VHD. And, finally, we'll use Docker Compose to deploy an application that includes both Windows and Linux components.</em></p><br/>
+    
+    <li><a href="/dceu-labs/mta-aspnet-dev/">Modernizing ASP.NET Applications - for Developers</a></li>
+    <p><em>In this lab we'll look at moving an ASP.NET WebForms app to Docker and modernizing the architecture. We'll start with a Dockerfile which compiles and packages the application in a Docker image, and then run the web app in a Docker container on Windows Server. Then we'll break features out of the app and run them in separate containers, using Docker to plumb everything together.</em></p><br/>
+    
+    <li><a href="/dceu-labs/mta-aspnet-itpro/">Modernizing ASP.NET Applications - for IT Pros</a></li>
+    <p><em>In this lab we'll look at moving ASP.NET WebForms apps to Docker and running them in a modern platform without changing code. We'll start with a Dockerfile which packages the app as a Docker image, using an existing MSI. Then we'll build a new image with an updated MSI and with Windows updates, and we'll see how to automatically update and rollback apps in Docker swarm mode on Windows Server.</em></p><br/>
+
+    <li><a href="/dceu-labs/java-mta">Modernize Java Apps</a></li>
+    <p><em>In this lab, we'll take an old Java EE 7 application, written to run on Wildfly 3, and modernize it. We'll start by containerizing the existing application without changing any code. Then we'll add a new front end written in React JS. Finally, we'll move the application to a modern Tomcat EE application server.</em></p><br/>
+  </ul>
+  <span><em>For even more labs, try <a href="http://training.play-with-docker.com">The Play with Docker Classroom</a></em></span>
+  <br/>  
+</div>
+
+<script>
+    (function() {
+        var font3 = document.createElement('link');
+        font3.type = 'text/css';
+        font3.rel = 'stylesheet';
+        font3.href = '/dceu-labs/css/syntax-highlighting.css';
+        var q = document.getElementsByTagName('link')[0];
+        q.parentNode.insertBefore(font3, q);
+    })();
+</script>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</div>
+
+    
+<script async>
+    (function() {
+        var font = document.createElement('link'); 
+        font.type = 'text/css'; 
+        font.rel = 'stylesheet';
+        font.href = '//fonts.googleapis.com/css?family=Raleway:400,700';
+        var s = document.getElementsByTagName('link')[0]; 
+        s.parentNode.insertBefore(font, s);
+      })();
+</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-6096819-32"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-6096819-32');
+</script>
+
+
+  </body>
+
+</html>

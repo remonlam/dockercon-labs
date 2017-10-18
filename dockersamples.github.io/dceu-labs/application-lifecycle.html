@@ -1,0 +1,674 @@
+<!-- Remove the comments to compress html
+
+---
+layout: compress
+--- 
+
+-->
+<!DOCTYPE html>
+<html>
+
+  <head>
+<title>Managing the Application Lifecycle with Docker EE</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Managing the Application Lifecycle with Docker EE" />
+<meta name="twitter:description" content="Learn docker through online trainings in training.play-with-docker.com" />
+<meta name="twitter:image" content="http://birthday.play-with-docker.com/images/simple-logo.jpg" />
+
+  
+
+
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" />
+
+<style>
+          
+          html,body{height:100%}img{max-width:100%}.mt50{margin-top:50px}.mt20{margin-top:20px}.mt10{margin-top:10px}.mb10{margin-bottom:10px}body{display:flex;flex-direction:column}body>*{flex:none}.navbar{border-radius:0px;margin-bottom:0px}.navbar.navbar-inverse{background-color:#1488C6;border-color:#1488C6}.navbar.navbar-inverse a,.navbar.navbar-inverse .navbar-nav li a{color:white}.navbar.navbar-inverse a:hover,.navbar.navbar-inverse .navbar-nav li a:hover{text-decoration:underline}.navbar-brand{font-weight:900}@media screen and (max-width: 600px){.navbar-brand{font-size:1.5em}}.post-meta{color:#828282}div.post-content{max-width:1200px}.panel{border:none;box-shadow:0px 0px 1px #828282}.panel:hover{box-shadow:0px 0px 6px #828282}footer{border-top:1px solid #e8e8e8}.social-share{margin-top:10px;margin-bottom:15px;text-align:center}.social{list-style:none;display:inline;margin-left:10px;padding:5px 8px}.social:hover{opacity:0.7}.social img{width:20px}.quora img{width:17px}.facebook img{width:16px}.recent ul{list-style:none;padding:0;text-align:justify}.recent li{margin:20px}.recent img{display:block;margin:auto}.recent{padding:10px;border:1px solid #e8e8e8}.post-img img{width:100%}.announce{margin-top:10px;margin-bottom:60px;text-align:center}.pack{display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;flex-wrap:wrap;-webkit-flex-wrap:wrap}.banner{display:block;margin:auto}.panel-container{display:flex;flex-direction:row;overflow:hidden;height:100%;flex:1 1 auto;xtouch-action:none}.terminal{font-size:15px}.panel-left{flex:0 0 auto;width:50%;min-width:150px}.content{padding:0 15px;overflow-y:auto}.content{padding:0 15px}.panel-singular{margin:0 auto;max-width:1200}.splitter{flex:0 0 auto;width:18px;background:url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #2fa8c3;min-height:200px;cursor:col-resize}.panel-right{display:flex;flex-direction:column;flex:1 1 auto;width:100%;background:#565656}.panel-right>div{flex:1 1 auto;margin-bottom:15px;overflow-y:auto}.panel-right>div:last-of-type{margin-bottom:0px}.panel-right>div.initialized{background-color:black}.getting-started ul{list-style-type:none;font-size:36px}.card{float:none}code[class*="."]{cursor:pointer}.resize-warning{background-color:black;color:white;text-align:center}.tab{display:none}.site-title{color:white}.post-tag{display:inline-block;background:rgba(42,122,226,0.15);padding:0 .5rem;margin-right:.5rem;border-radius:4px;color:#2a7ae2;font-family:"Open Sans",serif;font-size:90%}.post-tag:before{content:"\f02b";font-family:FontAwesome;padding-right:.5em}.post-tag:hover{text-decoration:none;background:#2a7ae2;color:#fff}small .post-tag{background:#eee;color:#000}small .post-tag:before{content:none}small .post-tag:hover{text-decoration:none;background:#000;color:#fff;cursor:default}.tags-expo :target:before{content:"";display:block;height:72px;margin:-72px 0 0}@media (min-width: 38em){.tags-expo .tags-expo-list{font-size:2.9rem}.tags-expo .tags-expo-list .post-tag{margin:.2em .3em}}.tags-expo .tags-expo-section{font-family:"Open Sans",serif}.tags-expo .tags-expo-section ul{list-style-type:circle;list-style-position:inside;padding:0}.tags-expo .tags-expo-section ul li{padding:0 1rem}.tags-expo .tags-expo-section ul li:hover{list-style-type:disc}.tags-expo .tags-expo-section a{font-size:20px}.tags-expo .tags-expo-section .post-date{display:inline-block;font-size:80%;color:#000;margin:0;padding:0}
+
+</style>  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="Hands-on Labs: DockerCon EU 2017" href="http://dockersamples.github.io/dceu-labs/dceu-labs/feed.xml">  
+<link rel="stylesheet" href="css/quiz.css.html">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h3 class="site-title">Hands-on Labs: DockerCon EU 2017</h3>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="about/index.html">About</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</header>
+
+
+    
+<div class="panel-container">
+    
+    <div class="content panel-singular">
+    
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name headline">Managing the Application Lifecycle with Docker EE</h1>
+                <p class="post-meta"><time datetime="2017-10-10T00:00:00+00:00" itemprop="datePublished">Oct 10, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@mikegcoleman</span></span></p>
+
+            </header>
+
+            <div class="post-content" itemprop="articleBody">
+                <p>Docker EE 17.06 is the first Containers-as-a-Service platform to offer production-level support for the integrated management and security of Linux AND Windows Server Containers.</p>
+
+<p>In this lab we’ll deploy a multi-service application that includes both Windows and Linux components. Then we will then look at upgrades and rollback, scaling up, and how Docker EE handles system interruptions.</p>
+
+<blockquote>
+  <p><strong>Difficulty</strong>: Intermediate (assumes basic familiarity with Docker)</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Time</strong>: Approximately 30 minutes</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Tasks</strong>:</p>
+
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><a href="application-lifecycle.html#Task 1">Task 1: Deploy a Multi-OS Application</a>
+      <ul>
+        <li><a href="application-lifecycle.html#task1.1">Task 1.1: Add a Windows node to the cluster</a></li>
+        <li><a href="application-lifecycle.html#task1.2">Task 1.2: Examine the Docker Compose File</a></li>
+        <li><a href="application-lifecycle.html#task1.3">Task 1.3: Deploy the Application Stack</a></li>
+        <li><a href="application-lifecycle.html#task1.4">Task 1.4: Verify the Running Application</a></li>
+      </ul>
+    </li>
+    <li><a href="application-lifecycle.html#Task2">Task 2: Application Lifecycle Management</a>
+      <ul>
+        <li><a href="application-lifecycle.html#Task2.1">Task 2.1: Upgrading the Web Front-end</a></li>
+        <li><a href="application-lifecycle.html#Task2.2">Task 2.2: Scaling the Web Front-end</a></li>
+        <li><a href="application-lifecycle.html#Task2.3">Task 2.3: Dealing with an Application Failure</a></li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h2 id="understanding-the-play-with-docker-interface-and-lab-environment">Understanding the Play With Docker Interface and Lab Environment</h2>
+
+<p>This lab makes use of a three node Docker EE cluster. The cluster is comprised of two Linux nodes and one Windows Server node.</p>
+
+<ul>
+  <li>
+    <p>The first Linux node acts as our Universal Control Plane (UCP) manager node (also referred to as the UCP server).</p>
+  </li>
+  <li>
+    <p>The second Linux node serves two purposes. It’s a UCP worker node, and it also hosts Docker Trusted Registry (DTR) server.</p>
+  </li>
+  <li>
+    <p>The Windows Server node is deployed as a worker node in our cluster.</p>
+  </li>
+</ul>
+
+<p>All of this is presented via a web-based learning environment, Play with Docker (PWD).</p>
+
+<blockquote>
+  <p><strong>Note</strong>: PWD is NOT part of Docker Enterprise Edition. It’s a web framework for hosting Docker instances for use in training activities.</p>
+</blockquote>
+
+<p><img src="images/pwd_screen.png" alt="" /></p>
+
+<p>There are three main components to the PWD interface</p>
+
+<h3 id="1-console-access">1. Console Access</h3>
+<p>Play with Docker provides access to the 3 Docker EE hosts in your Cluster. These machines are:</p>
+
+<ul>
+  <li>A Linux-based Docker EE 17.06 Manager node</li>
+  <li>A Linux-based Docker EE 17.06 Worker node</li>
+  <li>A Windows Server 2016-based Docker EE 17.06 Worker Node</li>
+</ul>
+
+<p>By clicking a name on the left, the console window will be connected to that node.</p>
+
+<h3 id="2-access-to-your-universal-control-plane-ucp-and-docker-trusted-registry-dtr-servers">2. Access to your Universal Control Plane (UCP) and Docker Trusted Registry (DTR) servers</h3>
+
+<p>Additionally, the PWD screen provides you one-click access to the Universal Control Plane (UCP) web-based management interface as well as the Docker Trusted Registry (DTR) web-based management interface. Click on either the <code class="highlighter-rouge">UCP</code> or <code class="highlighter-rouge">DTR</code> button will bring up the respective server web interface in a new tab.</p>
+
+<h3 id="3-session-information">3. Session Information</h3>
+
+<p>Throughout the lab you will be asked to provide either hosntnames or login credentials that are unique to your environment. These are displayed for you at the bottom of the screen.</p>
+
+<h2 id="document-conventions">Document conventions</h2>
+
+<ul>
+  <li>
+    <p>When you encounter a phrase in between <code class="highlighter-rouge">&lt;</code> and <code class="highlighter-rouge">&gt;</code>  you are meant to substitute in a different value.</p>
+
+    <p>For instance if you see <code class="highlighter-rouge">&lt;dtr domain&gt;</code> you would actually type something like <code class="highlighter-rouge">ip172-18-0-7-b70lttfic4qg008cvm90.direct.microsoft.play-with-docker.com</code></p>
+  </li>
+  <li>
+    <p>When you see the Linux penguin all the following instructions should be completed in your Linux console</p>
+
+    <p><img src="images/linux75.png" alt="" /></p>
+  </li>
+  <li>
+    <p>When you see the Windows flag all the subsequent instructions should be completed in your Windows cosnsole.</p>
+
+    <p><img src="images/windows75.png" alt="" /></p>
+  </li>
+</ul>
+
+<h2 id="task-1-deploying-a-multi-os-application"><a name="Task_1"></a>Task 1: Deploying a Multi-OS Application</h2>
+
+<p>For this lab we’ll use a Docker Compose file to deploy an application that uses a Java front end designed to be deployed on Linux, with a Microsoft SQL Server back end running on windows.</p>
+
+<p>Before we can deploy the application we will need to add a Windows node to our cluster.</p>
+
+<ol>
+  <li>Open the following link <strong>in a new tab or window</strong>: <a href="https://ee.microsoft.play-with-docker.com">PWD environment sign-in page</a></li>
+</ol>
+
+<blockquote>
+  <p><strong>Note</strong>: You might want to right click the above link and open it in a new tab or window</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>Fill out the form, and click <code class="highlighter-rouge">submit</code>. You will then be redirected to the PWD environment.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Access</code></p>
+
+    <p>It will take a few minutes to provision out your PWD environment.</p>
+  </li>
+</ol>
+
+<h3 id="task-11-install-a-windows-worker-node"><a name="task1.1"></a>Task 1.1: Install a Windows worker node</h3>
+
+<ol>
+  <li>
+    <p>From the main PWD screen click the <code class="highlighter-rouge">UCP</code> button on the left side of the screen</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: Because this is a lab-based install of Docker EE we are using the default self-signed certs. Because of this your browser may display a security warning. It is safe to click through this warning.</p>
+
+      <p>In a production environment you would use certs from a trusted certificate authority and would not see this screen.
+<img src="images/ssl_error.png" alt="" /></p>
+    </blockquote>
+  </li>
+  <li>
+    <p>When prompted enter your username and password (these can be found below the console window in the main PWD screen). The UCP web interface should load up in your web browser.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: Once the main UCP screen loads you’ll notice there is a red warning bar displayed at the top of the UCP screen, this is an artifact of running in a lab environment. A UCP server configured for a production environment would not display this warning</p>
+
+      <p><img src="images/red_warning.png" alt="" /></p>
+    </blockquote>
+  </li>
+  <li>
+    <p>From the main dashboard screen, click <code class="highlighter-rouge">Add a Node</code> on the bottom left of the screen</p>
+
+    <p><img src="images/add_a_node.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Copy the text from the dark box shown on the <code class="highlighter-rouge">Add Node</code> screen.</p>
+
+    <blockquote>
+      <p><strong>Note</strong> There is an icon in the upper right corner of the box that you can click to copy the text to your clipboard
+<img src="images/join_text.png" alt="" /></p>
+    </blockquote>
+
+    <blockquote>
+      <p><strong>Note</strong>: You may notice that there is a UI component to select <code class="highlighter-rouge">Linux</code> or <code class="highlighter-rouge">Windows</code>on the <code class="highlighter-rouge">Add Node</code> screen. In a production environment where you are starting from scratch there are a few prerequisite steps to adding a Windows node. However, we’ve already done these steps in the PWD envrionemnt. So for this lab, just leave the selecton on <code class="highlighter-rouge">Linux</code> and move on to the next step.</p>
+    </blockquote>
+  </li>
+</ol>
+
+<p><img src="images/windows75.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>Switch back to the PWD interface, and click the name of your Windows node. This will connect the web-based console to your Windows Server 2016 Docker EE host.</p>
+  </li>
+  <li>
+    <p>Paste the text from the <code class="highlighter-rouge">Add Node</code> dialogue at the command prompt in the Windows console.</p>
+
+    <p>You should see the message <code class="highlighter-rouge">This node joined a swarm as a worker.</code> indicating you’ve successfully joined the node to the cluster.</p>
+  </li>
+  <li>
+    <p>Switch back to the UCP server in your web browser and click the <code class="highlighter-rouge">x</code> in the upper right corner to close the <code class="highlighter-rouge">Add Node</code> window</p>
+  </li>
+  <li>
+    <p>You should be taken to the <code class="highlighter-rouge">Nodes</code> screen will will see 3 nodes listed at the bottom of your screen.</p>
+
+    <p>After a minute or two refresh your web browswer to ensure that your Windows worker node has come up as <code class="highlighter-rouge">healthy</code>. Once this happens, you can move on to the next step.</p>
+
+    <p><img src="images/node_listing.png" alt="" /></p>
+  </li>
+</ol>
+
+<h3 id="-task-12-examine-the-docker-compose-file"><a name="task1.2"></a> Task 1.2: Examine the Docker Compose file</h3>
+
+<p>We’ll use a Docker Compose file to instantiate our application. With this file we can define all our services and their parameters, as well as other Docker primatives such as networks.</p>
+
+<p>Let’s look at the Docker Compose file:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>version: "3.2"
+
+services:
+
+  database:
+    image: dockersamples/atsea-db:mssql
+    ports:
+      - mode: host
+        target: 1433
+    networks:
+     - atsea
+    deploy:
+      endpoint_mode: dnsrr
+
+  appserver:
+    image: dockersamples/atsea-appserver:1.0
+    ports:
+      - target: 8080
+        published: 8080
+    networks:
+      - atsea
+
+networks:
+  atsea:
+</code></pre>
+</div>
+
+<p>There are two services. <code class="highlighter-rouge">appserver</code> is our web frontend written in Java, and <code class="highlighter-rouge">database</code> is our Microsoft SQL Server database. The databased and web front end communicate over port <code class="highlighter-rouge">1433</code> and we’ll expose port <code class="highlighter-rouge">8080</code> on the host to present the web front end.</p>
+
+<p>Additionally we are creating an overlay network (<code class="highlighter-rouge">atsea</code>). Overlay networks allow containers running on different hosts to communicate over a private software-defined network. In this case, the web frontend on our Linux host will use the <code class="highlighter-rouge">atsea</code> network to communicate with the database.</p>
+
+<h3 id="-task-13-deploy-the-application-stack"><a name="task1.3"></a> Task 1.3: Deploy the Application Stack</h3>
+
+<p>A <code class="highlighter-rouge">stack</code> is a group of related services that make up an application. Stacks are a newer Docker primative, and can be deployed with a Docker Compose file.</p>
+
+<p>Let’s Deploy an application stack using the Docker Compose file above.</p>
+
+<ol>
+  <li>
+    <p>Move to the UCP console in your web browser</p>
+  </li>
+  <li>
+    <p>In the left hand menu click <code class="highlighter-rouge">Stacks</code></p>
+  </li>
+  <li>
+    <p>In the upper right click <code class="highlighter-rouge">Create Stack</code></p>
+  </li>
+  <li>
+    <p>Enter <code class="highlighter-rouge">atsea</code> under <code class="highlighter-rouge">NAME</code></p>
+  </li>
+  <li>
+    <p>Select <code class="highlighter-rouge">Services</code> under <code class="highlighter-rouge">MODE</code></p>
+  </li>
+  <li>
+    <p>Select <code class="highlighter-rouge">SHOW VERBOSE COMPOSE OUTPUT</code></p>
+  </li>
+  <li>
+    <p>Paste the compose file from above into the <code class="highlighter-rouge">COMPOSE.YML</code> box</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Create</code></p>
+
+    <p>You will see some output to show the progress of your deployment, and then a banner will pop up at the bottom indicating your deployment was successful.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Done</code></p>
+  </li>
+</ol>
+
+<p>You should now be back on the Stacks screen.</p>
+
+<ol>
+  <li>
+    <p>Click on the <code class="highlighter-rouge">atsea</code> stack in the list</p>
+  </li>
+  <li>
+    <p>From the right side of the screen choose <code class="highlighter-rouge">Services</code> under <code class="highlighter-rouge">Inspect Resource</code></p>
+
+    <p><img src="images/inspect_resoource.png" alt="" /></p>
+
+    <p>Here you can see your two services running. It may take a few minutes for the database service to come up (the dot to turn green). Once it does move on to the next section.</p>
+  </li>
+</ol>
+
+<h3 id="-task-14-verify-the-running-application"><a name="task1.4"></a> Task 1.4: Verify the Running Application</h3>
+
+<ol>
+  <li>
+    <p>To see our running web site (an art store) visit click the <code class="highlighter-rouge">atsea_appserver</code> service from the list</p>
+  </li>
+  <li>
+    <p>On the right hand of screen click on the link under <code class="highlighter-rouge">Published Endpoints</code></p>
+
+    <p>The thumbnails you see displayed are actually pulled from the SQL database. This is how you know that the connection is working between the database and web front end.</p>
+  </li>
+</ol>
+
+<h2 id="-task-2-application-lifecycle-management"><a name="task5"></a> Task 2: Application Lifecycle Management</h2>
+
+<p>Now that we’ve deployed our application, let’s take a look at some common tasks that admins need to do to keep their apps running and up-to-date. We’ll start by upgrading the web front end, next we’ll scale that service to meet demand, and then finally we’ll see how to deal with the failur of a node in our UCP cluster.</p>
+
+<h3 id="-task-21-upgrading-the-web-front-end"><a name="task2.1"></a> Task 2.1: Upgrading the Web Front-end</h3>
+
+<p>In this section we’re going to first simulate a failed upgrade attempt, and see how to deal with that.</p>
+
+<p>The way we upgrade a running service is to update the image that service is based on. In this case the image we’re going to upgrade to is broken. So when it’s deployed UCP will pause the upgrade process, from there we can roll the application back to it’s previous state.</p>
+
+<ol>
+  <li>
+    <p>Move back into Universal Control Plane</p>
+  </li>
+  <li>
+    <p>If your services are not currently displayed, click on <code class="highlighter-rouge">Services</code> from the left hand menu</p>
+  </li>
+  <li>
+    <p>Click on the <code class="highlighter-rouge">atsea_appserver</code> service from the list</p>
+  </li>
+  <li>
+    <p>On the left, under <code class="highlighter-rouge">Configure</code> select <code class="highlighter-rouge">Details</code></p>
+
+    <p><img src="images/service_details.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Under image, change the value to <code class="highlighter-rouge">dockersamples/atsea-appserver:2.0</code></p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Update</code> in the bottom right corner</p>
+  </li>
+  <li>
+    <p>Click on the <code class="highlighter-rouge">atsea_appserver</code> service from the list</p>
+  </li>
+  <li>
+    <p>The service indicator will turn from green to red, and if you look at the details on the right you’ll see the <code class="highlighter-rouge">Update Status</code> go from <code class="highlighter-rouge">Updating</code> to <code class="highlighter-rouge">Paused</code></p>
+
+    <p>This is because the container that backs up the service failed to start up.</p>
+
+    <p><img src="images/update_status.png" alt="" /></p>
+  </li>
+  <li>
+    <p>From the right hand side click <code class="highlighter-rouge">Containers</code> under <code class="highlighter-rouge">Inspect Resource</code> and you will see some of the containers have exited with an error.</p>
+
+    <p>Also notice under image that these errored out containers are running the <code class="highlighter-rouge">2.0</code> version of our application</p>
+
+    <p>To recover from the failed upgrade, we’re going to use Docker EE’s rollback feature.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Services</code> from the left hand menu.</p>
+  </li>
+  <li>
+    <p>Click the <code class="highlighter-rouge">atsea_appserver</code> service from the list.</p>
+  </li>
+  <li>
+    <p>Under <code class="highlighter-rouge">Actions</code> on the right hand side click <code class="highlighter-rouge">Rollback</code></p>
+
+    <p>This will tell UCP to restore the service to its previous state. In this case, running the 1.0 version of our webserver image</p>
+
+    <p>After a few seconds the indicator should go from red to green, when it does move on to the next step.</p>
+  </li>
+  <li>
+    <p>Click the <code class="highlighter-rouge">atsea_appserver</code> service from the list.</p>
+  </li>
+  <li>
+    <p>From the right hand side click <code class="highlighter-rouge">Containers</code> under <code class="highlighter-rouge">Inspect Resource</code> and you will see the container has started and is healthy.</p>
+
+    <p>Also notice under image that the container is running the <code class="highlighter-rouge">1.0</code> version of our application.</p>
+  </li>
+  <li>
+    <p>In your web browser refresh thew website to ensure it’s up and running.</p>
+  </li>
+</ol>
+
+<p>Now that we’ve dealt with a failed upgrade, let’s look at rolling out a successful upgrade</p>
+
+<ol>
+  <li>
+    <p>Move back into Universal Control Plane</p>
+  </li>
+  <li>
+    <p>If your services are not currently displayed, click on <code class="highlighter-rouge">Services</code> from the left hand menu</p>
+  </li>
+  <li>
+    <p>Click on the <code class="highlighter-rouge">atsea_appserver</code> service from the list</p>
+  </li>
+  <li>
+    <p>On the left, under ‘Configure<code class="highlighter-rouge"> select </code>Details`</p>
+
+    <p><img src="images/service_details.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Under image, change the value to <code class="highlighter-rouge">dockersamples/atsea-appserver:3.0</code></p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Update</code> in the bottom right corner</p>
+  </li>
+  <li>
+    <p>Click on the <code class="highlighter-rouge">atsea_appserver</code> service from the list</p>
+  </li>
+  <li>
+    <p>Notice the <code class="highlighter-rouge">Update Status</code> reads updating, and the indicator in the main area will go from green to red to green.</p>
+  </li>
+  <li>
+    <p>From the right hand side click <code class="highlighter-rouge">Containers</code> under <code class="highlighter-rouge">Inspect Resource</code> and you will see the container has started and is healthy.</p>
+
+    <p>Also notice under image that the container is running the <code class="highlighter-rouge">3.0</code> version of our application.</p>
+  </li>
+  <li>
+    <p>In your web browser refresh thew website to ensure it’s up and running. Also notice the new color scheme that was implemented in Version 3 of the app.</p>
+  </li>
+</ol>
+
+<h3 id="-task-22-scaling-the-web-front-end"><a name="task2.2"></a> Task 2.2: Scaling the Web Front-end</h3>
+
+<p>The new site design appears to have dramatically increased the popularity of your website. In order to deal with increased demand, you’re going to need to scale up the number of containers in the <code class="highlighter-rouge">atsea_appserver</code> service.</p>
+
+<ol>
+  <li>
+    <p>Move to UCP in your web browser</p>
+  </li>
+  <li>
+    <p>From the left hand menu click <code class="highlighter-rouge">Services</code></p>
+  </li>
+  <li>
+    <p>Click the <code class="highlighter-rouge">atsea_appserver</code> service</p>
+  </li>
+  <li>
+    <p>From the <code class="highlighter-rouge">Configure</code> drop down on the right choose <code class="highlighter-rouge">Scheduling</code></p>
+  </li>
+  <li>
+    <p>Change <code class="highlighter-rouge">Scale</code> from <code class="highlighter-rouge">1</code> to <code class="highlighter-rouge">4</code></p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Update</code></p>
+  </li>
+  <li>
+    <p>The indicator changes to yellow to indicate the service is still running, but not in our desired state (we want four containers, and there are currently fewer than that running). Regardless, your website is still available at this point.</p>
+
+    <p>After a minute or so you’ll see the indicator turn green, and you will see the status go to <code class="highlighter-rouge">4/4</code></p>
+  </li>
+  <li>
+    <p>Click the <code class="highlighter-rouge">atsea_appserver</code> from the list</p>
+  </li>
+  <li>
+    <p>From the right hand side click <code class="highlighter-rouge">Containers</code> under <code class="highlighter-rouge">Inspect Resource</code> and you will see the four containers have started and are healthy.</p>
+
+    <p>Also notice under <code class="highlighter-rouge">Node</code> that some containers are running on <code class="highlighter-rouge">worker1</code> and some are running on <code class="highlighter-rouge">manager1</code></p>
+  </li>
+  <li>
+    <p>Go to your website in your brower and refresh the page, you will notice in the upper right the IP and Host change. This output is the IP and container ID of the actual container that served up the web page. You will see it cycle through the four containers backing up your service.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: If you are not running in an incognito window you may need to force your browser to ignore the cache in order to see the values change. Consult the help section of your browser to learn how to do this.</p>
+    </blockquote>
+  </li>
+</ol>
+
+<p>Everything seems to be humming along nicely until one of your nodes in the cluster fails. In the next section we’ll show how Docker EE deals with these sort of failuers.</p>
+
+<h3 id="-task-23-dealing-with-an-application-failure"><a name="2.3"></a> Task 2.3: Dealing with an Application Failure</h3>
+
+<p>Docker EE will always try and reconcile your services to their desired state. For instance, in the case of our web frontend, we have specified we want four containers running. If for some reason the number ever drops below four, Docker EE will attempt to get the service back to four containers.</p>
+
+<p>In this section we’re going to simulate a node failure and see how Docker EE handles the situation. We’re not actually going to crash a node. What we’re going do do is put our worker node in <code class="highlighter-rouge">Drain</code> mode - which is essentially maintenance mode. We are telling Docker EE to shut all the containers that are running on that node down, and not schedule any additional work on to that node.</p>
+
+<ol>
+  <li>
+    <p>Move to UCP in your web browser</p>
+  </li>
+  <li>
+    <p>If the filter bar is active (the blue bar at the top of the screen) - click the <code class="highlighter-rouge">x</code> in the upper right corner to clear the filter.</p>
+  </li>
+  <li>
+    <p>From the left menu click <code class="highlighter-rouge">Nodes</code></p>
+  </li>
+  <li>
+    <p>Click on <code class="highlighter-rouge">worker1</code></p>
+  </li>
+  <li>
+    <p>From the <code class="highlighter-rouge">Configure</code> dropdown on the right side select Details</p>
+  </li>
+  <li>
+    <p>Under <code class="highlighter-rouge">Availability</code> click <code class="highlighter-rouge">Drain</code></p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Save</code></p>
+
+    <p>This will immediatley put the <code class="highlighter-rouge">worker1</code> node into Drain mode, and stop all running containers on that node.</p>
+  </li>
+  <li>
+    <p>Go to the AtSea website and refresh to verify it’s still running.</p>
+
+    <p>Even though one node failed, the built in Docker EE load balancer will direct traffic to the containers running on our healthy <code class="highlighter-rouge">manager1</code> node</p>
+  </li>
+  <li>
+    <p>Move back to UCP</p>
+  </li>
+  <li>
+    <p>Click the <code class="highlighter-rouge">x</code> in the upper right corner to close the <code class="highlighter-rouge">Edit Node</code> screen</p>
+
+    <p>Notice that <code class="highlighter-rouge">worker1</code> still has a green indicator, this is because technically the node is still running and healthy. However, on the right hand side you’ll see the <code class="highlighter-rouge">Availability</code> listed as <code class="highlighter-rouge">DRAIN</code></p>
+  </li>
+  <li>
+    <p>Click on <code class="highlighter-rouge">Services</code> from the left hand menu</p>
+  </li>
+  <li>
+    <p>Click on the <code class="highlighter-rouge">atsea_appserver</code></p>
+  </li>
+  <li>
+    <p>From the <code class="highlighter-rouge">Inspect Resource</code> drop down on the right select <code class="highlighter-rouge">Containers</code></p>
+
+    <p>Notice that the two containers that were running on <code class="highlighter-rouge">worker1</code> have been stopped, and they have been restarted on <code class="highlighter-rouge">manager1</code></p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="survey">Survey</h2>
+<p>We’re grateful you’ve chosen to spend some time with us today. We’d appreciate the opportunity to hear from  you about what you liked and what we might improve.</p>
+
+<p>If you could please fill out this very short survey, it’d be greatly appreciated.</p>
+
+<p>Thanks, the DockerCon Hands-on Labs team.</p>
+
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfu5jatKvKLdGZviRQ7SdXaCKKUmLNYGz2-WyvQKVoIpGMaDQ/viewform?usp=pp_url&amp;entry.413124055=Managing+the+Application+Lifecycle+with+Docker+EE&amp;entry.879050699">Click Here for the survey</a></p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+<p>In	this lab we’ve looked how Docker EE helps you deal with upgrades, scaling, and system failures.</p>
+
+<p>There are several other Docker EE labs available, so be sure to check those out.</p>
+
+<p>You can find more information on Docker EE at <a href="http://www.docker.com/enterprise-edition">http://www.docker.com</a> as well as continue exploring using our hosted trial at <a href="https://dockertrial.com">https://dockertrial.com</a></p>
+
+            </div>
+        </article>
+    </div>
+
+    
+
+</div>
+
+<script>
+    (function() {
+        var font3 = document.createElement('link');
+        font3.type = 'text/css';
+        font3.rel = 'stylesheet';
+        font3.href = '/dceu-labs/css/syntax-highlighting.css';
+        var q = document.getElementsByTagName('link')[0];
+        q.parentNode.insertBefore(font3, q);
+    })();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://rawgit.com/RickStrahl/jquery-resizable/master/dist/jquery-resizable.min.js"></script>
+<script src="https://rawgit.com/play-with-docker/sdk/hybrid/dist/pwd.js"></script>
+<script>
+    pwd.newSession([{selector: '.term1', type: ''}, {selector: '.term2', type: ''}, {selector: '.term3', type: ''}], {ImageName: '', baseUrl: 'https://dockercon.play-with-docker.com'});
+      $(".panel-left").resizable({
+      handleSelector: ".splitter",
+      resizeHeight: false,
+      onDragEnd: pwd.resize.bind(pwd)
+  });
+
+  window.onbeforeunload = function(e) {
+        pwd.closeSession(function(){});
+        return;
+    }
+</script>
+
+
+    
+<script async>
+    (function() {
+        var font = document.createElement('link'); 
+        font.type = 'text/css'; 
+        font.rel = 'stylesheet';
+        font.href = '//fonts.googleapis.com/css?family=Raleway:400,700';
+        var s = document.getElementsByTagName('link')[0]; 
+        s.parentNode.insertBefore(font, s);
+      })();
+</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-6096819-32"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-6096819-32');
+</script>
+
+
+  </body>
+
+</html>

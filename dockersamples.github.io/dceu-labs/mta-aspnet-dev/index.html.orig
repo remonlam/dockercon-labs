@@ -1,0 +1,425 @@
+<!-- Remove the comments to compress html
+
+---
+layout: compress
+--- 
+
+-->
+<!DOCTYPE html>
+<html>
+
+  <head>
+<title>Modernizing ASP.NET Applications - for Developers</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Modernizing ASP.NET Applications - for Developers" />
+<meta name="twitter:description" content="Learn docker through online trainings in training.play-with-docker.com" />
+<meta name="twitter:image" content="http://birthday.play-with-docker.com/images/simple-logo.jpg" />
+
+  
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+<style>
+          
+          html,body{height:100%}img{max-width:100%}.mt50{margin-top:50px}.mt20{margin-top:20px}.mt10{margin-top:10px}.mb10{margin-bottom:10px}body{display:flex;flex-direction:column}body>*{flex:none}.navbar{border-radius:0px;margin-bottom:0px}.navbar.navbar-inverse{background-color:#1488C6;border-color:#1488C6}.navbar.navbar-inverse a,.navbar.navbar-inverse .navbar-nav li a{color:white}.navbar.navbar-inverse a:hover,.navbar.navbar-inverse .navbar-nav li a:hover{text-decoration:underline}.navbar-brand{font-weight:900}@media screen and (max-width: 600px){.navbar-brand{font-size:1.5em}}.post-meta{color:#828282}div.post-content{max-width:1200px}.panel{border:none;box-shadow:0px 0px 1px #828282}.panel:hover{box-shadow:0px 0px 6px #828282}footer{border-top:1px solid #e8e8e8}.social-share{margin-top:10px;margin-bottom:15px;text-align:center}.social{list-style:none;display:inline;margin-left:10px;padding:5px 8px}.social:hover{opacity:0.7}.social img{width:20px}.quora img{width:17px}.facebook img{width:16px}.recent ul{list-style:none;padding:0;text-align:justify}.recent li{margin:20px}.recent img{display:block;margin:auto}.recent{padding:10px;border:1px solid #e8e8e8}.post-img img{width:100%}.announce{margin-top:10px;margin-bottom:60px;text-align:center}.pack{display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;flex-wrap:wrap;-webkit-flex-wrap:wrap}.banner{display:block;margin:auto}.panel-container{display:flex;flex-direction:row;overflow:hidden;height:100%;flex:1 1 auto;xtouch-action:none}.terminal{font-size:15px}.panel-left{flex:0 0 auto;width:50%;min-width:150px}.content{padding:0 15px;overflow-y:auto}.content{padding:0 15px}.panel-singular{margin:0 auto;max-width:1200}.splitter{flex:0 0 auto;width:18px;background:url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #2fa8c3;min-height:200px;cursor:col-resize}.panel-right{display:flex;flex-direction:column;flex:1 1 auto;width:100%;background:#565656}.panel-right>div{flex:1 1 auto;margin-bottom:15px;overflow-y:auto}.panel-right>div:last-of-type{margin-bottom:0px}.panel-right>div.initialized{background-color:black}.getting-started ul{list-style-type:none;font-size:36px}.card{float:none}code[class*="."]{cursor:pointer}.resize-warning{background-color:black;color:white;text-align:center}.tab{display:none}.site-title{color:white}.post-tag{display:inline-block;background:rgba(42,122,226,0.15);padding:0 .5rem;margin-right:.5rem;border-radius:4px;color:#2a7ae2;font-family:"Open Sans",serif;font-size:90%}.post-tag:before{content:"\f02b";font-family:FontAwesome;padding-right:.5em}.post-tag:hover{text-decoration:none;background:#2a7ae2;color:#fff}small .post-tag{background:#eee;color:#000}small .post-tag:before{content:none}small .post-tag:hover{text-decoration:none;background:#000;color:#fff;cursor:default}.tags-expo :target:before{content:"";display:block;height:72px;margin:-72px 0 0}@media (min-width: 38em){.tags-expo .tags-expo-list{font-size:2.9rem}.tags-expo .tags-expo-list .post-tag{margin:.2em .3em}}.tags-expo .tags-expo-section{font-family:"Open Sans",serif}.tags-expo .tags-expo-section ul{list-style-type:circle;list-style-position:inside;padding:0}.tags-expo .tags-expo-section ul li{padding:0 1rem}.tags-expo .tags-expo-section ul li:hover{list-style-type:disc}.tags-expo .tags-expo-section a{font-size:20px}.tags-expo .tags-expo-section .post-date{display:inline-block;font-size:80%;color:#000;margin:0;padding:0}
+
+</style>  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="Hands-on Labs: DockerCon EU 2017" href="http://dockersamples.github.io/dceu-labs/dceu-labs/feed.xml">  
+<link rel="stylesheet" href="/dceu-labs/css/quiz.css">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h3 class="site-title">Hands-on Labs: DockerCon EU 2017</h3>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/dceu-labs/about/">About</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</header>
+
+
+    
+<div class="panel-container">
+    
+    <div class="panel-left content">
+    
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name headline">Modernizing ASP.NET Applications - for Developers</h1>
+                <p class="post-meta"><time datetime="2017-10-11T00:00:00+00:00" itemprop="datePublished">Oct 11, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@sixeyed</span></span></p>
+
+            </header>
+
+            <div class="post-content" itemprop="articleBody">
+                <p>You can run full .NET Framework apps in Docker on Windows containers. This hands-on lab shows you how to take an existing ASP.NET WebForms app, run it in Docker and then modernize the app by breaking feautures out and running them in separate containers.</p>
+
+<blockquote>
+  <p>If you aren’t familar with the basic concepts of Docker, you can start with the <a href="/dceu-labs/windows-101/">Docker Windows 101</a> lab before running this lab.</p>
+</blockquote>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li><a href="#1">Task 1: Running the app in a container</a></li>
+  <li><a href="#2">Task 2: Fixing a performance issue</a></li>
+  <li><a href="#3">Task 3: Replacing the homepage</a></li>
+</ul>
+
+<h2 id="task-1-running-the-app-in-a-container"><a name="1"></a>Task 1: Running the app in a container</h2>
+
+<p>You’re going to start with an ASP.NET WebForms app which is meant to be built in Visual Studio and run in IIS, and instead use Docker to build and run the app in a container.</p>
+
+<p>You can package Windows server applications to run in Docker using existing deployment tools (like MSIs), or from source code. In this task you’ll compile and package an ASP.NET app from source using Docker.</p>
+
+<p>Start by cloning the Git repository for the sample app:</p>
+
+<pre><code class="language-.term1">git clone https://github.com/dockersamples/hol-mta-aspnet-dev
+</code></pre>
+
+<p>And switch to the directory:</p>
+
+<pre><code class="language-.term1">cd hol-mta-aspnet-dev
+</code></pre>
+
+<p>Now build version 1 of the application:</p>
+
+<pre><code class="language-.term1">docker image build --tag dockersamples/modernize-aspnet-web:v1 --file docker/web-v1/Dockerfile .
+</code></pre>
+
+<p>While the image is building, have a look at the <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/docker/web-v1/Dockerfile" target="_blank">Dockerfile for the Web application</a>. You’ll see there are two stages. The first stage compiles the application using MSBuild:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>FROM dockersamples/modernize-aspnet-builder AS builder
+COPY src\ProductLaunch\ C:\src
+WORKDIR C:\src\ProductLaunch.Web
+RUN ["powershell", ".\\build.ps1"]
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">dockersamples/modernize-aspnet-builder</code> image has MSBuild, NuGet and the Web Deploy packages installed, so it has the full toolchain to compile an ASP.NET application. (Here’s the <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/docker/builder/Dockerfile" target="_blank">Dockerfile for the builder</a>).</p>
+
+<p>In the <code class="highlighter-rouge">builder</code> stage, the Dockerfile copies the source code into the image and just runs the existing <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/src/ProductLaunch/ProductLaunch.Web/build.ps1" target="_blank">build.ps1</a>) script. When this stage completes, the output will be available for later stages to use.</p>
+
+<p>The second stage uses the <code class="highlighter-rouge">microsoft/aspnet</code> image as the base, which is a Windows Server Core image with IIS and ASP.NET already configured:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>FROM microsoft/aspnet:windowsservercore-10.0.14393.1715
+SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop';"]
+
+WORKDIR C:\web-app
+RUN Remove-Website -Name 'Default Web Site'; `
+    New-Website -Name 'web-app' -PhysicalPath 'C:\web-app' -Port 80 -Force
+
+COPY --from=builder C:\out\_PublishedWebsites\ProductLaunch.Web .
+COPY docker\web-v1\connection-strings.config .
+</code></pre>
+</div>
+
+<p>The first <code class="highlighter-rouge">COPY</code> instruction copies the published website from the builder stage, and the second <code class="highlighter-rouge">COPY</code> overwrites the connection strings coniguration file with a new one. The replacement <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/docker/web-v1/connection-strings.config" target="_blank">connection-strings.config</a> is set up to access SQL Server running in a container.</p>
+
+<blockquote>
+  <p>Overwriting config files in the Dockerfile is a simple way to move an existing app into Docker and replace the configuration settings. Later in the lab you’ll use environment variables instead, which is a more flexible approach.</p>
+</blockquote>
+
+<p>You don’t need Visual Studio or IIS installed to run the web app in a container, and you don’t need SQL Server installed to run the application database, you’ll do it all with Docker.</p>
+
+<p>Run the application using Docker Compose:</p>
+
+<pre><code class="language-.term1">cd app
+</code></pre>
+
+<pre><code class="language-.term1">docker-compose -f .\docker-compose-v1.yml up -d
+</code></pre>
+
+<p>Docker Compose will start containers for the database and the web app. The <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/app/docker-compose-v1.yml" target="_blank">v1 compose file</a> configures the services, using Microsoft’s <a href="https://hub.docker.com/r/microsoft/mssql-server-windows-express/" target="_blank">SQL Server Express</a> image and the application image you’ve just built.</p>
+
+<p>When the <code class="highlighter-rouge">docker-compose</code> command completes, your application is running in Docker. You can see all the running containers:</p>
+
+<pre><code class="language-.term1">docker container ls
+</code></pre>
+
+<p>The HTTP port for the web container is published so the app is available to the outside world.</p>
+
+<blockquote>
+  <p><a href="/" data-term=".term1" data-port="80">Click here to browse to your application</a></p>
+</blockquote>
+
+<p>You should see a simple product launch page - click the “Sign Up” button and you’ll see a registration form:</p>
+
+<p><img src="/dceu-labs/images/mta-aspnet-dev/v1-signup.png" alt="Product launch sign up page" /></p>
+
+<p>Go ahead and fill in the form. When you click “Go”, the data is saved to SQL Server running in a container. The SQL Server container doesn’t publish any ports, so it’s only accessible to other containers and the Docker API.</p>
+
+<p>Check your data is stored by executing a PowerShell command in the container, to run a SQL query:</p>
+
+<pre><code class="language-.term1">docker container exec app_product-launch-db_1 powershell -Command "Invoke-SqlCmd -Query 'SELECT * FROM Prospects' -Database ProductLaunch"
+</code></pre>
+
+<p>You’ll see a row for each time you submitted the form, something like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ProspectId          : 1
+FirstName           : Elton
+LastName            : Stoneman
+CompanyName         : Docker, Inc.
+EmailAddress        : elton@docker.com
+Role_RoleCode       : DA
+Country_CountryCode : GBR
+</code></pre>
+</div>
+
+<blockquote>
+  <p>The app is running fine in Docker now, with no code changes. The Dockerfile has all the logic to build and package the app, so any developer and all the CI servers can build and run the app from source - the only dependency is Docker.</p>
+</blockquote>
+
+<p>Next you’ll go on to modernize the app, fixing some issues with the current architecture.</p>
+
+<h2 id="task-2-fixing-a-performance-issue"><a name="2"></a>Task 2: Fixing a performance issue</h2>
+
+<p>Right now the app makes a synchronous call to SQL Server when a new prospect signs up. While the app is looking up reference data and saving the new row, it has exclusive use of one of the connections in the database connection pool. You can scale up the web app by running many containers, but under high load the app will starve the connection pool and SQL Server becomes a bottleneck.</p>
+
+<p>Version 2 of the app uses a new architecture:</p>
+
+<p><img src="/dceu-labs/images/mta-aspnet-dev/v2-architecture.png" alt="V2 application architecture" /></p>
+
+<p>Now when users save data, the web app publishes an event to a message queue. A message handler listens for those event and makes the SQL Server calls. This architecture does scale, because the message queue smooths out any peaks in traffic.</p>
+
+<p>Build version 2 of the app using Docker Compose:</p>
+
+<pre><code class="language-.term1">docker-compose -f .\docker-compose-v2.yml build
+</code></pre>
+
+<p>While it builds, have a look at the <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/docker/web-v2/Dockerfile" target="_blank">v2 Dockerfile for the web app</a>. There’s one new line in the builder stage:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>COPY docker\web-v2\SignUp.aspx.cs .
+</code></pre>
+</div>
+
+<p>This copies in a new version of the <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/docker/web-v2/SignUp.aspx.cs" target="_blank">SignUp.aspx.cs</a> code-behind file.</p>
+
+<blockquote>
+  <p>Relacing the code file is just a convenient approach for the lab. In a real project you would use the same Dockerfile with a new commit of the code.</p>
+</blockquote>
+
+<p>The new version publishes an event when a user signs up. There are some new lines in the application image stage too:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>ENV MESSAGE_QUEUE_URL="nats://message-queue:4222"
+COPY docker\web-v2\bootstrap.ps1 .
+ENTRYPOINT ["powershell", "./bootstrap.ps1"]
+</code></pre>
+</div>
+
+<ul>
+  <li>
+    <p>the <code class="highlighter-rouge">ENV</code> instruction sets a default value for the URL of the message queue. V2 of the web app uses environment variables for configuration - this expects to find the message queue in a container called <code class="highlighter-rouge">message-queue</code></p>
+  </li>
+  <li>
+    <p>the <code class="highlighter-rouge">COPY</code> instruction adds the <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/docker/web-v2/bootstrap.ps1" target="_blank">bootstrap.ps1</a> script to the image. That script copies the user-level environment variables which Docker sets into machine-level variables which ASP.NET can access</p>
+  </li>
+  <li>
+    <p>the <code class="highlighter-rouge">ENTRYPOINT</code> instruction tells Docker to run the bootstrap script when a container starts from the image</p>
+  </li>
+</ul>
+
+<blockquote>
+  <p>There is a <a href="https://docs.docker.com/engine/reference/builder/#healthcheck" target="_blank">HEALTHCHECK</a> in this version of the Dockerfile, which tells Docker how to check if the app is running correctly. It also acts as a warm-up, so the first user doesn’t hit a cold IIS server.</p>
+</blockquote>
+
+<p>Docker Compose also builds a console application, which is the message handler listening for events. The <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/docker/save-prospect/Dockerfile" target="_blank">Dockerfile for the message handler</a> is very similar to the web app - stage 1 compiles the console app, and stage 2 packages it to run in a Windows Server Core container.</p>
+
+<p>When the build completes, run version 2 of the app using Docker Compose:</p>
+
+<pre><code class="language-.term1">docker-compose -f .\docker-compose-v2.yml up -d
+</code></pre>
+
+<p>You’ll see output saying that the database container is up-to-date, and then the message queue and message handler container get created, and the web container gets recreated. Compose uses the v2 file as the desired state, compares it to the running containers, and creates any containers it needs.</p>
+
+<blockquote>
+  <p><a href="/" data-term=".term1" data-port="80">Click here to browse to v2 of your application</a></p>
+</blockquote>
+
+<p>The UI and UX for the app is the same. Fill the form in again, and you will see the website responds in the same way - but now the save is happening asynchronously through the message handler.</p>
+
+<p>Check that your new data is there in the SQL Server container:</p>
+
+<pre><code class="language-.term1">docker container exec app_product-launch-db_1 powershell -Command "Invoke-SqlCmd -Query 'SELECT * FROM Prospects' -Database ProductLaunch"
+</code></pre>
+
+<p>And look at the logs for the message handler - you’ll see entries showing that it has received a message and saved the data:</p>
+
+<pre><code class="language-.term1">docker container logs app_save-prospect-handler_1
+</code></pre>
+
+<p>It’s easy to add functionality to your app when it’s running in Docker. V2 of the app is using <a href="http://nats.io" target="_blank">NATS</a>, an open-source production-grade message queue. The NATS team publish an official Docker image which means you can add messaging to your app just by running a container.</p>
+
+<blockquote>
+  <p>This version of the app does scale. You could run dozens of web containers and just a handful of message handler containers. Under high load, the message queue will retain messages until the handlers have capacity to process them - and SQL Server is no longer a bottleneck.</p>
+</blockquote>
+
+<p>In the next task you’ll extract the homepage functionality from the app and run it in a separate container.</p>
+
+<h2 id="task-3-replacing-the-homepage"><a name="3"></a>Task 3: Replacing the homepage</h2>
+
+<p>Product owners often want to change UI features quickly - so they can release them and get fast feedback. Traditional apps make that difficult because the monolithic codebase means you need to do a lot of regression testing, even for simple changes.</p>
+
+<p>Extracting a frequently-changing feature from the monolith and running it in a separate container enables fast, safe updates. You can change the UI by replacing the container, without having to test the rest of the monolith.</p>
+
+<p>Build version 3 of the app using Docker Compose:</p>
+
+<pre><code class="language-.term1">docker-compose -f .\docker-compose-v3.yml build
+</code></pre>
+
+<p>The <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/app/docker-compose-v3.yml" target="_blank">compose file for v3</a> adds one new component, a custom homepage container. The <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/docker/homepage/Dockerfile" target="_blank">Dockerfile for the homepage</a> is very simple:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>FROM microsoft/iis:nanoserver-10.0.14393.1715
+COPY index.html c:/inetpub/wwwroot/index.html
+</code></pre>
+</div>
+
+<p>This just packages a static HTML file on top of the <code class="highlighter-rouge">microsoft/iis</code> image, running in Nano Server. There’s one change in the <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/docker/web-v3/Dockerfile" target="_blank">v3 Dockerfile for the web app</a> too:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>COPY docker\web-v3\*.aspx.cs .\
+</code></pre>
+</div>
+
+<p>In the build stage this uses a new <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/docker/web-v3/Default.aspx.cs" target="_blank">Default.aspx.cs</a> code-behind file. That has the logic to read the homepage from a different location, rather than rendering it from the ASP.NET app.</p>
+
+<p>When the build completes, run version 3 of the app using Docker Compose:</p>
+
+<pre><code class="language-.term1">docker-compose -f .\docker-compose-v3.yml up -d
+</code></pre>
+
+<p>You’ll see that a new homepage container gets started, and the web app container gets replaced with a new <code class="highlighter-rouge">v3</code> container.</p>
+
+<blockquote>
+  <p><a href="/" data-term=".term1" data-port="80">Click here to browse to v3 of your application</a></p>
+</blockquote>
+
+<p>The URL for the app is the same, but the web container calls out to the homepage container which renders the new homepage. That new homepage is ultra-modern:</p>
+
+<p><img src="/dceu-labs/images/mta-aspnet-dev/v3-homepage.gif" alt="V3 homepage" /></p>
+
+<p>If the product team don’t like the new UI, they can easily replace it by building a new homepage and replacing the homepage container. The web app container doesn’t need to change, so there are no regression tests to run.</p>
+
+<blockquote>
+  <p>The app has a modern architecture now, powered by Docker and without needing a full rewrite. You’ve extracted key features from the app and run them in separate container, using Docker to plug everything together, and to give you a consistent build and deployment process for the whole solution.</p>
+</blockquote>
+
+<hr />
+
+<h2 id="survey">Survey</h2>
+
+<p>We’re grateful you’ve chosen to spend some time with us today. We’d appreciate the opportunity to hear from  you about what you liked and what we might improve.</p>
+
+<p>If you could please fill out this very short survey, it’d be greatly appreciated.</p>
+
+<p>Thanks, the DockerCon Hands-on Labs team.</p>
+
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfu5jatKvKLdGZviRQ7SdXaCKKUmLNYGz2-WyvQKVoIpGMaDQ/viewform?usp=pp_url&amp;entry.413124055=Modernizing+.NET+Apps+for+Devs&amp;entry.879050699">Click Here for the survey</a></p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>You now know how to build and run an ASP.NET app using Docker - without needing Visual Studio. You also saw how to take a feature-driven approach to app modernization, breaking code out of a monolith and using Docker to plumb components together. Lastly you used Docker Compose to define and run a distributed solution.</p>
+
+<p>Do try the other Windows labs at DockerCon, and make a note to check out the full lab suite when you get home - there are plenty more walkthroughs at <a href="https://github.com/docker/labs">docker/labs</a> on GitHub.</p>
+
+            </div>
+        </article>
+    </div>
+
+    
+    <div class="splitter">
+    </div>
+
+    <div class="panel-right">
+        <span class="resize-warning">If the commandline doesn't appear in the terminal, try resizing the browser window.</span>
+        
+        <div class="term1"></div>
+        
+    </div>
+    
+
+</div>
+
+<script>
+    (function() {
+        var font3 = document.createElement('link');
+        font3.type = 'text/css';
+        font3.rel = 'stylesheet';
+        font3.href = '/dceu-labs/css/syntax-highlighting.css';
+        var q = document.getElementsByTagName('link')[0];
+        q.parentNode.insertBefore(font3, q);
+    })();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://rawgit.com/RickStrahl/jquery-resizable/master/dist/jquery-resizable.min.js"></script>
+<script src="https://rawgit.com/play-with-docker/sdk/hybrid/dist/pwd.js"></script>
+<script>
+    pwd.newSession([{selector: '.term1', type: 'windows'}, {selector: '.term2', type: 'windows'}, {selector: '.term3', type: 'windows'}], {ImageName: '', baseUrl: 'https://dockercon.play-with-docker.com'});
+      $(".panel-left").resizable({
+      handleSelector: ".splitter",
+      resizeHeight: false,
+      onDragEnd: pwd.resize.bind(pwd)
+  });
+
+  window.onbeforeunload = function(e) {
+        pwd.closeSession(function(){});
+        return;
+    }
+</script>
+
+
+    
+<script async>
+    (function() {
+        var font = document.createElement('link'); 
+        font.type = 'text/css'; 
+        font.rel = 'stylesheet';
+        font.href = '//fonts.googleapis.com/css?family=Raleway:400,700';
+        var s = document.getElementsByTagName('link')[0]; 
+        s.parentNode.insertBefore(font, s);
+      })();
+</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-6096819-32"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-6096819-32');
+</script>
+
+
+  </body>
+
+</html>

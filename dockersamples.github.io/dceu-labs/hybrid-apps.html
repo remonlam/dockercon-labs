@@ -1,0 +1,957 @@
+<!-- Remove the comments to compress html
+
+---
+layout: compress
+--- 
+
+-->
+<!DOCTYPE html>
+<html>
+
+  <head>
+<title>Deploying Hybrid-OS Applications with Docker EE</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Deploying Hybrid-OS Applications with Docker EE" />
+<meta name="twitter:description" content="Learn docker through online trainings in training.play-with-docker.com" />
+<meta name="twitter:image" content="http://birthday.play-with-docker.com/images/simple-logo.jpg" />
+
+  
+
+
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" />
+
+<style>
+          
+          html,body{height:100%}img{max-width:100%}.mt50{margin-top:50px}.mt20{margin-top:20px}.mt10{margin-top:10px}.mb10{margin-bottom:10px}body{display:flex;flex-direction:column}body>*{flex:none}.navbar{border-radius:0px;margin-bottom:0px}.navbar.navbar-inverse{background-color:#1488C6;border-color:#1488C6}.navbar.navbar-inverse a,.navbar.navbar-inverse .navbar-nav li a{color:white}.navbar.navbar-inverse a:hover,.navbar.navbar-inverse .navbar-nav li a:hover{text-decoration:underline}.navbar-brand{font-weight:900}@media screen and (max-width: 600px){.navbar-brand{font-size:1.5em}}.post-meta{color:#828282}div.post-content{max-width:1200px}.panel{border:none;box-shadow:0px 0px 1px #828282}.panel:hover{box-shadow:0px 0px 6px #828282}footer{border-top:1px solid #e8e8e8}.social-share{margin-top:10px;margin-bottom:15px;text-align:center}.social{list-style:none;display:inline;margin-left:10px;padding:5px 8px}.social:hover{opacity:0.7}.social img{width:20px}.quora img{width:17px}.facebook img{width:16px}.recent ul{list-style:none;padding:0;text-align:justify}.recent li{margin:20px}.recent img{display:block;margin:auto}.recent{padding:10px;border:1px solid #e8e8e8}.post-img img{width:100%}.announce{margin-top:10px;margin-bottom:60px;text-align:center}.pack{display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;flex-wrap:wrap;-webkit-flex-wrap:wrap}.banner{display:block;margin:auto}.panel-container{display:flex;flex-direction:row;overflow:hidden;height:100%;flex:1 1 auto;xtouch-action:none}.terminal{font-size:15px}.panel-left{flex:0 0 auto;width:50%;min-width:150px}.content{padding:0 15px;overflow-y:auto}.content{padding:0 15px}.panel-singular{margin:0 auto;max-width:1200}.splitter{flex:0 0 auto;width:18px;background:url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #2fa8c3;min-height:200px;cursor:col-resize}.panel-right{display:flex;flex-direction:column;flex:1 1 auto;width:100%;background:#565656}.panel-right>div{flex:1 1 auto;margin-bottom:15px;overflow-y:auto}.panel-right>div:last-of-type{margin-bottom:0px}.panel-right>div.initialized{background-color:black}.getting-started ul{list-style-type:none;font-size:36px}.card{float:none}code[class*="."]{cursor:pointer}.resize-warning{background-color:black;color:white;text-align:center}.tab{display:none}.site-title{color:white}.post-tag{display:inline-block;background:rgba(42,122,226,0.15);padding:0 .5rem;margin-right:.5rem;border-radius:4px;color:#2a7ae2;font-family:"Open Sans",serif;font-size:90%}.post-tag:before{content:"\f02b";font-family:FontAwesome;padding-right:.5em}.post-tag:hover{text-decoration:none;background:#2a7ae2;color:#fff}small .post-tag{background:#eee;color:#000}small .post-tag:before{content:none}small .post-tag:hover{text-decoration:none;background:#000;color:#fff;cursor:default}.tags-expo :target:before{content:"";display:block;height:72px;margin:-72px 0 0}@media (min-width: 38em){.tags-expo .tags-expo-list{font-size:2.9rem}.tags-expo .tags-expo-list .post-tag{margin:.2em .3em}}.tags-expo .tags-expo-section{font-family:"Open Sans",serif}.tags-expo .tags-expo-section ul{list-style-type:circle;list-style-position:inside;padding:0}.tags-expo .tags-expo-section ul li{padding:0 1rem}.tags-expo .tags-expo-section ul li:hover{list-style-type:disc}.tags-expo .tags-expo-section a{font-size:20px}.tags-expo .tags-expo-section .post-date{display:inline-block;font-size:80%;color:#000;margin:0;padding:0}
+
+</style>  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="Hands-on Labs: DockerCon EU 2017" href="http://dockersamples.github.io/dceu-labs/dceu-labs/feed.xml">  
+<link rel="stylesheet" href="css/quiz.css.html">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h3 class="site-title">Hands-on Labs: DockerCon EU 2017</h3>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="about/index.html">About</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</header>
+
+
+    
+<div class="panel-container">
+    
+    <div class="content panel-singular">
+    
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name headline">Deploying Hybrid-OS Applications with Docker EE</h1>
+                <p class="post-meta"><time datetime="2017-10-10T00:00:00+00:00" itemprop="datePublished">Oct 10, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@mikegcoleman</span></span></p>
+
+            </header>
+
+            <div class="post-content" itemprop="articleBody">
+                <p>In this lab we’ll deploy a variety of different applications with Docker EE. We’ll start with a traditional build, ship, run workflow of a Linux application. We’ll then use Image2Docker to extract a Windows application from an existing VHD. And, finally, we’ll use Docker Compose to deploy an application that includes both Windows and Linux components.</p>
+
+<blockquote>
+  <p><strong>Difficulty</strong>: Intermediate (assumes basic familiarity with Docker)</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Time</strong>: Approximately 30 minutes</p>
+</blockquote>
+
+<blockquote>
+  <ul>
+    <li><a href="hybrid-apps.html#task1">Task 1: Configure the Docker EE Cluster</a>
+      <ul>
+        <li><a href="hybrid-apps.html#task1.1">Task 1.1: Accessing PWD</a></li>
+        <li><a href="hybrid-apps.html#task1.2">Task 1.2: Add a Windows worker node</a></li>
+        <li><a href="hybrid-apps.html#task1.3">Task 1.3: Create Two Repositories</a></li>
+      </ul>
+    </li>
+    <li><a href="hybrid-apps.html#task2">Task 2: Deploy a Linux Web App</a>
+      <ul>
+        <li><a href="hybrid-apps.html#task2.1">Task 2.1: Clone the Demo Repo</a></li>
+        <li><a href="hybrid-apps.html#task2.2">Task 2.2: Build and Push the Linux Web App Image</a></li>
+        <li><a href="hybrid-apps.html#task2.3">Task 2.3: Deploy the Web App using UCP</a></li>
+      </ul>
+    </li>
+    <li><a href="hybrid-apps.html#task3">Task 3: Deploy a Windows Web App</a>
+      <ul>
+        <li><a href="hybrid-apps.html#task3.1">Task 3.1: Create the Dockerfile with Image2Docker</a></li>
+        <li><a href="hybrid-apps.html#task3.2">Task 3.2: Build and Push Your Image to Docker Trusted Registry</a></li>
+        <li><a href="hybrid-apps.html#task3.3">Task 3.3: Deploy the Windows Web App</a></li>
+      </ul>
+    </li>
+    <li><a href="hybrid-apps.html#task4">Task 4: Deploy a Multi-OS App</a>
+      <ul>
+        <li><a href="hybrid-apps.html#task4.1">Task 4.1: Examine the Docker Compose File</a></li>
+        <li><a href="hybrid-apps.html#task4.2">Task 4.2: Deploy the Application Stack</a></li>
+        <li><a href="hybrid-apps.html#task4.3">Task 4.3: Verify the Running App</a></li>
+      </ul>
+    </li>
+  </ul>
+</blockquote>
+
+<h2 id="understanding-the-play-with-docker-interface">Understanding the Play With Docker Interface</h2>
+
+<p><img src="images/pwd_screen.png" alt="" /></p>
+
+<p>There are three main components to the Play With Docker (PWD) interface.</p>
+
+<h3 id="1-console-access">1. Console Access</h3>
+<p>Play with Docker provides access to the three Docker EE hosts in your Cluster. These machines are:</p>
+
+<ul>
+  <li>A Linux-based Docker EE 17.06 Manager node</li>
+  <li>A Linux-based Docker EE 17.06 Worker node</li>
+  <li>A Windows Server 2016-based Docker EE 17.06 Worker Node</li>
+</ul>
+
+<p>By clicking a name on the left, the console window will be connected to that node.</p>
+
+<h3 id="2-access-to-your-universal-control-plane-ucp-and-docker-trusted-registry-dtr-servers">2. Access to your Universal Control Plane (UCP) and Docker Trusted Registry (DTR) servers</h3>
+
+<p>Additionally, the PWD screen provides you one-click access to the Universal Control Plane (UCP)
+web-based management interface as well as the Docker Trusted Registry (DTR) web-based management interface. Click on either the <code class="highlighter-rouge">UCP</code> or <code class="highlighter-rouge">DTR</code> button will bring up the respective server web interface in a new tab.</p>
+
+<h3 id="3-session-information">3. Session Information</h3>
+
+<p>Throughout the lab you will be asked to provide either hosntnames or login credentials that are unique to your environment. These are displayed for you at the bottom of the screen.</p>
+
+<h2 id="document-conventions">Document conventions</h2>
+
+<ul>
+  <li>
+    <p>When you encounter a phrase in between <code class="highlighter-rouge">&lt;</code> and <code class="highlighter-rouge">&gt;</code>  you are meant to substitute in a different value.</p>
+
+    <p>For instance if you see <code class="highlighter-rouge">&lt;dtr domain&gt;</code> you would actually type something like <code class="highlighter-rouge">ip172-18-0-7-b70lttfic4qg008cvm90.direct.microsoft.play-with-docker.com</code></p>
+  </li>
+  <li>
+    <p>When you see the Linux penguin all the following instructions should be completed in your Linux console.</p>
+
+    <p><img src="images/linux75.png" alt="" /></p>
+  </li>
+  <li>
+    <p>When you see the Windows flag all the subsequent instructions should be completed in your Windows console.</p>
+
+    <p><img src="images/windows75.png" alt="" /></p>
+  </li>
+</ul>
+
+<h2 id="task-1-configure-the-docker-ee-cluster"><a name="task1"></a>Task 1: Configure the Docker EE Cluster</h2>
+
+<p>The Play with Docker (PWD) environment is almost completely setup, but before we can begin the labs we need to do two more steps. First, we’ll add a Windows node to the cluster, and then we’ll create two repositories on the DTR server.</p>
+
+<h3 id="task-11-accessing-pwd"><a name="task 1.1"></a>Task 1.1: Accessing PWD</h3>
+
+<ol>
+  <li>
+    <p>Open the PWD environment <strong>in a new tab or window</strong> by right-clicking <a href="https://goto.docker.com/2017PWDonMicrosoftAzure_MTALP.html">the PWD environment sign-in page</a>.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: You might want to right click the above link and open it in a new tab or window.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Fill out the form, and click <code class="highlighter-rouge">submit</code>. You will then be redirected to the PWD environment.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Access</code></p>
+
+    <p>It will take a few minutes to provision out your PWD environment. After this step completes, you’ll be ready to move on to step 1.2: Install a Windows worker node.</p>
+  </li>
+</ol>
+
+<h3 id="task-12-add-a-windows-worker-node"><a name="task1.2"></a>Task 1.2: Add a Windows worker node</h3>
+
+<p>Let’s start by adding our 3rd node to the UCP cluster, a Windows Server 2016 worker node. This node is already built, but not yet added to the cluster. In this section we’ll obtain the command required to join it to the cluster, and we’ll execute that command.</p>
+
+<ol>
+  <li>
+    <p>From the main PWD screen click the <code class="highlighter-rouge">UCP</code> button on the left side of the screen.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: Because this is a lab-based installation of Docker EE, we are using the default self-signed certs. Because of this your browser may display a security warning. It is safe to click through this warning.</p>
+
+      <p>In a production environment you would use certs from a trusted certificate authority and would not see this screen.</p>
+
+      <p><img src="images/ssl_error.png" alt="" /></p>
+    </blockquote>
+  </li>
+  <li>
+    <p>When prompted, enter your username and password (these can be found below the console window in the main PWD screen). The UCP web interface should load up in your web browser.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: Once the main UCP screen loads you’ll notice there is a red warning bar displayed at the top of the UCP screen. This is an artefact of running in a lab environment. A UCP server configured for a production environment would not display this warning</p>
+
+      <p><img src="images/red_warning.png" alt="" /></p>
+    </blockquote>
+  </li>
+  <li>
+    <p>From the UCP Dashboard click <code class="highlighter-rouge">Add a Node</code> on the bottom left of the screen.</p>
+
+    <p><img src="images/add_a_node.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Copy the text from the dark box shown on the <code class="highlighter-rouge">Add Node</code> screen.</p>
+
+    <blockquote>
+      <p><strong>Note</strong> There is an icon in the upper right corner of the box that you can click to copy the text to your clipboard.</p>
+
+      <p><img src="images/join_text.png" alt="" /></p>
+    </blockquote>
+
+    <blockquote>
+      <p><strong>Note</strong>: You may notice that there is a UI component to select <code class="highlighter-rouge">Linux</code> or <code class="highlighter-rouge">Windows</code> on the <code class="highlighter-rouge">Add Node</code> screen. In a production environment where you are starting from scratch there are a few prerequisite steps to adding a Windows node. However, we’ve already done these steps in the PWD environment. So for this lab, just leave the selection on <code class="highlighter-rouge">Linux</code> and move on to step 2</p>
+    </blockquote>
+  </li>
+</ol>
+
+<p><img src="images/windows75.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>Switch back to the PWD interface, and click the name of your Windows node. This will connect PWD to the terminal running on your Windows Server 2016 Docker EE host.</p>
+  </li>
+  <li>
+    <p>Paste the text from Step 4 at the command prompt in the Windows console.</p>
+
+    <p>You should see the message <code class="highlighter-rouge">This node joined a swarm as a worker.</code> indicating you’ve successfully joined the node to the cluster.</p>
+  </li>
+  <li>
+    <p>Switch back to the UCP server in your web browser and click the <code class="highlighter-rouge">x</code> in the upper right corner to close the <code class="highlighter-rouge">Add Node</code> window.</p>
+  </li>
+  <li>
+    <p>You should be taken to the <code class="highlighter-rouge">Nodes</code> screen and will see 3 nodes listed at the bottom of the screen.</p>
+
+    <p>After a minute or two, refresh your web browser to ensure that your Windows worker node has come up as <code class="highlighter-rouge">healthy</code>.</p>
+
+    <p><img src="images/node_listing.png" alt="" /></p>
+  </li>
+</ol>
+
+<p>Congratulations on adding a Windows node to your UCP cluster.</p>
+
+<p>Next up, we’ll create a couple of repositories in Docker Trusted registry.</p>
+
+<h3 id="task-13-create-two-dtr-repositories"><a name="task1.3"></a>Task 1.3: Create Two DTR Repositories</h3>
+
+<p>Docker Trusted Registry (DTR) is an enterprise-grade registry designed to store and manage your Docker images. In this lab we’re going to create a couple of Docker images and push them to DTR. But before we can do that, we need to setup repositories in which those images will reside.</p>
+
+<ol>
+  <li>
+    <p>In the PWD web interface click the <code class="highlighter-rouge">DTR</code> button on the left side of the screen.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: As with UCP before, DTR is using self-signed certs. It’s safe to click through any browser warning you might encounter.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>From the main DTR page click <code class="highlighter-rouge">New Repository</code>. This brings up the new repository dialog.</p>
+
+    <p><img src="images/create_repository.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Under <code class="highlighter-rouge">REPOSITORY NAME</code>, type <code class="highlighter-rouge">linux_tweet_app</code>. Leave the rest of the values the same, and click <code class="highlighter-rouge">Save</code>.</p>
+  </li>
+</ol>
+
+<p>Let’s repeat this process to create a repository for our Windows tweet app.</p>
+
+<ol>
+  <li>
+    <p>Once again, click the green <code class="highlighter-rouge">New repository</code> button.</p>
+  </li>
+  <li>
+    <p>Under <code class="highlighter-rouge">REPOSITORY NAME</code>, type <code class="highlighter-rouge">windows_tweet_app</code>. Leave the rest of the values the same, and click <code class="highlighter-rouge">Save</code>.</p>
+  </li>
+</ol>
+
+<p><img src="images/two_repos.png" alt="" /></p>
+
+<p>Congratulations you have created two new repositories in your DTR.</p>
+
+<h2 id="task-2-deploy-a-linux-web-app"><a name="task2"></a>Task 2: Deploy a Linux Web App</h2>
+
+<p>Now that we’ve configured the cluster, let’s deploy a couple of web apps. These are simple web pages that allow you to send a tweet. One is built on Linux using NGINX and the other is build on Windows Server 2016 using IIS.</p>
+
+<p>Let’s start with the Linux version.</p>
+
+<h3 id="-task-21-clone-the-demo-repo"><a name="task2.1"></a> Task 2.1: Clone the Demo Repo</h3>
+
+<p><img src="images/linux75.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>From PWD click on on the <code class="highlighter-rouge">worker1</code> link on the left to connect your web console to the UCP Linux worker node.</p>
+  </li>
+  <li>
+    <p>Use <code class="highlighter-rouge">git</code> to clone the workshop repository.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> $ git clone https://github.com/dockersamples/linux_tweet_app.git
+</code></pre>
+    </div>
+
+    <p>You should see something like this as the output:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> Cloning into 'linux_tweet_app'...
+ remote: Counting objects: 13, done.
+ remote: Compressing objects: 100% (10/10), done.
+ remote: Total 13 (delta 1), reused 10 (delta 1), pack-reused 0
+ Unpacking objects: 100% (13/13), done.
+ Checking connectivity... done.
+</code></pre>
+    </div>
+
+    <p>You now have the necessary demo code on your Linux worker host.</p>
+  </li>
+</ol>
+
+<h3 id="-task-22-build-and-push-the-linux-web-app-image"><a name="task2.2"></a> Task 2.2: Build and Push the Linux Web App Image</h3>
+
+<p><img src="images/linux75.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>Change into the <code class="highlighter-rouge">linux_tweet_app</code> directory.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> $ cd ./linux_tweet_app/
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Export a new environment variable to make some of the commands that follow more “copy / paste” friendly.</p>
+
+    <ol>
+      <li>
+        <p>Copy the <code class="highlighter-rouge">DTR Hostname</code> from the bottom of the main PWD screen.</p>
+      </li>
+      <li>
+        <p>Use the following command to assign that to the <code class="highlighter-rouge">DTR_HOST</code> environment variable. Remember to substitute the real value from your environment.</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code> export DTR_HOST=&lt;dtr hostname&gt;
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>Create another environment variable, this time containing your username.</p>
+
+        <p>Copy the user name from the bottom of the PWD screen (under credentials it’s the first of the two listed).</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code> export USER=&lt;user name&gt;
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>Echo both back to ensure they’re set.</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code> echo $DTR_HOST &amp;&amp; echo $USER
+</code></pre>
+        </div>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Use <code class="highlighter-rouge">docker image build</code> to build your Linux Tweet web app Docker image. Be sure to include the period (<code class="highlighter-rouge">.</code>) at the end of the command.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> $ docker image build -t $DTR_HOST/$USER/linux_tweet_app .
+</code></pre>
+    </div>
+
+    <p>The <code class="highlighter-rouge">-t</code> flag tags the image with a name. In our case the name indicates which DTR server and under which user’s repository the image will live.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: Feel free to examine the Dockerfile in this directory if you’d like to see how the image is being built.</p>
+    </blockquote>
+
+    <p>Your output should be similar to what is shown below.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> Sending build context to Docker daemon  4.096kB
+ Step 1/4 : FROM nginx:latest
+ latest: Pulling from library/nginx
+ ff3d52d8f55f: Pull complete
+ b05436c68d6a: Pull complete
+ 961dd3f5d836: Pull complete
+ Digest: sha256:12d30ce421ad530494d588f87b2328ddc3cae666e77ea1ae5ac3a6661e52cde6
+ Status: Downloaded newer image for nginx:latest
+  ---&gt; 3448f27c273f
+ Step 2/4 : COPY index.html /usr/share/nginx/html
+  ---&gt; 72d22997a765
+ Removing intermediate container e262b9220942
+ Step 3/4 : EXPOSE 80 443
+  ---&gt; Running in 54e4ff1b39a6
+  ---&gt; 2b5bd87894cd
+ Removing intermediate container 54e4ff1b39a6
+ Step 4/4 : CMD nginx -g daemon off;
+  ---&gt; Running in 54020cdec942
+  ---&gt; ed5f550fc339
+ Removing intermediate container 54020cdec942
+ Successfully built ed5f550fc339
+ Successfully tagged  $DTR_HOST/$USER/linux_tweet_app:latest
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Log into your DTR server from the command line.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> $ docker login $DTR_HOST
+ Username: &lt;your username&gt;
+ Password: &lt;your password&gt;
+ Login Succeeded
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Use <code class="highlighter-rouge">docker image push</code> to upload your image up to Docker Trusted Registry.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> $ docker image push $DTR_HOST/$USER/linux_tweet_app
+</code></pre>
+    </div>
+
+    <p>The output should be similar to the following:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> The push refers to a repository [$DTR_HOST/$USER/linux_tweet_app]
+ feecabd76a78: Pushed
+ 3c749ee6d1f5: Pushed
+ af5bd3938f60: Pushed
+ 29f11c413898: Pushed
+ eb78099fbf7f: Pushed
+ latest: digest: sha256:9a376fd268d24007dd35bedc709b688f373f4e07af8b44dba5f1f009a7d70067 size: 1363
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>In your web browser, head back to your DTR server and click <code class="highlighter-rouge">View Details</code> next to your <code class="highlighter-rouge">linux_tweet_app</code> repo to see the details of the repo.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: If you’ve closed the tab with your DTR server, just click the <code class="highlighter-rouge">DTR</code> button from the PWD page.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Click on <code class="highlighter-rouge">Images</code> from the horizontal menu. Notice that your newly pushed image is now on your DTR.</p>
+  </li>
+</ol>
+
+<h3 id="-task-23-deploy-the-web-app-using-ucp"><a name="task2.3"></a> Task 2.3: Deploy the Web App using UCP</h3>
+
+<p>Now let’s run our application by creating a new service.</p>
+
+<p>Services are application building blocks (although in many cases an application will only have one service, such as this example). Services are based on a single Docker image. When you create a new service you instantiate at least one container automatically, but you can scale the number up and down to meet the needs of your service.</p>
+
+<ol>
+  <li>
+    <p>Switch back to your UCP server in your web browser.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: If you’ve closed your UCP tab, you can simply click <code class="highlighter-rouge">UCP</code> from the PWD page to re-launch the UCP web interface</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>In the left hand menu click <code class="highlighter-rouge">Services</code>.</p>
+  </li>
+  <li>
+    <p>In the upper right corner click <code class="highlighter-rouge">Create Service</code>.</p>
+  </li>
+  <li>
+    <p>Enter <code class="highlighter-rouge">linux_tweet_app</code> for the name.</p>
+  </li>
+  <li>
+    <p>Under <code class="highlighter-rouge">Image</code> enter the path to your image which should be <code class="highlighter-rouge">&lt;DTR hostname&gt;/&lt;your username&gt;/linux_tweet_app</code>.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: You can copy the full image path from the output of your <code class="highlighter-rouge">docker image push</code> command.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>From the left hand menu click <code class="highlighter-rouge">Network</code>.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Publish Port+</code>.</p>
+
+    <p>We need to open a port for our web server. Since port 80 is already used by UCP on one node, and DTR on the other, we’ll need to pick an alternate port. We’ll go with 8088.</p>
+  </li>
+  <li>
+    <p>Fill out the port fields as shown below.</p>
+
+    <p><img src="images/linux_ports.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Confirm</code>.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Create</code> near the bottom right of the screen.</p>
+  </li>
+</ol>
+
+<p>After a few seconds you should see a green dot next to your service name. Once you see a green dot, you can see the web site by pointing your web browser to port 8088 on the Linux manager node in the cluster: <code class="highlighter-rouge">http://&lt;linux-manager-node&gt;:8088</code> (it may take a minute or so after the dot turns green for the service to be fully available).</p>
+
+<blockquote>
+  <p><strong>Note</strong>: You want to go to <code class="highlighter-rouge">http://</code> not <code class="highlighter-rouge">https://</code></p>
+</blockquote>
+
+<p>The <code class="highlighter-rouge">linux_tweet_app</code> is now running as a Docker service.</p>
+
+<h3 id="extra-credit-ingress-load-balancing">Extra Credit: Ingress Load Balancing</h3>
+
+<p>In this step we’ll see how ingress load balancing allows us to connect to our service via any Linux node in the cluster.</p>
+
+<ol>
+  <li>
+    <p>In UCP click on <code class="highlighter-rouge">Services</code> in the left hand menu.</p>
+  </li>
+  <li>
+    <p>From the List of services click on <code class="highlighter-rouge">linux_tweet_app</code>.</p>
+  </li>
+  <li>
+    <p>From the dropdown on the right-hand side select <code class="highlighter-rouge">Inspect Resources</code> and then <code class="highlighter-rouge">Containers</code>. Notice which host the container is running on. Is it running on the manager or the worker node?</p>
+
+    <p><img src="images/linux_tweet_app_container.png" alt="" /></p>
+
+    <p>If it’s the worker node, how did your web browser find it when we pointed at the UCP Manager node?</p>
+  </li>
+  <li>
+    <p>Point your browser at port 8088 on any of the Linux nodes in the cluster that are not hosting the service. Did the site come up?</p>
+
+    <p>In the end, it doesn’t matter if we try and access the service via the manager or the worker, Docker EE will route the request correctly.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: DTR is running on the worker node, so pointing to the DTR server is the same as pointing at the worker node.</p>
+    </blockquote>
+
+    <p>This is an example of the built-in ingress load balancer in Docker EE. Regardless of where a Linux-based service is actually running, you can access it from any Linux node in the cluster. So, if it’s running on the manager in our cluster, you can still get to it by accessing the worker node. Docker EE can accept the request coming into any of the Linux nodes in the cluster, and route it to a host that’s actually running a container for that service.</p>
+  </li>
+  <li>
+    <p>Be sure to clear the filter in the UCP UI by clicking the <code class="highlighter-rouge">X</code> in the upper right corner. If you don’t do this, you won’t see any of the other services you deploy later in the lab.</p>
+
+    <p><img src="images/clear_filter.png" alt="" /></p>
+  </li>
+</ol>
+
+<h2 id="task-3-deploy-a-windows-web-app"><a name="task3"></a>Task 3: Deploy a Windows Web App</h2>
+
+<p>Now we’ll deploy the Windows version of the tweet app.</p>
+
+<h3 id="-task-31-create-the-dockerfile-with-image2docker"><a name="task3.1"></a> Task 3.1: Create the Dockerfile with Image2Docker</h3>
+
+<p>There is a Windows Server 2016 VHD that contains our Windows Tweet App stored in <code class="highlighter-rouge">c:\</code> on Windows host. We’re going to use Image2Docker to scan the VHD and create a Dockerfile. We’ll build an image from the Dockerfile as we did in the previous step, push it to DTR, and then deploy our Windows tweet app.</p>
+
+<p><img src="images/windows75.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>Click the name of your Windows host in PWD to switch your web console.</p>
+  </li>
+  <li>
+    <p>Use Image2Docker’s <code class="highlighter-rouge">ConvertTo-Dockerfile</code> command to create a Dockerfile from the VHD.</p>
+
+    <p>Copy and paste the command below into your Windows console window.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> ConvertTo-Dockerfile -ImagePath c:\ws2016.vhd -Artifact IIS -OutputPath C:\windowstweetapp -Verbose
+</code></pre>
+    </div>
+
+    <p>As mentioned before, Image2Docker will scan the VHD and create a Dockerfile based on the contents of the VHD. The list below explains the command-line arguments.</p>
+
+    <ul>
+      <li>
+        <p><code class="highlighter-rouge">ImagePath</code> specifies where the VHD can be found.</p>
+      </li>
+      <li>
+        <p><code class="highlighter-rouge">Artifact</code> specifies what feature or code to look for.</p>
+      </li>
+      <li>
+        <p><code class="highlighter-rouge">OutputPath</code> specifies where to write the Dockerfile and other items.</p>
+      </li>
+      <li>
+        <p><code class="highlighter-rouge">Verbose</code> instructs the script to provide extra output.</p>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>When the process completes, you’ll find a Dockerfile in <code class="highlighter-rouge">c:\windowstweetapp</code>.</p>
+
+<h3 id="-task-32-build-and-push-your-image-to-docker-trusted-registry"><a name="task3.2"></a> Task 3.2: Build and Push Your Image to Docker Trusted Registry</h3>
+
+<p><img src="images/windows75.png" alt="" /></p>
+
+<ol>
+  <li>
+    <p>CD into the <code class="highlighter-rouge">c:\windowstweetapp</code> directory (this is where your Image2Docker files have been placed).</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> cd c:\windowstweetapp\
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>As we did before, we’re going to export some environment variables to make the commands that follow a bit more “Copy / Paste” friendly.</p>
+
+    <ol>
+      <li>
+        <p>Copy the DTR Hostname from the bottom of the main PWD screen.</p>
+      </li>
+      <li>
+        <p>Assign it to the $DTR_HOST environment variable (put the value between quotes).</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code> $DTR_HOST="&lt;dtr hostname&gt;"
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>Copy the user name from the bottom of the PWD screen (under credentials it’s the first of the two listed).</p>
+      </li>
+      <li>
+        <p>Assign it to the $USER environment variable (put the value in quotes).</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code> $USER="&lt;user name&gt;"
+</code></pre>
+        </div>
+      </li>
+      <li>
+        <p>Echo them back to make sure they are set properly.</p>
+
+        <div class="highlighter-rouge"><pre class="highlight"><code> echo $DTR_HOST $USER
+</code></pre>
+        </div>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Use <code class="highlighter-rouge">docker image build</code> to build your Windows tweet web app image from the Dockerfile.</p>
+
+    <p>Be sure to include the period (<code class="highlighter-rouge">.</code>) at the end of the command.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> docker build -t $DTR_HOST/$USER/windows_tweet_app .
+</code></pre>
+    </div>
+
+    <blockquote>
+      <p><strong>Note</strong>: Feel free to examine the Dockerfile in this directory if you’d like to see how the image is being built.</p>
+    </blockquote>
+
+    <p>Your output should be similar to what is shown below.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> PS C:\windowstweetapp&gt; docker build -t $DTR_HOST/$USER/windows_tweet_app .
+
+ Sending build context to Docker daemon  6.144kB
+ Step 1/10 : FROM microsoft/windowsservercore
+  ---&gt; 590c0c2590e4
+
+ &lt;output snipped&gt;
+
+ Step 10/10 : HEALTHCHECK CMD powershell -command     try {      $response = Invoke-WebRequest http://localhost -UseBasic
+ Parsing;      if ($response.StatusCode -eq 200) { return 0}      else {return 1};     } catch { return 1 }
+  ---&gt; Running in ab4dfee81c7e
+  ---&gt; d74eead7f408
+ Removing intermediate container ab4dfee81c7e
+ Successfully built d74eead7f408
+ Successfully tagged $DTR_HOST/$USER/windows_tweet_app:latest
+</code></pre>
+    </div>
+
+    <blockquote>
+      <p><strong>Note</strong>: It will take several minutes for your image to build.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Log into Docker Trusted Registry.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> PS C:\&gt; docker login $DTR_HOST
+ Username: &lt;your username&gt;
+ Password: &lt;your password&gt;
+ Login Succeeded
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Push your new image to your Docker Trusted Registry.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> PS C:\Users\docker&gt; docker push $DTR_HOST/$USER/windows_tweet_app
+
+ The push refers to a repository [&lt;dtr hostname&gt;/&lt;your username&gt;/windows_tweet_app]
+ 5d08bc106d91: Pushed
+ 74b0331584ac: Pushed
+ e95704c2f7ac: Pushed
+ 669bd07a2ae7: Pushed
+ d9e5b60d8a47: Pushed
+ 8981bfcdaa9c: Pushed
+ 25bdce4d7407: Pushed
+ df83d4285da0: Pushed
+ 853ea7cd76fb: Pushed
+ 55cc5c7b4783: Skipped foreign layer
+ f358be10862c: Skipped foreign layer
+ latest: digest: sha256:e28b556b138e3d407d75122611710d5f53f3df2d2ad4a134dcf7782eb381fa3f size: 2825
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h3 id="-task-33-deploy-the-windows-web-app"><a name="task3.3"></a> Task 3.3: Deploy the Windows Web App</h3>
+
+<p>Now that we have our Windows Tweet App on the DTR server, let’s deploy it.</p>
+
+<p>The process is going to be almost identical to how we did the Linux version, with one small exception: Docker EE on Windows Server 2016 does not currently support ingress load balancing, so we’ll expose the ports in <code class="highlighter-rouge">host</code> mode using <code class="highlighter-rouge">dnsrr</code>.</p>
+
+<ol>
+  <li>
+    <p>Switch back to UCP in your web browser.</p>
+  </li>
+  <li>
+    <p>In the left hand menu click <code class="highlighter-rouge">Services</code>.</p>
+  </li>
+  <li>
+    <p>In the upper right corner click <code class="highlighter-rouge">Create Service</code>.</p>
+  </li>
+  <li>
+    <p>Enter <code class="highlighter-rouge">windows_tweet_app</code> for the name.</p>
+  </li>
+  <li>
+    <p>Under <code class="highlighter-rouge">Image</code>, enter the path to your image which should be <code class="highlighter-rouge">&lt;dtr hostname&gt;/&lt;your username&gt;/windows_tweet_app</code></p>
+
+    <blockquote>
+      <p><strong>Note</strong>: You can copy the image path from the output of your <code class="highlighter-rouge">docker push</code> command.</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>From the left hand menu click <code class="highlighter-rouge">Network</code>.</p>
+  </li>
+  <li>
+    <p>Set the <code class="highlighter-rouge">ENDPOINT SPEC</code> to <code class="highlighter-rouge">DNS Round Robin</code>. This tells the service to load balance using DNS. The alternative is VIP, which uses IPVS.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Publish Port+</code>.</p>
+
+    <p>We need to open a port for our web server. This app runs on port 80 which is used by DTR so let’s use 8082.</p>
+  </li>
+  <li>
+    <p>Fill out the port fields as shown below. <strong>Be sure to set the <code class="highlighter-rouge">Publish Mode</code> to <code class="highlighter-rouge">Host</code></strong>.</p>
+
+    <p><img src="images/windows_ports.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Click ‘Confirm’.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Create</code> near the bottom right of the screen.</p>
+  </li>
+</ol>
+
+<p>After a few seconds you should see a green dot next to your service name. Once you see you green dot you can  point your web browser to <code class="highlighter-rouge">http://&lt;windows host&gt;:8082</code> to see the running website.</p>
+
+<h2 id="-task4-deploying-a-multi-os-application"><a name="task4"></a> Task4: Deploying a Multi-OS Application</h2>
+
+<p>For our last exercise we’ll use a Docker Compose file to define an application that uses a Java front end designed to be deployed on Linux, with a Microsoft SQL Server back end running on windows. We’ll then deploy that application as a Docker Stack.</p>
+
+<h3 id="-task-41-examine-the-docker-compose-file"><a name="task4.1"></a> Task 4.1: Examine the Docker Compose file</h3>
+
+<p>We’ll use a Docker Compose file to define our application. With this file we can define all our services and their parameters, as well as other Docker primitives such as networks. In a later step we can deploy a Docker Stack from this file.</p>
+
+<p>Let’s look at the Docker Compose file:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>version: "3.2"
+
+services:
+
+  database:
+    image: sixeyed/atsea-db:mssql
+    ports:
+      - mode: host
+        target: 1433
+    networks:
+     - atsea
+    deploy:
+      endpoint_mode: dnsrr
+
+  appserver:
+    image: mikegcoleman/atsea_appserver:1.0
+    ports:
+      - target: 8080
+        published: 8080
+    networks:
+      - atsea
+
+networks:
+  atsea:
+</code></pre>
+</div>
+
+<p>There are two services. <code class="highlighter-rouge">appserver</code> is our web frontend written in Java, and <code class="highlighter-rouge">database</code> is our Microsoft SQL Server database. The rest of the commands should look familiar as they are very close to what we used when we deployed our tweet services manually.</p>
+
+<p>One thing that is new, is the creation of an overlay network (<code class="highlighter-rouge">atsea</code>). Overlay networks allow containers running on different hosts to communicate over a private software-defined network. In this case, the web frontend on our Linux host will use the <code class="highlighter-rouge">atsea</code> network to communicate with the database.</p>
+
+<h3 id="-task-42-deploy-the-application-stack"><a name="task4.2"></a> Task 4.2 Deploy the Application Stack</h3>
+
+<p>A <code class="highlighter-rouge">stack</code> is a group of related services that make up an application. Stacks are a newer Docker primitive, and can be deployed from a Docker Compose file.</p>
+
+<p>Let’s Deploy a new application stack using the Docker Compose file above.</p>
+
+<ol>
+  <li>
+    <p>Move to the UCP console in your web browser.</p>
+  </li>
+  <li>
+    <p>In the left hand menu click <code class="highlighter-rouge">Stacks</code>.</p>
+  </li>
+  <li>
+    <p>In the upper right click <code class="highlighter-rouge">Create Stack</code>.</p>
+  </li>
+  <li>
+    <p>Enter <code class="highlighter-rouge">atsea</code> under <code class="highlighter-rouge">NAME</code>.</p>
+  </li>
+  <li>
+    <p>Select <code class="highlighter-rouge">Services</code> under <code class="highlighter-rouge">MODE</code>.</p>
+  </li>
+  <li>
+    <p>Select <code class="highlighter-rouge">SHOW VERBOSE COMPOSE OUTPUT</code>.</p>
+  </li>
+  <li>
+    <p>Paste the compose file from above into the <code class="highlighter-rouge">COMPOSE.YML</code> box.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Create</code></p>
+
+    <p>You will see some output to show the progress of the deployment, and then a banner will pop up at the bottom indicating the deployment was successful.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Done</code>.</p>
+  </li>
+</ol>
+
+<p>You should now be back on the Stacks screen.</p>
+
+<ol>
+  <li>
+    <p>Click on the <code class="highlighter-rouge">atsea</code> stack in the list.</p>
+  </li>
+  <li>
+    <p>From the right side of the screen choose <code class="highlighter-rouge">Services</code> under <code class="highlighter-rouge">Inspect Resource</code>.</p>
+
+    <p><img src="images/inspect_resoource.png" alt="" /></p>
+
+    <p>Here you can see the two services running. It may take a few minutes for the database service to come up (the dot to turn green). Once it does, move on to the next section.</p>
+  </li>
+</ol>
+
+<h3 id="-task-43-verify-the-running-application"><a name="task4.3"></a> Task 4.3: Verify the Running Application</h3>
+
+<ol>
+  <li>
+    <p>To see the running web site (an art store), point your web browser to port 8088 on either of the Linux-based cluster nodes <code class="highlighter-rouge">http://&lt;UCP hostname&gt;:8080&gt;</code>.</p>
+
+    <p>The thumbnails you see displayed are actually pulled from the SQL database. This is how you know that the connection is working between the database and web front end.</p>
+  </li>
+</ol>
+
+<hr />
+
+<h2 id="survey">Survey</h2>
+<p>We’re grateful you’ve chosen to spend some time with us today. We’d appreciate the opportunity to hear from  you about what you liked and what we might improve.</p>
+
+<p>If you could please fill out this very short survey, it’d be greatly appreciated.</p>
+
+<p>Thanks, the DockerCon Hands-on Labs team.</p>
+
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfu5jatKvKLdGZviRQ7SdXaCKKUmLNYGz2-WyvQKVoIpGMaDQ/viewform?usp=pp_url&amp;entry.413124055=Deploying+Multi-OS+Applications+with+Docker+EE&amp;entry.879050699">Click Here for the survey</a></p>
+
+<hr />
+<p>In this lab we looked at three different ways to deploy Linux, Windows, and hybrid-OS applications on Docker EE.</p>
+
+<p>If you’re interested in continuing, you can pick up from right here and do the Application Lifecycle lab. If you choose to go straight into that lab, you can skip all the tasks in Part 1 and move right to Part 2.</p>
+
+<p>Additionally, there are several other Docker labs available, so be sure to check those out.</p>
+
+<p>You can find more information on Docker EE at <a href="http://www.docker.com/enterprise-edition">http://www.docker.com</a> as well as continue exploring using our hosted trial at <a href="https://dockertrial.com">https://dockertrial.com</a></p>
+
+            </div>
+        </article>
+    </div>
+
+    
+
+</div>
+
+<script>
+    (function() {
+        var font3 = document.createElement('link');
+        font3.type = 'text/css';
+        font3.rel = 'stylesheet';
+        font3.href = '/dceu-labs/css/syntax-highlighting.css';
+        var q = document.getElementsByTagName('link')[0];
+        q.parentNode.insertBefore(font3, q);
+    })();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://rawgit.com/RickStrahl/jquery-resizable/master/dist/jquery-resizable.min.js"></script>
+<script src="https://rawgit.com/play-with-docker/sdk/hybrid/dist/pwd.js"></script>
+<script>
+    pwd.newSession([{selector: '.term1', type: ''}, {selector: '.term2', type: ''}, {selector: '.term3', type: ''}], {ImageName: '', baseUrl: 'https://dockercon.play-with-docker.com'});
+      $(".panel-left").resizable({
+      handleSelector: ".splitter",
+      resizeHeight: false,
+      onDragEnd: pwd.resize.bind(pwd)
+  });
+
+  window.onbeforeunload = function(e) {
+        pwd.closeSession(function(){});
+        return;
+    }
+</script>
+
+
+    
+<script async>
+    (function() {
+        var font = document.createElement('link'); 
+        font.type = 'text/css'; 
+        font.rel = 'stylesheet';
+        font.href = '//fonts.googleapis.com/css?family=Raleway:400,700';
+        var s = document.getElementsByTagName('link')[0]; 
+        s.parentNode.insertBefore(font, s);
+      })();
+</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-6096819-32"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-6096819-32');
+</script>
+
+
+  </body>
+
+</html>

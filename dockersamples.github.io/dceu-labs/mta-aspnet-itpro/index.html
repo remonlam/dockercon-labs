@@ -1,0 +1,433 @@
+<!-- Remove the comments to compress html
+
+---
+layout: compress
+--- 
+
+-->
+<!DOCTYPE html>
+<html>
+
+  <head>
+<title>Modernizing ASP.NET Applications - for IT Pros</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Modernizing ASP.NET Applications - for IT Pros" />
+<meta name="twitter:description" content="Learn docker through online trainings in training.play-with-docker.com" />
+<meta name="twitter:image" content="http://birthday.play-with-docker.com/images/simple-logo.jpg" />
+
+  
+
+
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" />
+
+<style>
+          
+          html,body{height:100%}img{max-width:100%}.mt50{margin-top:50px}.mt20{margin-top:20px}.mt10{margin-top:10px}.mb10{margin-bottom:10px}body{display:flex;flex-direction:column}body>*{flex:none}.navbar{border-radius:0px;margin-bottom:0px}.navbar.navbar-inverse{background-color:#1488C6;border-color:#1488C6}.navbar.navbar-inverse a,.navbar.navbar-inverse .navbar-nav li a{color:white}.navbar.navbar-inverse a:hover,.navbar.navbar-inverse .navbar-nav li a:hover{text-decoration:underline}.navbar-brand{font-weight:900}@media screen and (max-width: 600px){.navbar-brand{font-size:1.5em}}.post-meta{color:#828282}div.post-content{max-width:1200px}.panel{border:none;box-shadow:0px 0px 1px #828282}.panel:hover{box-shadow:0px 0px 6px #828282}footer{border-top:1px solid #e8e8e8}.social-share{margin-top:10px;margin-bottom:15px;text-align:center}.social{list-style:none;display:inline;margin-left:10px;padding:5px 8px}.social:hover{opacity:0.7}.social img{width:20px}.quora img{width:17px}.facebook img{width:16px}.recent ul{list-style:none;padding:0;text-align:justify}.recent li{margin:20px}.recent img{display:block;margin:auto}.recent{padding:10px;border:1px solid #e8e8e8}.post-img img{width:100%}.announce{margin-top:10px;margin-bottom:60px;text-align:center}.pack{display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;flex-wrap:wrap;-webkit-flex-wrap:wrap}.banner{display:block;margin:auto}.panel-container{display:flex;flex-direction:row;overflow:hidden;height:100%;flex:1 1 auto;xtouch-action:none}.terminal{font-size:15px}.panel-left{flex:0 0 auto;width:50%;min-width:150px}.content{padding:0 15px;overflow-y:auto}.content{padding:0 15px}.panel-singular{margin:0 auto;max-width:1200}.splitter{flex:0 0 auto;width:18px;background:url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #2fa8c3;min-height:200px;cursor:col-resize}.panel-right{display:flex;flex-direction:column;flex:1 1 auto;width:100%;background:#565656}.panel-right>div{flex:1 1 auto;margin-bottom:15px;overflow-y:auto}.panel-right>div:last-of-type{margin-bottom:0px}.panel-right>div.initialized{background-color:black}.getting-started ul{list-style-type:none;font-size:36px}.card{float:none}code[class*="."]{cursor:pointer}.resize-warning{background-color:black;color:white;text-align:center}.tab{display:none}.site-title{color:white}.post-tag{display:inline-block;background:rgba(42,122,226,0.15);padding:0 .5rem;margin-right:.5rem;border-radius:4px;color:#2a7ae2;font-family:"Open Sans",serif;font-size:90%}.post-tag:before{content:"\f02b";font-family:FontAwesome;padding-right:.5em}.post-tag:hover{text-decoration:none;background:#2a7ae2;color:#fff}small .post-tag{background:#eee;color:#000}small .post-tag:before{content:none}small .post-tag:hover{text-decoration:none;background:#000;color:#fff;cursor:default}.tags-expo :target:before{content:"";display:block;height:72px;margin:-72px 0 0}@media (min-width: 38em){.tags-expo .tags-expo-list{font-size:2.9rem}.tags-expo .tags-expo-list .post-tag{margin:.2em .3em}}.tags-expo .tags-expo-section{font-family:"Open Sans",serif}.tags-expo .tags-expo-section ul{list-style-type:circle;list-style-position:inside;padding:0}.tags-expo .tags-expo-section ul li{padding:0 1rem}.tags-expo .tags-expo-section ul li:hover{list-style-type:disc}.tags-expo .tags-expo-section a{font-size:20px}.tags-expo .tags-expo-section .post-date{display:inline-block;font-size:80%;color:#000;margin:0;padding:0}
+
+</style>  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="Hands-on Labs: DockerCon EU 2017" href="http://dockersamples.github.io/dceu-labs/dceu-labs/feed.xml">  
+<link rel="stylesheet" href="../css/quiz.css.html">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h3 class="site-title">Hands-on Labs: DockerCon EU 2017</h3>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="../about/index.html">About</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</header>
+
+
+    
+<div class="panel-container">
+    
+    <div class="panel-left content">
+    
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name headline">Modernizing ASP.NET Applications - for IT Pros</h1>
+                <p class="post-meta"><time datetime="2017-10-12T00:00:00+00:00" itemprop="datePublished">Oct 12, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@sixeyed</span></span></p>
+
+            </header>
+
+            <div class="post-content" itemprop="articleBody">
+                <p>Moving your app to Docker is the easiest way to add portability, security and efficiency - without changing code. This hands-on lab shows you how to take an existing ASP.NET WebForms app in an MSI package, run it in Docker and use the platform for automated updates.</p>
+
+<blockquote>
+  <p>If you aren’t familar with the basic concepts of Docker, you can start with the <a href="../windows-101.html">Docker Windows 101</a> lab before running this lab.</p>
+</blockquote>
+
+<h2 id="table-of-contents">Table of Contents</h2>
+
+<ul>
+  <li><a href="index.html#1">Task 1: Packaging the MSI to run in a container</a></li>
+  <li><a href="index.html#2">Task 2: Deploying application updates and Windows updates</a></li>
+  <li><a href="index.html#3">Task 3: Rolling out and rolling back staged updates</a></li>
+</ul>
+
+<h2 id="task-1-packaging-the-msi-to-run-in-a-container"><a name="1"></a>Task 1: Packaging the MSI to run in a container</h2>
+
+<p>You’re going to start with an MSI that deploys a web app onto a server, which needs IIS and ASP.NET to be configured to run the app. You’ll package that MSI to run in Docker, using an image from Microsoft with all the dependencies already installed.</p>
+
+<p>If you already have a scripted build process then you may have MSIs or Web Deploy packages already being generated, and it’s easy to package them into a Docker image.</p>
+
+<p>Start by cloning the Git repository for the sample app:</p>
+
+<pre><code class="language-.term1">git clone https://github.com/dockersamples/hol-mta-aspnet-itpro
+</code></pre>
+
+<pre><code class="language-.term1">cd hol-mta-aspnet-itpro
+</code></pre>
+
+<p>And now build version 1.0 of the application:</p>
+
+<pre><code class="language-.term1">docker build --tag dockersamples/modernize-aspnet-itpro:1.0 .\v1.0
+</code></pre>
+
+<p>While the image is building, have a look at the <a href="https://github.com/dockersamples/hol-mta-aspnet-itpro/blob/master/v1.0/Dockerfile" target="_blank">Dockerfile for the Web application</a>. It’s very simple:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>FROM microsoft/aspnet:windowsservercore-10.0.14393.1715
+COPY UpgradeSample-1.1.0.0.msi /
+RUN Start-Process msiexec.exe `
+     -ArgumentList '/i', 'C:\UpgradeSample-1.0.0.0.msi', 'RELEASENAME=2017.10', `
+     '/quiet', '/norestart' -NoNewWindow -Wait
+</code></pre>
+</div>
+
+<p>There are just three lines of <a href="https://docs.docker.com/engine/reference/builder/" target="_blank">Dockerfile instructions</a>:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">FROM</code> specifies the base image to use as a starting point, in this case a specific version of the ASP.NET image</li>
+  <li><code class="highlighter-rouge">COPY</code> copies the existing v1.0 application MSI from the local machine into the Docker image</li>
+  <li><code class="highlighter-rouge">RUN</code> installs the MSI using <code class="highlighter-rouge">msiexec</code>, and passing a value to the custom <code class="highlighter-rouge">RELEASENAME</code> variable that the MSI uses. The install is wrapped in a PowerShell process with the <code class="highlighter-rouge">-Wait</code> flag, which makes sure it completes</li>
+</ul>
+
+<blockquote>
+  <p>Using MSIs is a quick way to get started with Docker, but your Dockerfile is not a clear deployment document. All the installation logic is in the MSI. An alternative is to compile the application from source in a multi-stage Dockerfile, like <a href="https://github.com/dockersamples/hol-mta-aspnet-dev/blob/master/docker/web-v1/Dockerfile" target="_blank">this example</a>.</p>
+</blockquote>
+
+<p>The sample application for the lab is a simple ASP.NET WebForms app, which the MSI installs to the default IIS website running on port 80. To start the application, use <code class="highlighter-rouge">docker container run</code> and publish the port from the container, so the website is available externally:</p>
+
+<pre><code class="language-.term1">docker container run -d -p 80:80 --name v1.0 dockersamples/modernize-aspnet-itpro:1.0
+</code></pre>
+
+<p>When the <code class="highlighter-rouge">run</code> command completes, your application is running in Docker. You can list all the running containers:</p>
+
+<pre><code class="language-.term1">docker container ls
+</code></pre>
+
+<p>The HTTP port for the web container is published so the app is available to the outside world.</p>
+
+<blockquote>
+  <p><a href="http://dockersamples.github.io/UpgradeSample" data-term=".term1" data-port="80">Browse to version 1.0 of the app</a></p>
+</blockquote>
+
+<p>The content is served by the container, and you’ll see a very simple demo app which just lists some basic environment details:</p>
+
+<p><img src="../images/mta-aspnet-itpro/app-v1.0.png.html" alt="Version 1.0 of the sample app" /></p>
+
+<p>You can get basic management information about the container from Docker. Use the <code class="highlighter-rouge">top</code> command to see all the process running inside the container:</p>
+
+<pre><code class="language-.term1">docker container top v1.0
+</code></pre>
+
+<p>You can see that <code class="highlighter-rouge">w3wp.exe</code> is running, which is the IIS worker process serving requests. Use the <code class="highlighter-rouge">logs</code> command to see the output from the container application logs:</p>
+
+<pre><code class="language-.term1">docker container logs v1.0
+</code></pre>
+
+<p>In this case, IIS doesn’t write any logs to the console so there won’t be any log entries surfaced to Docker. In the next task, you’ll fix that so the IIS logs get relayed to Docker.</p>
+
+<h2 id="task-2-deploying-application-updates-and-windows-updates"><a name="2"></a>Task 2: Deploying application updates and Windows updates</h2>
+
+<p>In this task you deploy a new version of the application. To do that you’ll build a new image, and then replace the existing container with a new container.</p>
+
+<blockquote>
+  <p>The new version upgrades the version of the app and includes a Windows update, and it also integrates the application logs with Docker. Still without touching the code.</p>
+</blockquote>
+
+<p>Build version 1.1 of the application:</p>
+
+<pre><code class="language-.term1">docker image build --tag dockersamples/modernize-aspnet-itpro:1.1 .\v1.1
+</code></pre>
+
+<p>While the image is building, have a look at the <a href="https://github.com/dockersamples/hol-mta-aspnet-itpro/blob/master/v1.1/Dockerfile" target="_blank">Dockerfile for version 1.1</a>. It takes the same approach as version 1.0, but it’s based on a later version of the Windows Server Core image, and it deploys a later version of the application MSI.</p>
+
+<p>There are also two new parts in the Dockerfile. This <code class="highlighter-rouge">RUN</code> instruction configures how IIS writes log entries:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>RUN Set-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' -filter 'system.applicationHost/log' -name 'centralLogFileMode' -value 'CentralW3C'; `
+    Set-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' -filter 'system.applicationHost/log/centralW3CLogFile' -name 'truncateSize' -value 4294967295; `
+    Set-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' -filter 'system.applicationHost/log/centralW3CLogFile' -name 'period' -value 'MaxSize'; `
+    Set-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' -filter 'system.applicationHost/log/centralW3CLogFile' -name 'directory' -value 'c:\iislog'
+</code></pre>
+</div>
+
+<p>There’s a lot there, but it’s just using PowerShell to configure IIS. It sets up IIS to write a single log file in a known location. Then the <code class="highlighter-rouge">CMD</code> instruction changes how Docker starts a container from the image:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>CMD Start-Service W3SVC; `
+    Invoke-WebRequest http://localhost -UseBasicParsing | Out-Null; `
+    netsh http flush logbuffer | Out-Null; `
+    Get-Content -path 'c:\iislog\W3SVC\u_extend1.log' -Tail 1 -Wait
+</code></pre>
+</div>
+
+<p>This PowerShell scripts runs four actions when a container starts:</p>
+
+<ul>
+  <li>start the IIS Windows Service</li>
+  <li>make a call to the local website inside the container, which causes IIS to write a log entry</li>
+  <li>flush the IIS log buffer so the log file is written to disk</li>
+  <li>tail the log file, so when IIS writes log entries they get relayed to Docker.</li>
+</ul>
+
+<p>When the build finishes, you have two application images, tagged <code class="highlighter-rouge">1.0</code> and <code class="highlighter-rouge">1.1</code>. Each contains different versions of the application built on different versions of Windows, with a different startup configuration. You can see the basic image details with the <code class="highlighter-rouge">docker image ls</code> command:</p>
+
+<pre><code class="language-.term1">docker image ls --filter reference='*/modernize*'
+</code></pre>
+
+<p>You’ll see output like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>REPOSITORY                            TAG   IMAGE ID      CREATED          SIZE
+dockersamples/modernize-aspnet-itpro  1.1   05781f223267  2 minutes ago    11.9GB
+dockersamples/modernize-aspnet-itpro  1.0   d24e10dfe126  20 minutes ago   11.6GB
+</code></pre>
+</div>
+
+<p>You can see the images are listed at over 11GB each, but this is the logical size, and the images actually share a common set of data files - the physical storage they use is much smaller.</p>
+
+<p>You can check that by listing all images:</p>
+
+<pre><code class="language-.term1">docker image ls 
+</code></pre>
+
+<p>And then checking the storage Docker is using:</p>
+
+<pre><code class="language-.term1">docker system df 
+</code></pre>
+
+<p>You’ll see about 20 images that are pre-loaded in the lab environment. All the logical sizes added together is around 150GB. But because Docker shares image files, those 20 images take up around 30GB of disk space.</p>
+
+<p>Run the new version of the application to see what’s changed:</p>
+
+<pre><code class="language-.term1">docker container run -d -p 8080:80 --name v1.1 dockersamples/modernize-aspnet-itpro:1.1
+</code></pre>
+
+<blockquote>
+  <p><a href="http://dockersamples.github.io/UpgradeSample" data-term=".term1" data-port="8080">Browse to version 1.1 of the app</a></p>
+</blockquote>
+
+<p>The new version looks like this:</p>
+
+<p><img src="../images/mta-aspnet-itpro/app-v1.1.png.html" alt="Version 1.1 of the sample app" /></p>
+
+<p>Refresh the browser several times, and then check back to see the container logs:</p>
+
+<pre><code class="language-.term1">docker container logs v1.1
+</code></pre>
+
+<p>You’ll see the standard IIS access logs, relayed by the container into the Docker platform. The new container is running the new application, but the old app is still running in the original container. The Docker platform is very efficient, and you can run many containers on a single server. In the last task you’ll learn how to do rolling updates and rollbacks.</p>
+
+<h2 id="task-3-rolling-out-and-rolling-back-updates"><a name="3"></a>Task 3: Rolling out and rolling back updates</h2>
+
+<p>The Docker platform supports automated rolling updates, so you can have a zero-downtime update of your app. To get zero-downtime deployment you need to run your containers as a service in a <a href="https://docs.docker.com/engine/swarm/" target="_blank">Docker swarm</a> - a cluster of machines all running Docker, which you manage as a single unit.</p>
+
+<p>To update a service Docker incrementally stops the running containers and starts new ones from the updated image. For production environments where you have a load-balancer directing traffic to nodes, it would not send any requests to a node which Docker is updating, so your application stays online.</p>
+
+<p>Start by cleaning up all the running containers:</p>
+
+<pre><code class="language-.term1">docker container rm -f $(docker container ls -a -q)
+</code></pre>
+
+<p>Now switch to swarm mode. Run the <code class="highlighter-rouge">swarm init</code> command to initialize the swarm:</p>
+
+<pre><code class="language-.term1">docker swarm init --advertise-addr 127.0.0.1
+</code></pre>
+
+<blockquote>
+  <p>This is a single-node swarm. You don’t get high availability with a single node, but to join multiple servers to the swarm you just need to install Docker on each and run the <code class="highlighter-rouge">docker swarm join</code> command you see in the output.</p>
+</blockquote>
+
+<p>This node is now a manager, a server which controls the swarm.</p>
+
+<p>Run version 1.0 of the web app on your swarm, creating it as a service:</p>
+
+<pre><code class="language-.term1">docker service create `
+  --name sample `
+  --publish mode=host,target=80,published=80 `
+  --detach=true `
+  --replicas=1 `
+  dockersamples/modernize-aspnet-itpro:1.0
+</code></pre>
+
+<ul>
+  <li><code class="highlighter-rouge">--name</code> - is the name of the service, this is how you refer to the service for management, and in other services that consume this one</li>
+  <li><code class="highlighter-rouge">--publish</code> - maps the container port to the host port. Note that the syntax is different in swarm mode, but the functionality is the same</li>
+  <li><code class="highlighter-rouge">--replicas</code> - the number of containers that run the service. Docker will maintain the service level by starting new containers when needed</li>
+</ul>
+
+<p>Check on the service with <code class="highlighter-rouge">docker service ls</code>:</p>
+
+<pre><code class="language-.term1">docker service ls
+</code></pre>
+
+<p>With a single-node swarm and a single replica, you’ll see one container on the manager node.</p>
+
+<blockquote>
+  <p><a href="http://dockersamples.github.io/UpgradeSample" data-term=".term1" data-port="80">Browse to the app</a> - this is version 1.0</p>
+</blockquote>
+
+<p>It’s the same application running in a container, but now you can manage it as a swarm service, which provides update and rollback.</p>
+
+<p>Update your app to version 1.1:</p>
+
+<pre><code class="language-.term1">docker service update --image dockersamples/modernize-aspnet-itpro:1.1 sample
+</code></pre>
+
+<p>That tells Docker to update the <code class="highlighter-rouge">sample</code> service to version <code class="highlighter-rouge">1.1</code> of the image. With a multi-node swarm and many service replicas, Docker updates one container at a time. In production you would configure a load balancer in front the nodes, so no traffic gets sent to nodes which are being update and you get zero-downtime deployment.</p>
+
+<p>Check on the services again. and you will see there is still one replica, but it is running version 1.1 of the app:</p>
+
+<pre><code class="language-.term1">docker service ls
+</code></pre>
+
+<blockquote>
+  <p><a href="http://dockersamples.github.io/UpgradeSample" data-term=".term1" data-port="80">Browse to the app</a> - this is the same URL but now the app is version 1.1</p>
+</blockquote>
+
+<p>Automated updates are a huge benefit of the Docker platform. Updating a distributed application in a safe, automated way takes all the risk out of deployments, and makes frequent releases possible. If you don’t like the new color scheme in v1.1 you can easily roll back to v1.0:</p>
+
+<pre><code class="language-.term1">docker service update --rollback sample
+</code></pre>
+
+<p>Check on the services again. and you will see there is still one replica, but it is running version 1.0 of the app:</p>
+
+<pre><code class="language-.term1">docker service ls
+</code></pre>
+
+<blockquote>
+  <p><a href="http://dockersamples.github.io/UpgradeSample" data-term=".term1" data-port="80">Browse to the app</a> - this is the same URL but now the app has reverted to version 1.0</p>
+</blockquote>
+
+<p>Rolling back is the same as updating. The existing containers are stopped, and new containers created using the original image version. Refresh the app site and you will see version 1.0 running again. Automated rollback may be an even bigger benefit than automatic update. Knowing you can revert to the previous good version without any downtime and without a lengthy manual procedure gives you confidence in your deployment process, even if there are problems in the application itself.</p>
+
+<hr />
+
+<h2 id="survey">Survey</h2>
+
+<p>We’re grateful you’ve chosen to spend some time with us today. We’d appreciate the opportunity to hear from  you about what you liked and what we might improve.</p>
+
+<p>If you could please fill out this very short survey, it’d be greatly appreciated.</p>
+
+<p>Thanks, the DockerCon Hands-on Labs team.</p>
+
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfu5jatKvKLdGZviRQ7SdXaCKKUmLNYGz2-WyvQKVoIpGMaDQ/viewform?usp=pp_url&amp;entry.413124055=Modernizing+.NET+Apps+for+Ops&amp;entry.879050699">Click here to fill out the survey</a></p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>You now know how to package an existing ASP.NET app as a Docker image, without touching the source code. You also know how to package a new version of your image, containing application updates and the latest Windows patches. Lastly you’ve seen how to run a highly-available service in Docker swarm mode.</p>
+
+<p>Do try the other Windows labs at DockerCon, and make a note to check out the full lab suite when you get home - there are plenty more walkthroughs at <a href="https://github.com/docker/labs">docker/labs</a> on GitHub.</p>
+
+            </div>
+        </article>
+    </div>
+
+    
+    <div class="splitter">
+    </div>
+
+    <div class="panel-right">
+        <span class="resize-warning">If the commandline doesn't appear in the terminal, try resizing the browser window.</span>
+        
+        <div class="term1"></div>
+        
+    </div>
+    
+
+</div>
+
+<script>
+    (function() {
+        var font3 = document.createElement('link');
+        font3.type = 'text/css';
+        font3.rel = 'stylesheet';
+        font3.href = '/dceu-labs/css/syntax-highlighting.css';
+        var q = document.getElementsByTagName('link')[0];
+        q.parentNode.insertBefore(font3, q);
+    })();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://rawgit.com/RickStrahl/jquery-resizable/master/dist/jquery-resizable.min.js"></script>
+<script src="https://rawgit.com/play-with-docker/sdk/hybrid/dist/pwd.js"></script>
+<script>
+    pwd.newSession([{selector: '.term1', type: 'windows'}, {selector: '.term2', type: 'windows'}, {selector: '.term3', type: 'windows'}], {ImageName: '', baseUrl: 'https://dockercon.play-with-docker.com'});
+      $(".panel-left").resizable({
+      handleSelector: ".splitter",
+      resizeHeight: false,
+      onDragEnd: pwd.resize.bind(pwd)
+  });
+
+  window.onbeforeunload = function(e) {
+        pwd.closeSession(function(){});
+        return;
+    }
+</script>
+
+
+    
+<script async>
+    (function() {
+        var font = document.createElement('link'); 
+        font.type = 'text/css'; 
+        font.rel = 'stylesheet';
+        font.href = '//fonts.googleapis.com/css?family=Raleway:400,700';
+        var s = document.getElementsByTagName('link')[0]; 
+        s.parentNode.insertBefore(font, s);
+      })();
+</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-6096819-32"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-6096819-32');
+</script>
+
+
+  </body>
+
+</html>

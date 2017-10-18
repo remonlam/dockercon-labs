@@ -1,0 +1,612 @@
+<!-- Remove the comments to compress html
+
+---
+layout: compress
+--- 
+
+-->
+<!DOCTYPE html>
+<html>
+
+  <head>
+<title>Docker Trusted Registry Deep Dive</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Docker Trusted Registry Deep Dive" />
+<meta name="twitter:description" content="Learn docker through online trainings in training.play-with-docker.com" />
+<meta name="twitter:image" content="http://birthday.play-with-docker.com/images/simple-logo.jpg" />
+
+  
+
+
+<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" />
+
+<style>
+          
+          html,body{height:100%}img{max-width:100%}.mt50{margin-top:50px}.mt20{margin-top:20px}.mt10{margin-top:10px}.mb10{margin-bottom:10px}body{display:flex;flex-direction:column}body>*{flex:none}.navbar{border-radius:0px;margin-bottom:0px}.navbar.navbar-inverse{background-color:#1488C6;border-color:#1488C6}.navbar.navbar-inverse a,.navbar.navbar-inverse .navbar-nav li a{color:white}.navbar.navbar-inverse a:hover,.navbar.navbar-inverse .navbar-nav li a:hover{text-decoration:underline}.navbar-brand{font-weight:900}@media screen and (max-width: 600px){.navbar-brand{font-size:1.5em}}.post-meta{color:#828282}div.post-content{max-width:1200px}.panel{border:none;box-shadow:0px 0px 1px #828282}.panel:hover{box-shadow:0px 0px 6px #828282}footer{border-top:1px solid #e8e8e8}.social-share{margin-top:10px;margin-bottom:15px;text-align:center}.social{list-style:none;display:inline;margin-left:10px;padding:5px 8px}.social:hover{opacity:0.7}.social img{width:20px}.quora img{width:17px}.facebook img{width:16px}.recent ul{list-style:none;padding:0;text-align:justify}.recent li{margin:20px}.recent img{display:block;margin:auto}.recent{padding:10px;border:1px solid #e8e8e8}.post-img img{width:100%}.announce{margin-top:10px;margin-bottom:60px;text-align:center}.pack{display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;flex-wrap:wrap;-webkit-flex-wrap:wrap}.banner{display:block;margin:auto}.panel-container{display:flex;flex-direction:row;overflow:hidden;height:100%;flex:1 1 auto;xtouch-action:none}.terminal{font-size:15px}.panel-left{flex:0 0 auto;width:50%;min-width:150px}.content{padding:0 15px;overflow-y:auto}.content{padding:0 15px}.panel-singular{margin:0 auto;max-width:1200}.splitter{flex:0 0 auto;width:18px;background:url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #2fa8c3;min-height:200px;cursor:col-resize}.panel-right{display:flex;flex-direction:column;flex:1 1 auto;width:100%;background:#565656}.panel-right>div{flex:1 1 auto;margin-bottom:15px;overflow-y:auto}.panel-right>div:last-of-type{margin-bottom:0px}.panel-right>div.initialized{background-color:black}.getting-started ul{list-style-type:none;font-size:36px}.card{float:none}code[class*="."]{cursor:pointer}.resize-warning{background-color:black;color:white;text-align:center}.tab{display:none}.site-title{color:white}.post-tag{display:inline-block;background:rgba(42,122,226,0.15);padding:0 .5rem;margin-right:.5rem;border-radius:4px;color:#2a7ae2;font-family:"Open Sans",serif;font-size:90%}.post-tag:before{content:"\f02b";font-family:FontAwesome;padding-right:.5em}.post-tag:hover{text-decoration:none;background:#2a7ae2;color:#fff}small .post-tag{background:#eee;color:#000}small .post-tag:before{content:none}small .post-tag:hover{text-decoration:none;background:#000;color:#fff;cursor:default}.tags-expo :target:before{content:"";display:block;height:72px;margin:-72px 0 0}@media (min-width: 38em){.tags-expo .tags-expo-list{font-size:2.9rem}.tags-expo .tags-expo-list .post-tag{margin:.2em .3em}}.tags-expo .tags-expo-section{font-family:"Open Sans",serif}.tags-expo .tags-expo-section ul{list-style-type:circle;list-style-position:inside;padding:0}.tags-expo .tags-expo-section ul li{padding:0 1rem}.tags-expo .tags-expo-section ul li:hover{list-style-type:disc}.tags-expo .tags-expo-section a{font-size:20px}.tags-expo .tags-expo-section .post-date{display:inline-block;font-size:80%;color:#000;margin:0;padding:0}
+
+</style>  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="Hands-on Labs: DockerCon EU 2017" href="http://dockersamples.github.io/dceu-labs/dceu-labs/feed.xml">  
+<link rel="stylesheet" href="css/quiz.css.html">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h3 class="site-title">Hands-on Labs: DockerCon EU 2017</h3>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="about/index.html">About</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</header>
+
+
+    
+<div class="panel-container">
+    
+    <div class="content panel-singular">
+    
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name headline">Docker Trusted Registry Deep Dive</h1>
+                <p class="post-meta"><time datetime="2017-10-10T00:00:00+00:00" itemprop="datePublished">Oct 10, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@mikegcoleman</span></span></p>
+
+            </header>
+
+            <div class="post-content" itemprop="articleBody">
+                <p>In this lab we will explore Docker Trusted Registry, an <strong>on-premises</strong> Docker Registry that has many advanced features for enterprise workloads. These include; image scanning, immutable repos, and image promotion. The focus of this lab is to get our hands dirty and explore these advanced features.</p>
+
+<blockquote>
+  <p><strong>Difficulty</strong>: Intermediate</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Time</strong>: Approximately 35 minutes</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Tasks</strong>:</p>
+
+  <ul>
+    <li><a href="dtr-deep-dive.html#prerequisites">Prerequisites</a></li>
+    <li><a href="dtr-deep-dive.html#task1">Task 1 - Workflow Overview</a></li>
+    <li><a href="dtr-deep-dive.html#task2">Task 2 - Image Scanning</a></li>
+    <li><a href="dtr-deep-dive.html#task3">Task 3 - Immutable Repos</a></li>
+    <li><a href="dtr-deep-dive.html#task4">Task 4 - Image Promotion</a></li>
+  </ul>
+</blockquote>
+
+<h2 id="prerequisites">Prerequisites</h2>
+
+<p>The environment for this lab is provided by Play With Docker.</p>
+
+<p>You should familiarize yourself with the conventions used in this document, and your Play With Docker lab before continuing.</p>
+
+<h3 id="document-conventions">Document conventions</h3>
+
+<ul>
+  <li>
+    <p>When you encounter a phrase in between <code class="highlighter-rouge">&lt;</code> and <code class="highlighter-rouge">&gt;</code>  you are meant to substitute a value from your environment.</p>
+
+    <p>For example, if you see <code class="highlighter-rouge">&lt;dtr domain&gt;</code> you should substitute with the value of the DTR domain in your lab. This will be something like <code class="highlighter-rouge">ip172-18-0-7-b70lttfic4qg008cvm90.direct.microsoft.play-with-docker.com</code>.</p>
+  </li>
+</ul>
+
+<h3 id="understanding-the-play-with-docker-interface">Understanding the Play With Docker Interface</h3>
+
+<h3 id="accessing-pwd">Accessing PWD</h3>
+
+<ol>
+  <li>Open the following link <strong>in a new tab or window</strong>: <a href="https://ee.microsoft.play-with-docker.com">PWD environment sign-in page</a></li>
+</ol>
+
+<blockquote>
+  <p><strong>Note</strong>: You might want to right click the above link and open it in a new tab or window</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>Fill out the form, and click <code class="highlighter-rouge">submit</code>. You will then be redirected to the PWD environment.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Access</code></p>
+
+    <p>It will take a few minutes to provision out your PWD environment.</p>
+  </li>
+</ol>
+
+<h3 id="understanding-the-labs-play-with-docker-interface">Understanding the Lab’s Play With Docker Interface</h3>
+
+<p><img src="images/pwd_screen.png" alt="" /></p>
+
+<p>There are three main components to the Play With Docker (PWD) interface.</p>
+
+<h4 id="1-console-access">1. Console Access</h4>
+<p>Play with Docker provides access to the three Docker EE hosts in your Cluster. These are:</p>
+
+<ul>
+  <li>A Linux-based Docker EE 17.06 Manager node</li>
+  <li>A Linux-based Docker EE 17.06 Worker node</li>
+  <li>A Windows Server 2016-based Docker EE 17.06 Worker Node</li>
+</ul>
+
+<p>By clicking a name on the left, the console window will be connected to that node.</p>
+
+<h4 id="2-access-to-your-universal-control-plane-ucp-and-docker-trusted-registry-dtr-server">2. Access to your Universal Control Plane (UCP) and Docker Trusted Registry (DTR) server</h4>
+
+<p>The PWD interface provides you one-click access to the Universal Control Plane (UCP) web-based management interface as well as the Docker Trusted Registry (DTR) web-based management interface. Clicking the <code class="highlighter-rouge">UCP</code> or <code class="highlighter-rouge">DTR</code> buttons in the left pane will bring up the respective server web interface in a <strong>new browser tab</strong>.</p>
+
+<h4 id="3-session-information">3. Session Information</h4>
+
+<p>Throughout the lab you will be asked to provide either hosntnames or login credentials that are unique to your environment. These are displayed for you at the bottom of the PWD screen.</p>
+
+<h2 id="task-1---workflow-overview"><a name="task1"></a>Task #1 - Workflow Overview</h2>
+
+<p>Docker Trusted Registry (DTR) is the enterprise-grade image storage solution from Docker. You install it behind your firewall either in your private cloud or your data center so that you can securely store and manage the Docker images you use in your applications.</p>
+
+<p>DTR has a web-based user interface that allows authorized users in your organization to browse and manage Docker images. It provides information about who pushed what image at what time. It even allows you to see what Dockerfile lines were used to produce the image and, if security scanning is enabled, to see a list of all of the software installed in your images as well as known vulnerabilities.</p>
+
+<p>Behind the scenes, Docker Trusted Registry (DTR) is a containerized application that runs on a Docker Universal Control Plane cluster. Once you have DTR deployed, you use your Docker CLI client to login, push, and pull images.</p>
+
+<p>Let’s get started.</p>
+
+<p>To make our life a bit easier, let’s set an environment variable to hold the name of our DTR server.</p>
+
+<ol>
+  <li>
+    <p>In PWD scroll to the bottom of the screen and copy the DTR Hostname onto your clipboard.</p>
+  </li>
+  <li>
+    <p>In PWD click <code class="highlighter-rouge">Manager1</code>.</p>
+  </li>
+  <li>
+    <p>Use the following command to set the <code class="highlighter-rouge">DTR</code> environment variable. Remember to substitute the value inside of the <code class="highlighter-rouge">&lt;&gt;</code> with the value you copied to your clipboard in a previous step.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> export DTR=&lt;dtr hostname&gt;
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Verify that’s set properly by echoing it back out to the console.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> echo $DTR
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Use the <code class="highlighter-rouge">docker login</code> command to log-in to DTR. Your username and password can be found at the bottom of the main PWD screen.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> docker login $DTR
+ Username: &lt;username&gt;
+ Password: &lt;password&gt;
+ Login Succeeded
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<p>Contratulations, you are now logged in to you DTR instance. In the next steps we’ll explore Image Scanning, Immutable Repos, and Image Promotion.</p>
+
+<h2 id="task-2---image-scanning"><a name="task2"></a>Task #2 - Image Scanning</h2>
+
+<p>Docker Trusted Registry has a built in security scanner that can be used to discover what versions of software are used in your images. It scans each layer and aggregates the results to give you a complete picture of what you are shipping as a part of your stack. Most importantly, it correlates this information with a vulnerability database that is kept up to date through periodic updates. This gives you unprecedented insight into your exposure to known security threats.</p>
+
+<p>Image Scanning is not enabled by default. The next few steps will show you how to enable it.</p>
+
+<ol>
+  <li>
+    <p>In PWD click the DTR button on the left and log in to DTR with the credentials found at the bottom of the PWD screen.</p>
+
+    <blockquote>
+      <p><strong>Note</strong>: You may get a browser security warning, this is because we’re using self-signed certificates. It’s safe to proceed.</p>
+    </blockquote>
+
+    <p>The following steps should be completed in your DTR web interface.</p>
+  </li>
+  <li>
+    <p>Click on “<strong>Settings</strong>” on the left-hand navigation menu.</p>
+  </li>
+  <li>
+    <p>Select the “<strong>Security</strong>” tab.</p>
+  </li>
+</ol>
+
+<p>You should see that “<strong>Enable Scanning</strong>” option is currently turned off.</p>
+
+<ol>
+  <li>
+    <p>Click the <code class="highlighter-rouge">ENABLE SCANNING</code> slider.</p>
+
+    <p><img src="images/image-scanning.png" alt="image-scanning" /></p>
+
+    <p>Docker Trusted Registry supports two modes to synchronize the scanning database: <strong>online</strong> and <strong>offline</strong>. <strong>Offline</strong> can be useful if you have an air-gapped environment where you need to manually upload the vulnerability database without having the Registry connected to the internet.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Enable</code>.</p>
+  </li>
+</ol>
+
+<p>You will get a note that the vulnerability database is updating.</p>
+
+<p>While the database is updating let’s create a new repository and push some images to it.</p>
+
+<p>The following steps should be completed in your DTR web interface.</p>
+
+<ol>
+  <li>
+    <p>From the left menu click <code class="highlighter-rouge">Repositories</code>.</p>
+  </li>
+  <li>
+    <p>From the main DTR page click <code class="highlighter-rouge">New Repository</code>. This brings up the new repository dialog.</p>
+
+    <p><img src="images/create_repository.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Under <code class="highlighter-rouge">REPOSITORY NAME</code> type <code class="highlighter-rouge">alpine</code>.</p>
+  </li>
+  <li>
+    <p>Enable <code class="highlighter-rouge">SCAN ON PUSH</code> by clicking the slider. This will tell DTR to scan every new image that is pushed.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Save</code>.</p>
+  </li>
+</ol>
+
+<p>Now that we have a repository we can push images to it.</p>
+
+<p>In the real world you will normally be pushing your own application images to your DTR. To make this lab simpler, we’ll push some pre-built images.</p>
+
+<ol>
+  <li>
+    <p>In PWD click <code class="highlighter-rouge">Manager1</code> and move into the console on the right.</p>
+  </li>
+  <li>
+    <p>Use the following command to pull version <code class="highlighter-rouge">3.5</code> of the official Alpine image.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> docker image pull alpine:3.5
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Retag the image so we can push it to our newly created DTR repository.</p>
+
+    <p>Adding the name of your DTR host (via our environment variable), the user, and the repository name to the beginning of the tag makes pushing it to our DTR repository possible.  The format of the <code class="highlighter-rouge">docker image tag</code> command is: <code class="highlighter-rouge">docker image tag &lt;original-tag&gt; &lt;new-tag&gt;</code>.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> docker image tag alpine:3.5 $DTR/admin/alpine:3.5
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Push the newly tagged image.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> docker image push $DTR/admin/alpine:3.5
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<p>Now that the image has been pushed to our DTR server, let’s see what the security scanner finds.</p>
+
+<blockquote>
+  <p><strong>Note:</strong> It may take a minute or two for the security scan to complete.</p>
+</blockquote>
+
+<ol>
+  <li>
+    <p>Move back to your DTR server web interface.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Repositories</code> from the left-hand navigation menu.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">View Details</code> for the Alpine repository.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Images</code>.</p>
+
+    <p>Notice how easy it is to see the security scan has found issues. Let’s drill down a bit.</p>
+  </li>
+  <li>
+    <p>Select “<strong>View Details</strong>” to the right of the image.</p>
+
+    <p>The default view will show scan results based on the layers in your Docker image. This can be useful to see at what step a vulnerability was introduced into your image.</p>
+  </li>
+  <li>
+    <p>Clicking on a vulnerable component will bring up more detailed information.</p>
+  </li>
+  <li>
+    <p>Clicking on any of the CVE entries under <code class="highlighter-rouge">Vulnerabilities</code> will open a new browser tab and take you to details on that particular item.</p>
+  </li>
+</ol>
+
+<p>Now that we know the Alpine 3.5 image has vulnerabilities, let’s check out Alpine 3.6.</p>
+
+<ol>
+  <li>
+    <p>In PWD click <code class="highlighter-rouge">Manager1</code> and move into the console on the right.</p>
+  </li>
+  <li>
+    <p>Use the following command to pull version <code class="highlighter-rouge">3.6</code> of the official Alpine image.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> docker image pull alpine:3.6
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Retag the image so we can push it to our DTR server by adding the name of the DTR host (via our environment variable), the user, and the repository name with the 3.6 tag.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> docker image tag alpine:3.6 $DTR/admin/alpine:3.6
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Push the newly tagged image to DTR.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> docker push $DTR/admin/alpine:3.6
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Go back to DTR, navigate to the Alpine Repository and view it’s details. You’ll notice that the Alpine 3.6 image registers as “Clean”</p>
+  </li>
+</ol>
+
+<p>Now that you have a clean version of your image, the last thing you want is for someone to overwrite it with another version that may include vulnerabilities.</p>
+
+<p>Thankfully, Docker EE includes support for immutable repos. We’ll look at them next.</p>
+
+<h2 id="task-3---immutable-repos"><a name="task3"></a>Task #3 - Immutable Repos</h2>
+
+<p>By default, users with access to <code class="highlighter-rouge">push</code> to a repository can <code class="highlighter-rouge">push</code> the same tag multiple times to the same repository. As an example, a user pushes an image to <code class="highlighter-rouge">library/wordpress:latest</code>, and later another user can push a different image with exactly the same name. This can make it difficult to trace back the image to the build that generated it.</p>
+
+<p>To prevent this from happening you can configure a repository to be immutable. Once you push an image to an immutable repo, DTR won’t allow that tag to be overwritten. Thus, preventing the problem where we have an image with the same name, but the underlining code is different.</p>
+
+<p>Let’s make our DTR repo immutable.</p>
+
+<ol>
+  <li>
+    <p>In the DTR web UI, navigate to the repository settings page, and change immutability to <strong>on</strong> and click <strong>Save</strong>.</p>
+
+    <p><img src="images/make-tags-immutable.png" alt="" /></p>
+  </li>
+</ol>
+
+<p>From now on, users will get an error message when trying to push a tag that already exists:</p>
+
+<ol>
+  <li>
+    <p>Move back to the <code class="highlighter-rouge">Manager1</code> console window in PWD, and try to re-push the Alpine 3.6 image.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> docker push $DTR/admin/alpine.3.6
+ The push refers to a repository [ip172-18-0-5-b7d9nefvjdpg00auoga0.direct.microsoft.play-with-docker.com/admin/alpine]
+ 5bef08742407: Layer already exists
+ unknown: tag=3.6 cannot be overwritten because admin/alpine is an immutable repository
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<h2 id="task-4---image-promotion"><a name="task4"></a>Task #4 - Image Promotion</h2>
+
+<p>As a developer, once you’ve made changes to your application you want to make it available to your users. To do this you typically push an image to DTR, or have a CI/CD pipeline that does it for you. A team responsible for QA will notice you’ve pushed a new image, run tests, and if the image is working as expected, they’ll promote it to production. But, this is all very manual.</p>
+
+<p>As an example, you push the image to <code class="highlighter-rouge">example/my-app:3.6-stable</code>, the QA team will pull and test it, and push it as <code class="highlighter-rouge">example/myapp-prod:3.6-stable</code>.</p>
+
+<p>DTR allows you to automate this. If the image you pushed to DTR meets certain criteria, like it has a specific name, and doesn’t have any vulnerabilities, the image is automatically promoted. You can build complex deployment pipelines by combining multiple promotion criteria and chaining promotion rules.</p>
+
+<p>In this example, we’ll create two new repositories - <code class="highlighter-rouge">admin/alpine-dev</code> and <code class="highlighter-rouge">admin/alpine-prod</code>. We’ll create a <em>promotion policy</em> in the <code class="highlighter-rouge">admin/alpine-dev</code> repository that automatically promotes images that meet the criteria of the policy. And we’ll see it in action.</p>
+
+<p>Perform the following steps from your DTR web interface.</p>
+
+<ol>
+  <li>
+    <p>From the left menu click <code class="highlighter-rouge">Repositories</code>.</p>
+  </li>
+  <li>
+    <p>From the main DTR page click <code class="highlighter-rouge">New Repository</code>. This brings up the new repository dialog.</p>
+
+    <p><img src="images/create_repository.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Under <code class="highlighter-rouge">REPOSITORY NAME</code> type <code class="highlighter-rouge">alpine-dev</code>.</p>
+  </li>
+  <li>
+    <p>Enable <code class="highlighter-rouge">SCAN ON PUSH</code> by clicking the slider. This will tell DTR to scan every new image.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Save</code>.</p>
+  </li>
+  <li>
+    <p>Repeat steps 1-5, but for Step 3 use <code class="highlighter-rouge">alpine-prod</code> as the <code class="highlighter-rouge">REPOSITORY NAME</code>.</p>
+  </li>
+</ol>
+
+<p>Let’s create a promotion policy in the <code class="highlighter-rouge">admin/alpine-dev</code> repository.</p>
+
+<ol>
+  <li>
+    <p>Select the <code class="highlighter-rouge">alpine-dev</code> repository.</p>
+  </li>
+  <li>
+    <p>Go to the  <code class="highlighter-rouge">POLICIES</code> tab.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">New promotion policy</code> button.</p>
+  </li>
+  <li>
+    <p>We’ll want to make sure the image we promote has a tag that ends in <code class="highlighter-rouge">stable</code> and has no vulnerabilities. Fill in the form so it matches the image below.</p>
+
+    <p><img src="images/promotion_policy.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Save &amp; Apply</code>.</p>
+  </li>
+</ol>
+
+<p>Everything is set up. This means that new images pushed to the <code class="highlighter-rouge">admin/alpine-dev</code> repository, that end with <code class="highlighter-rouge">stable</code> and have no known vulnerabilities, will be automatically promoted to the <code class="highlighter-rouge">admin/alpine-prod</code> repository.</p>
+
+<p>To simulate how this will work let’s retag and push a couple of images.</p>
+
+<ol>
+  <li>
+    <p>In PWD move into the <code class="highlighter-rouge">Manager1</code> console.</p>
+  </li>
+  <li>
+    <p>Retag the Alpine 3.5 and 3.6 images as follows:</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> docker image tag alpine:3.5 $DTR/admin/alpine-dev:3.5-stable
+</code></pre>
+    </div>
+
+    <p>And</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> docker image tag alpine:3.6 $DTR/admin/alpine-dev:3.6-stable
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>Push both of the newly tagged images to the DTR server.</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> docker image push $DTR/admin/alpine-dev:3.5-stable
+</code></pre>
+    </div>
+
+    <p>And</p>
+
+    <div class="highlighter-rouge"><pre class="highlight"><code> docker image push $DTR/admin/alpine-dev:3.6-stable
+</code></pre>
+    </div>
+  </li>
+</ol>
+
+<p>Both of the images are tagged as <code class="highlighter-rouge">stable</code>, but we know from the previous exercise that the 3.5 version has a security vulnerability. This means that only the 3.6 image should have met the criteria of the promotion policy.</p>
+
+<p>Go back to DTR and verify that only the 3.6 image has been promoted into the <code class="highlighter-rouge">alpine-prod</code> repo. The 3.5 tag has not.</p>
+
+<ol>
+  <li>
+    <p>Switch back to the DTR web interface.</p>
+  </li>
+  <li>
+    <p>From the left hand menu click <code class="highlighter-rouge">Repositories</code>.</p>
+  </li>
+  <li>
+    <p>Select the <code class="highlighter-rouge">alpine-prod</code> repository.</p>
+  </li>
+  <li>
+    <p>Click on <code class="highlighter-rouge">images</code>.</p>
+
+    <p><img src="images/promoted.png" alt="create-policy" /></p>
+  </li>
+</ol>
+
+<p>You can create several promotion policies per repository, chain promotion policies across different repositories, and use promotion policies with webhooks. This allows you to create flexible deployment pipelines.</p>
+
+<hr />
+
+<h2 id="survey">Survey</h2>
+<p>We’re grateful you’ve chosen to spend some time with us today. We’d appreciate the opportunity to hear from  you about what you liked and what we might improve.</p>
+
+<p>If you could please fill out this very short survey, it’d be greatly appreciated.</p>
+
+<p>Thanks, the DockerCon Hands-on Labs team.</p>
+
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfu5jatKvKLdGZviRQ7SdXaCKKUmLNYGz2-WyvQKVoIpGMaDQ/viewform?usp=pp_url&amp;entry.413124055=Docker+Trusted+Registry+Deep+Dive&amp;entry.879050699">Click Here for the survey</a></p>
+
+<hr />
+
+<h2 id="conclusion">Conclusion</h2>
+<p>In	this lab we’ve looked how Docker EE, and Docker Trusted Registry more specifically, can help you secure your Docker images.</p>
+
+<p>There are several other Docker EE labs available, so be sure to check those out.</p>
+
+<p>You can find more information on Docker EE at <a href="http://www.docker.com/enterprise-edition">http://www.docker.com</a> as well as continue exploring using our hosted trial at <a href="https://dockertrial.com">https://dockertrial.com</a></p>
+
+            </div>
+        </article>
+    </div>
+
+    
+
+</div>
+
+<script>
+    (function() {
+        var font3 = document.createElement('link');
+        font3.type = 'text/css';
+        font3.rel = 'stylesheet';
+        font3.href = '/dceu-labs/css/syntax-highlighting.css';
+        var q = document.getElementsByTagName('link')[0];
+        q.parentNode.insertBefore(font3, q);
+    })();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://rawgit.com/RickStrahl/jquery-resizable/master/dist/jquery-resizable.min.js"></script>
+<script src="https://rawgit.com/play-with-docker/sdk/hybrid/dist/pwd.js"></script>
+<script>
+    pwd.newSession([{selector: '.term1', type: ''}, {selector: '.term2', type: ''}, {selector: '.term3', type: ''}], {ImageName: '', baseUrl: 'https://dockercon.play-with-docker.com'});
+      $(".panel-left").resizable({
+      handleSelector: ".splitter",
+      resizeHeight: false,
+      onDragEnd: pwd.resize.bind(pwd)
+  });
+
+  window.onbeforeunload = function(e) {
+        pwd.closeSession(function(){});
+        return;
+    }
+</script>
+
+
+    
+<script async>
+    (function() {
+        var font = document.createElement('link'); 
+        font.type = 'text/css'; 
+        font.rel = 'stylesheet';
+        font.href = '//fonts.googleapis.com/css?family=Raleway:400,700';
+        var s = document.getElementsByTagName('link')[0]; 
+        s.parentNode.insertBefore(font, s);
+      })();
+</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-6096819-32"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-6096819-32');
+</script>
+
+
+  </body>
+
+</html>

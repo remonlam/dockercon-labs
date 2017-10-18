@@ -1,0 +1,628 @@
+<!-- Remove the comments to compress html
+
+---
+layout: compress
+--- 
+
+-->
+<!DOCTYPE html>
+<html>
+
+  <head>
+<title>Managing Application Access with Docker EE</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Managing Application Access with Docker EE" />
+<meta name="twitter:description" content="Learn docker through online trainings in training.play-with-docker.com" />
+<meta name="twitter:image" content="http://birthday.play-with-docker.com/images/simple-logo.jpg" />
+
+  
+
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+
+<style>
+          
+          html,body{height:100%}img{max-width:100%}.mt50{margin-top:50px}.mt20{margin-top:20px}.mt10{margin-top:10px}.mb10{margin-bottom:10px}body{display:flex;flex-direction:column}body>*{flex:none}.navbar{border-radius:0px;margin-bottom:0px}.navbar.navbar-inverse{background-color:#1488C6;border-color:#1488C6}.navbar.navbar-inverse a,.navbar.navbar-inverse .navbar-nav li a{color:white}.navbar.navbar-inverse a:hover,.navbar.navbar-inverse .navbar-nav li a:hover{text-decoration:underline}.navbar-brand{font-weight:900}@media screen and (max-width: 600px){.navbar-brand{font-size:1.5em}}.post-meta{color:#828282}div.post-content{max-width:1200px}.panel{border:none;box-shadow:0px 0px 1px #828282}.panel:hover{box-shadow:0px 0px 6px #828282}footer{border-top:1px solid #e8e8e8}.social-share{margin-top:10px;margin-bottom:15px;text-align:center}.social{list-style:none;display:inline;margin-left:10px;padding:5px 8px}.social:hover{opacity:0.7}.social img{width:20px}.quora img{width:17px}.facebook img{width:16px}.recent ul{list-style:none;padding:0;text-align:justify}.recent li{margin:20px}.recent img{display:block;margin:auto}.recent{padding:10px;border:1px solid #e8e8e8}.post-img img{width:100%}.announce{margin-top:10px;margin-bottom:60px;text-align:center}.pack{display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;flex-wrap:wrap;-webkit-flex-wrap:wrap}.banner{display:block;margin:auto}.panel-container{display:flex;flex-direction:row;overflow:hidden;height:100%;flex:1 1 auto;xtouch-action:none}.terminal{font-size:15px}.panel-left{flex:0 0 auto;width:50%;min-width:150px}.content{padding:0 15px;overflow-y:auto}.content{padding:0 15px}.panel-singular{margin:0 auto;max-width:1200}.splitter{flex:0 0 auto;width:18px;background:url(https://raw.githubusercontent.com/RickStrahl/jquery-resizable/master/assets/vsizegrip.png) center center no-repeat #2fa8c3;min-height:200px;cursor:col-resize}.panel-right{display:flex;flex-direction:column;flex:1 1 auto;width:100%;background:#565656}.panel-right>div{flex:1 1 auto;margin-bottom:15px;overflow-y:auto}.panel-right>div:last-of-type{margin-bottom:0px}.panel-right>div.initialized{background-color:black}.getting-started ul{list-style-type:none;font-size:36px}.card{float:none}code[class*="."]{cursor:pointer}.resize-warning{background-color:black;color:white;text-align:center}.tab{display:none}.site-title{color:white}.post-tag{display:inline-block;background:rgba(42,122,226,0.15);padding:0 .5rem;margin-right:.5rem;border-radius:4px;color:#2a7ae2;font-family:"Open Sans",serif;font-size:90%}.post-tag:before{content:"\f02b";font-family:FontAwesome;padding-right:.5em}.post-tag:hover{text-decoration:none;background:#2a7ae2;color:#fff}small .post-tag{background:#eee;color:#000}small .post-tag:before{content:none}small .post-tag:hover{text-decoration:none;background:#000;color:#fff;cursor:default}.tags-expo :target:before{content:"";display:block;height:72px;margin:-72px 0 0}@media (min-width: 38em){.tags-expo .tags-expo-list{font-size:2.9rem}.tags-expo .tags-expo-list .post-tag{margin:.2em .3em}}.tags-expo .tags-expo-section{font-family:"Open Sans",serif}.tags-expo .tags-expo-section ul{list-style-type:circle;list-style-position:inside;padding:0}.tags-expo .tags-expo-section ul li{padding:0 1rem}.tags-expo .tags-expo-section ul li:hover{list-style-type:disc}.tags-expo .tags-expo-section a{font-size:20px}.tags-expo .tags-expo-section .post-date{display:inline-block;font-size:80%;color:#000;margin:0;padding:0}
+
+</style>  
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="Hands-on Labs: DockerCon EU 2017" href="http://dockersamples.github.io/dceu-labs/dceu-labs/feed.xml">  
+<link rel="stylesheet" href="/dceu-labs/css/quiz.css">
+</head>
+
+
+  <body>
+
+    <header class="site-header">
+<nav class="navbar navbar-default navbar-inverse">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h3 class="site-title">Hands-on Labs: DockerCon EU 2017</h3>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/dceu-labs/about/">About</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+</header>
+
+
+    
+<div class="panel-container">
+    
+    <div class="content panel-singular">
+    
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+            <header class="post-header">
+                <h1 class="post-title" itemprop="name headline">Managing Application Access with Docker EE</h1>
+                <p class="post-meta"><time datetime="2017-10-15T00:00:00+00:00" itemprop="datePublished">Oct 15, 2017</time> • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">@mikegcoleman</span></span></p>
+
+            </header>
+
+            <div class="post-content" itemprop="articleBody">
+                <p>Welcome to the Docker Access Control Lab! In this lab you will learn the tools that are available to you in Docker EE to build a multi-tenant container platforms.</p>
+
+<p>This lab consists of three parts:</p>
+
+<ul>
+  <li>Setup of the identity backend. Here we will deploy a self-contained LDAP server on UCP and use the accounts here as examples for the rest of the lab.</li>
+  <li>Creation of access policies to define what networks, containers, and services can be deployed where.</li>
+  <li>The deployment of applications to demonstrate how access control can help you build self-service multi-tenant container infrastructure.</li>
+</ul>
+
+<blockquote>
+  <p><strong>Difficulty</strong>: Intermediate</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Time</strong>: Approximately 40 minutes</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Tasks</strong>:</p>
+
+  <ul>
+    <li><a href="#prerequisites">Prerequisites</a></li>
+    <li><a href="#primer">Access Control Primer</a></li>
+    <li><a href="#task1">Task 1 - Identity Setup</a></li>
+    <li><a href="#task2">Task 2 - Importing Teams</a></li>
+    <li><a href="#task3">Task 3 - Creating Collections and Roles</a></li>
+    <li><a href="#task4">Task 4 - Creating Grants</a></li>
+    <li><a href="#task5">Task 5 - Access Control at Work</a></li>
+  </ul>
+</blockquote>
+
+<h2 id="prerequisites"><a name="prerequisites"></a>Prerequisites</h2>
+
+<h3 id="document-conventions">Document conventions</h3>
+
+<ul>
+  <li>
+    <p>When you encounter a phrase in between <code class="highlighter-rouge">&lt;</code> and <code class="highlighter-rouge">&gt;</code>  you are meant to substitute in a different value.</p>
+
+    <p>For instance if you see <code class="highlighter-rouge">&lt;dtr domain&gt;</code> you would actually type something like <code class="highlighter-rouge">ip172-18-0-7-b70lttfic4qg008cvm90.direct.microsoft.play-with-docker.com</code></p>
+  </li>
+  <li>
+    <p>When you see the Linux penguin all the following instructions should be completed in your Linux console</p>
+
+    <p><img src="/dceu-labs/images/linux75.png" alt="" /></p>
+  </li>
+  <li>
+    <p>When you see the Windows flag all the subsequent instructions should be completed in your Windows cosnsole.</p>
+
+    <p><img src="/dceu-labs/images/windows75.png" alt="" /></p>
+    <h3 id="understanding-the-play-with-docker-interface">Understanding the Play With Docker Interface</h3>
+  </li>
+</ul>
+
+<p><img src="/dceu-labs/images/pwd_screen.png" alt="" /></p>
+
+<p>There are three main components to the Play With Docker (PWD) interface</p>
+
+<h4 id="1-console-access">1. Console Access</h4>
+<p>Play with Docker provides access to the 3 Docker EE hosts in your Cluster. These machines are:</p>
+
+<ul>
+  <li>A Linux-based Docker EE 17.06 Manager node</li>
+  <li>A Linux-based Docker EE 17.06 Worker node</li>
+  <li>A Windows Server 2016-based Docker EE 17.06 Worker Node</li>
+</ul>
+
+<p>By clicking a name on the left, the console window will be connected to that node</p>
+
+<h4 id="2-access-to-your-universal-control-plane-ucp-and-docker-trusted-registry-dtr-server">2. Access to your Universal Control Plane (UCP) and Docker Trusted Registry (DTR) server</h4>
+
+<p>Additionally, the PWD screen provides you one-click access to the Universal Control Plane (UCP)
+web-based management interface as well as the Docker Trusted Registry (DTR) web-based management interface. Click on either the <code class="highlighter-rouge">UCP</code> or <code class="highlighter-rouge">DTR</code> button will bring up the respective server web interface in a new tab.</p>
+
+<h4 id="3-session-information">3. Session Information</h4>
+
+<p>Throughout the lab you will be asked to provide either hosntnames or login credentials that are unique to your environment. These are displayed for you at the bottom of the PWD screen.</p>
+
+<h3 id="accessing-pwd">Accessing PWD</h3>
+
+<ol>
+  <li>
+    <p>Navigate in your web browswer to <a href="https://ee.microsoft.play-with-docker.com">the PWD environment sign-in page</a></p>
+
+    <blockquote>
+      <p><strong>Note</strong>: You might want to right click the above link and open it in a new tab or window</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Fill out the form, and click <code class="highlighter-rouge">submit</code>. You will then be redirected to the PWD environment.</p>
+  </li>
+  <li>
+    <p>Click <code class="highlighter-rouge">Access</code></p>
+
+    <p>It will take a few minutes to provision out your PWD environment. After this step completes, move on to Task 1 of the lab.</p>
+  </li>
+</ol>
+
+<h2 id="docker-enterprise-access-control"><a name="primer"></a>Docker Enterprise Access Control</h2>
+
+<h3 id="cluster-role-based-access-control">Cluster Role-Based Access Control</h3>
+<p>Docker EE 17.06 introduced a greatly <a href="https://docs.docker.com/datacenter/ucp/2.2/guides/access-control/">enhanced Access Control system</a> for <a href="https://docs.docker.com/datacenter/ucp/2.2/guides/release-notes/">UCP 2.2.</a>  The new Access Control model provides an extremely fine-grained control of what resources users can access within a cluster. Use of RBAC is <strong>highly</strong> recommended for a secure cluster. Security principles of <em>least privilege</em> dictate the use of access control to limit access to resources whenever possible.</p>
+
+<h4 id="access-control-policy">Access Control Policy</h4>
+
+<p>Docker EE Access Control is a policy-based model that uses access control lists (ACLs) called <strong>grants</strong> to dictate access between users and cluster resources. A grant ties together <em>who</em>, has permission for <em>which actions</em>, against <em>what resource</em>. They are a flexible way of implementing access control for complex scenarios without incurring high management overhead for the system administrators.</p>
+
+<p>As shown below, a grant is made up of a <em>subject</em> (who), <em>role</em> (which permissions), and a <em>collection</em> (what resources).</p>
+
+<p><img src="/dceu-labs/images/ucp-grant-model.svg" alt="" /></p>
+
+<blockquote>
+  <p><strong>Note:</strong> It is the UCP administrators’ responsibility to create and manage the grants, subjects, roles, and collections.</p>
+</blockquote>
+
+<h4 id="subjects">Subjects</h4>
+
+<p>A subject represents a user, team, or organization. A subject is granted a role for a collection of resources. These groups of users are the same across UCP and DTR making RBAC management across the entire software pipeline uniform.</p>
+
+<ul>
+  <li><strong>User</strong>: A single user or system account that an authentication backend (AD/LDAP) has validated.</li>
+  <li><strong>Team</strong>: A group of users that share a set of permissions defined in the team itself. A team exists only as part of an organization, and all team members are members of the organization. A team can exist in one organization only. Assign users to one or more teams and one or more organizations.</li>
+  <li><strong>Organization</strong>: The largest organizational unit in Docker EE. Organizations group together teams to provide broader scope to apply access policy against.</li>
+</ul>
+
+<h4 id="roles-and-permissions">Roles and Permissions</h4>
+
+<p>A role is a set of permitted API operations that you can assign to a specific subject and collection by using a grant. Roles define what operations can be done against cluster resources. An organization will likely use several different kinds of roles to give the right kind of access. A given team or user may have different roles provided to them depending on what resource they are accessing. There are default roles provided by UCP, and there is also the ability to build custom roles.</p>
+
+<h5 id="custom-roles">Custom Roles</h5>
+
+<p>Docker EE defines very granular roles down to the Docker API level to match unique requirements that an organization may have. <a href="https://docs.docker.com/datacenter/ucp/2.2/guides/access-control/permission-levels/">Roles and Permission Levels</a> has a full list of the operations that can be used to build new roles.</p>
+
+<h4 id="collections">Collections</h4>
+<p>Docker EE enables controlling access to swarm resources by using <em>collections</em>. A collection is a grouping of swarm cluster resources that you access by specifying a directory-like path.  Before grants can be implemented, collections need to be designed to group resources in a way that makes sense for an organization.</p>
+
+<p>The following example shows the potential access policy of an organization. Consider an organization with two application teams, Mobile and Payments, that share cluster hardware resources, but still need to segregate access to the applications. Collections should be designed to map to the organizational structure desired, in this case the two application teams.</p>
+
+<p><img src="/dceu-labs/images/collections-hiearachy.svg" alt="" /></p>
+
+<blockquote>
+  <p><strong>Note:</strong> Permissions to a given collection are inherited by all children of that collection.</p>
+</blockquote>
+
+<p>Collections are implemented in UCP through the use of Docker labels. All resources within a given collection are labeled with the collection, <code class="highlighter-rouge">/production/mobile</code> for instance.</p>
+
+<p>Collections are flexible security tools because they are hierarchical. For instance, an organization may have multiple levels of access. This might neccessitate a collection architecture like the following:</p>
+
+<h2 id="task-1---identity-setup"><a name="task1"></a>Task 1 - Identity Setup</h2>
+
+<p>In this step we will setup an identity provider within UCP. Normally this would be outside of the container cluster. All of the following commands should be done on the <code class="highlighter-rouge">manager1</code> node.</p>
+
+<h4 id="setting-up-ldap-in-a-container">Setting up LDAP in a container</h4>
+<p>1.1 Git clone the following directory to your UCP controller node and then <code class="highlighter-rouge">cd</code> in to that directory.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[manager1] ~ $ git clone https://github.com/mark-church/docker-access-control.git
+[manager1] ~ $ cd docker-access-control
+</code></pre>
+</div>
+
+<p>1.2 Deploy the OpenLDAP server by deploying it as a service from the compose file in this folder.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[manager1] ~/docker-access-control $ docker stack deploy -c docker-compose.yml ldap
+Creating network ldap_default
+Creating service ldap_openldap
+</code></pre>
+</div>
+
+<p>1.3 Verfiy that your OpenLDAP container is functional by checking that it is up.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[manager1] ~/docker-access-control $ docker ps | grep "ldap"
+a91c1acf821a        chrch/ldap:latest            "/container/tool/b..."   29 minutes ago      Up 29 minutes       389/tcp, 636/tcp    ldap_openldap.1.tevp0yays03grlqipx8fs4gk5
+</code></pre>
+</div>
+
+<p>1.4 Now use the following command to check the LDAP entries. Use the container ID from the above command to insert into this command where it says <code class="highlighter-rouge">&lt;container_id&gt;</code>.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[manager1] ~/docker-access-control $ docker exec &lt;container_id&gt; ldapsearch -x -h localhost -b dc=orcabank,dc=com -D "cn=admin,dc=orcabank,dc=com" -w docker123
+</code></pre>
+</div>
+
+<p>You should get an output that shows the <code class="highlighter-rouge">OrcaBank</code> org.
+Good job! Your LDAP server is fully functional and has the entries in it to complete the rest of the lab.</p>
+
+<h4 id="configuring-ldap-connection-to-ucp">Configuring LDAP connection to UCP</h4>
+<p>1.5 Log in to UCP GUI with the admin credentials (<code class="highlighter-rouge">admin</code> / <code class="highlighter-rouge">admin1234</code>).</p>
+
+<p><img src="/dceu-labs/images/login.png" alt="Auth Page" /></p>
+
+<p>1.6 In the UCP GUI go to Admin / Admin Settings / Authentication &amp; Authorization. This is the page where you will be filling out the configuration to connect with LDAP.</p>
+
+<p><img src=".//dceu-labs/images/ucp-auth-page-1.png" alt="Auth Page" /></p>
+
+<p>You will edit the following default values. For <code class="highlighter-rouge">&lt;ucp-controller-host-ip&gt;</code> use the host IP address of the UCP controller host. The following command will get the IP address for you if you run it on the CLI of the <code class="highlighter-rouge">manager1</code> node.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>[manager1] ~/docker-access-control $ ip add sh eth0 | grep "inet"
+    inet 192.168.0.34/24 scope global eth0
+</code></pre>
+</div>
+
+<ul>
+  <li><strong>Default Role For All Private Collections:</strong> None</li>
+  <li><strong>LDAP Enabled:</strong> Yes</li>
+  <li><strong>LDAP Server URL:</strong> <code class="highlighter-rouge">ldap://192.168.0.34:389</code></li>
+  <li><strong>Reader DN:</strong> <code class="highlighter-rouge">cn=readonly,dc=orcabank,dc=com</code></li>
+  <li><strong>Reader Password:</strong> <code class="highlighter-rouge">docker123</code></li>
+  <li><strong>Skip TLS Verification:</strong> Checked</li>
+  <li><strong>Just-In-Time User Provisioning:</strong> Unchecked</li>
+</ul>
+
+<p><img src=".//dceu-labs/images/ucp-auth-page-2.png" alt="Auth Page" /></p>
+
+<p>1.5 Check “Add LDAP User Search Configuration” and fill in the following values.</p>
+
+<ul>
+  <li><strong>Base DN:</strong> <code class="highlighter-rouge">dc=orcabank,dc=com</code></li>
+  <li><strong>Username Attribute:</strong> <code class="highlighter-rouge">uid</code></li>
+  <li><strong>Fullname Attribute:</strong> <code class="highlighter-rouge">cn</code></li>
+  <li><strong>Filter:</strong> Leave blank</li>
+  <li><strong>Search Subtree Instead Of Just One Level:</strong> Checked</li>
+</ul>
+
+<p>Press “Confirm” at the bottom of this section or these settings will not stick.</p>
+
+<p><img src=".//dceu-labs/images/ucp-auth-page-3.png" alt="Auth Page" /></p>
+
+<p>1.6 Click “Save” at the bottom of the page.</p>
+
+<p>1.7 Test the connection by putting in the credentials of one of the users under the “LDAP TEST LOGIN” area.</p>
+
+<ul>
+  <li><strong>Username:</strong> <code class="highlighter-rouge">mindi</code></li>
+  <li><strong>Password:</strong> <code class="highlighter-rouge">docker123</code></li>
+</ul>
+
+<p>Congratulations you have now linked your identity provider with UCP and UCP has ingested the user accounts so that users can login and get authenticated.</p>
+
+<h2 id="task-2---importing-teams"><a name="task2"></a>Task 2 - Importing Teams</h2>
+
+<p>For Part 2 of this lab we are going to configure the access control for a fictional company called OrcaBank. OrcaBank has four different groups of users. There are two independent development teams. The developers on these teams need read access to their containerized applications. There is an Ops team responsible for deploying applications on behalf of the dev teams. Finally there is an admin that is responsbile for the container infrastructure itself.</p>
+
+<p><img src="/dceu-labs/images/orcabank.png" alt="" /></p>
+
+<h4 id="importing-teams-through-ldap">Importing teams through LDAP</h4>
+
+<p>In the following tasks we will create teams and configure them to pull in members through LDAP.</p>
+
+<p>2.1 Under “Admin” on the left nav panel, go to Organizations &amp; Teams.</p>
+
+<p>2.2 Create the “orcabank” organization. This is the organization that you will create the following teams under.</p>
+
+<p><img src="/dceu-labs/images/orcabank-create.png" alt="" /></p>
+
+<p>2.3 Click on the “orcabank” organization and then select the button “Create Team”. You will create three teams underneath “orcabank”.</p>
+
+<p><img src="/dceu-labs/images/orcabank-create-teams.png" alt="" /></p>
+
+<p>2.4 On the “Create team” page you will input the following values for the three teams.</p>
+
+<ul>
+  <li>Mobile App Dev Team</li>
+  <li><strong>Team Name:</strong> <code class="highlighter-rouge">mobile</code></li>
+  <li><strong>Description:</strong> blank</li>
+  <li><strong>Enable Sync Team Members:</strong> Checked Yes</li>
+  <li><strong>LDAP Match Method:</strong> Checked “Match Search Results”</li>
+  <li><strong>Search Base DN:</strong> <code class="highlighter-rouge">ou=mobile,dc=orcabank,dc=com</code></li>
+  <li><strong>Search Filter:</strong> blank</li>
+  <li><strong>Immediately Sync Team Members:</strong> Checked Yes</li>
+</ul>
+
+<p><img src="/dceu-labs/images/create-team.png" alt="" /></p>
+
+<p>Hit “Create” in the bottom right corner to create the team.</p>
+
+<p>2.5 After you have created the mobile team, you should see it listed underneath the “orcabank” organization.</p>
+
+<p><img src="/dceu-labs/images/mobile-team-created.png" alt="" /></p>
+
+<p>2.6 Now check to make sure that users have been synced on to this team. Press “View Users” for the mobile team. You should see a single user listed named Mindi. Mindi was synced from our LDAP backend.</p>
+
+<p><img src="/dceu-labs/images/mindi.png" alt="" /></p>
+
+<p>2.5 Now follow the same process for the “payments” and “ops” teams. All configuration values should be the same except for the search string and the team name.</p>
+
+<ul>
+  <li>Payments App Dev Team</li>
+  <li><strong>Team Name:</strong> <code class="highlighter-rouge">payments</code></li>
+  <li><strong>Description:</strong> blank</li>
+  <li><strong>Enable Sync Team Members:</strong> Checked Yes</li>
+  <li><strong>LDAP Match Method:</strong> Checked “Match Search Results”</li>
+  <li><strong>Search Base DN:</strong> <code class="highlighter-rouge">ou=payments,dc=orcabank,dc=com</code></li>
+  <li><strong>Search Filter:</strong> blank</li>
+  <li>
+    <p><strong>Immediately Sync Team Members:</strong> Checked Yes</p>
+  </li>
+  <li>Ops Engineering Team</li>
+  <li><strong>Team Name:</strong> <code class="highlighter-rouge">ops</code></li>
+  <li><strong>Description:</strong> blank</li>
+  <li><strong>Enable Sync Team Members:</strong> Checked Yes</li>
+  <li><strong>LDAP Match Method:</strong> Checked “Match Search Results”</li>
+  <li><strong>Search Base DN:</strong> <code class="highlighter-rouge">ou=ops,dc=orcabank,dc=com</code></li>
+  <li><strong>Search Filter:</strong> blank</li>
+  <li><strong>Immediately Sync Team Members:</strong> Checked Yes</li>
+</ul>
+
+<p>2.6 You should now see the three teams you have created underneath the orcabank organization.</p>
+
+<p><img src="/dceu-labs/images/teams-configured.png" alt="" /></p>
+
+<h2 id="task-3---creating-collections-and-roles"><a name="task3"></a>Task 3 - Creating Collections and Roles</h2>
+
+<h4 id="collections-1">Collections</h4>
+
+<p>Collection design is a very important step in architecting access control. Collections are grouping of resources that should be arranged so that they fit your organizational structure. Collections are hierarchical and can be nested which provides many different design choices. For OrcaBank we are going to create two collections - mobile and payments. They will both be inside another collection called “Shared”. Nesting these two collections inside another will allow the development teams to only see their own applications, yet the ops team will have access to both apps as they will have access to the top-level “Shared” collection.</p>
+
+<p>The folder structure below demonstrates the following design. Both app teams will share the same nodes, but container resources like services, networks, and volumes will be virtually separated as they are in different collections.</p>
+
+<p><img src="/dceu-labs/images/collection-design.png" alt="" /></p>
+
+<p>3.1 Click on Collections on the UCP left nav bar. There are two collections in UCP by default called “System” (for infrastructure resources such as UCP controllers) and “Shared” (for application resources). We will be creating two custom collections underneath Shared.</p>
+
+<p>3.2 Next to the Shared collection click “View Children”.</p>
+
+<p><img src="/dceu-labs/images/collections-top-level.png" alt="" /></p>
+
+<p>3.3 Inside the Shared collection, click “Create Collection”. Input <code class="highlighter-rouge">mobile</code> for the collection name and press “Create”.</p>
+
+<p><img src="/dceu-labs/images/create-collection.png" alt="" /></p>
+
+<p>3.4 Do the same process again and create a collection called <code class="highlighter-rouge">payments</code>.</p>
+
+<p>3.4 You should now see three collections in /Shared. There is “Private”, a default collection, and your two custom collections.</p>
+
+<p><img src="/dceu-labs/images/shared-collections.png" alt="" /></p>
+
+<h4 id="roles">Roles</h4>
+
+<p>In UCP roles are highly customizable down to the Docker API level. We are going to create a custom role for the OrcaBank develoment teams we can specify exactly what the developers should and should not have access to do.</p>
+
+<p>3.5 Click on Roles on the left nav bar. There are some default roles that already exist. These are pre-created roles.</p>
+
+<p><img src="/dceu-labs/images/default-roles.png" alt="" /></p>
+
+<p>3.6 Click on “Create Role” and title the role “Dev”. In the next task this role will be applied to the mobile and payments development teams.</p>
+
+<p>3.7 After naming the role, click “Operations” on the left hand side of the “Create Role” page. All of the operations here are individual actions that can be combined to create a custom role.</p>
+
+<p><img src="/dceu-labs/images/role-operations.png" alt="" /></p>
+
+<p>3.8 Select the following operations for the Dev role. You may have to expand some of the fields to find them. After you have checked them, press “Create”.</p>
+
+<ul>
+  <li>Container Logs</li>
+  <li>Container View</li>
+  <li>Service View</li>
+  <li>Service View Tasks</li>
+</ul>
+
+<p>3.9 After you have created the role, you should see it listed on the Roles page. If you click on the Dev role, the right hand info bar will show you the specific actions that are permitted with this role.</p>
+
+<p><img src="/dceu-labs/images/dev-role.png" alt="" /></p>
+
+<p>Congratulations! You have now created collections and roles. These are the basic building blocks for strong and flexible access control. In the next task we will combine these components and watch the system at work!</p>
+
+<h2 id="task-4---creating-grants"><a name="task4"></a>Task 4 - Creating Grants</h2>
+
+<p>Grants tie together subjects (our teams), roles, and collections in a single rule that enforces access. Grants are an easy way of defining all of the access policy that you need in your container infrastructure.</p>
+
+<p><img src="/dceu-labs/images/grants.png" alt="" /></p>
+
+<p>The goal for OrcaBank is to define access for the three teams that they have - mobile, payments, and ops. To do this we will create three grants.</p>
+
+<p>4.1 On the left nav bar, click Grants. Here you will see some default grants that exist in UCP. The grants here define access for administrators. For example, “admin - Full Control - /” means that the <code class="highlighter-rouge">admin</code> account (subject) has <code class="highlighter-rouge">Full Control</code> (role) access against <code class="highlighter-rouge">/</code>  collection (the entire cluster).</p>
+
+<p><img src="/dceu-labs/images/grants-page.png" alt="" /></p>
+
+<p>4.2 Create a grant for the ops team by clicking “Create Grant”. You will choose the following options on the next page.</p>
+
+<ul>
+  <li><strong>Collections:</strong> <code class="highlighter-rouge">/Shared</code></li>
+</ul>
+
+<blockquote>
+  <p>You will have to click “View Children” to go deeper in the collection hierarchy to find “Shared”.</p>
+</blockquote>
+
+<ul>
+  <li><strong>Roles:</strong> <code class="highlighter-rouge">Full Control</code></li>
+  <li>
+    <p><strong>Subjects:</strong> Organizations -&gt; <code class="highlighter-rouge">orcabank</code> -&gt; <code class="highlighter-rouge">ops</code></p>
+
+    <p><img src="/dceu-labs/images/subjects.png" alt="" /></p>
+  </li>
+</ul>
+
+<p>4.3 Create a grant for the payments team by following the same process.</p>
+
+<ul>
+  <li><strong>Collections:</strong> <code class="highlighter-rouge">/Shared/payments</code></li>
+  <li><strong>Roles:</strong> <code class="highlighter-rouge">Dev</code></li>
+  <li><strong>Subjects:</strong> Organizations -&gt; <code class="highlighter-rouge">orcabank</code> -&gt; <code class="highlighter-rouge">payments</code></li>
+</ul>
+
+<p>4.4 Create the last grant for the mobile team.</p>
+
+<ul>
+  <li><strong>Collections:</strong> <code class="highlighter-rouge">/Shared/mobile</code></li>
+  <li><strong>Roles:</strong> <code class="highlighter-rouge">Dev</code></li>
+  <li><strong>Subjects:</strong> Organizations -&gt; <code class="highlighter-rouge">orcabank</code> -&gt; <code class="highlighter-rouge">mobile</code></li>
+</ul>
+
+<p>4.5 In the Grants page, you should see the three grants that you created in addition to the default ones that are already there. These custom grants should look the same as the below picture.</p>
+
+<p><img src="/dceu-labs/images/grants-finished.png" alt="" /></p>
+
+<p>It’s a long road, but we are almost at the end! The access control configuration is now done! Let’s deploy an application and see this at work.</p>
+
+<h2 id="access-control-at-work"><a name="task5"></a>Access Control at Work</h2>
+
+<p>In this task we will log in as different teams to deploy apps and will explore how each grant governs our view of the resources we interact with.</p>
+
+<p>5.1 Log out of UCP and log back in with the credentials of Omar from the Ops Team (<code class="highlighter-rouge">omar</code> / <code class="highlighter-rouge">docker123</code>). Omar is not an admin so notice that he does not have the ability to control access policies and grants. Next you are going to deploy a service as a member from the Ops team.</p>
+
+<p>5.2 Click on Services on the left nav bar and click “Create Service”</p>
+
+<p>5.3 In the Create Service page put in the following values:</p>
+
+<ul>
+  <li><strong>Details</strong></li>
+  <li><strong>Name:</strong><code class="highlighter-rouge">payments-app</code></li>
+  <li><strong>Image:</strong> <code class="highlighter-rouge">chrch/docker-pets:1.0</code></li>
+  <li><strong>Collection:</strong> <code class="highlighter-rouge">/Shared/payments</code></li>
+</ul>
+
+<p><img src="/dceu-labs/images/deploy-payments.png" alt="" /></p>
+
+<p>Now hit “Create”.</p>
+
+<p>5.4 Now create a service for the mobile team.</p>
+
+<ul>
+  <li><strong>Details</strong></li>
+  <li><strong>Name:</strong><code class="highlighter-rouge">mobile-app</code></li>
+  <li><strong>Image:</strong> <code class="highlighter-rouge">chrch/docker-pets:1.0</code></li>
+  <li><strong>Collection:</strong> <code class="highlighter-rouge">/Shared/mobile</code></li>
+</ul>
+
+<p>5.5 Now click on the <code class="highlighter-rouge">payments-app</code> service. In the right hand info pane you can see the collection that it was deployed in. It should say <code class="highlighter-rouge">/Shared/payments</code>. If it is a different collection, then the wrong collection was selected at deployment time.</p>
+
+<p><img src="/dceu-labs/images/collection-deployment.png" alt="" /></p>
+
+<p>5.6 Now log out of UCP. Log back in as Mindi from the Mobile Team (<code class="highlighter-rouge">mindi</code> / <code class="highlighter-rouge">docker123</code>).</p>
+
+<p>5.7 Click on Services. Mindi should only be able to see the <code class="highlighter-rouge">mobile-app</code> service as it is the only service in the <code class="highlighter-rouge">/Shared/mobile</code> collection that she has access to.</p>
+
+<p>5.8 Click on the <code class="highlighter-rouge">mobile-app</code> service. Go through the following flow to get the logs for the app:</p>
+
+<p>Inspect Resource -&gt; Containers -&gt; Click on Container - &gt; View Logs</p>
+
+<p>Mindi should be able to view the logs for this app.</p>
+
+<p><img src="/dceu-labs/images/mobile-logs.png" alt="" /></p>
+
+<p>5.9 Now click on the container again and click Actions -&gt; Restart.</p>
+
+<p>The access control should report a message <code class="highlighter-rouge">access denied: no access to Container Restart</code>. This is because Mindi has access to view the container and its logs but not to affect its state in any way.</p>
+
+<p>This concludes the access control lab.</p>
+
+<hr />
+
+<h2 id="survey">Survey</h2>
+<p>We’re grateful you’ve chosen to spend some time with us today. We’d appreciate the opportunity to hear from  you about what you liked and what we might improve.</p>
+
+<p>If you could please fill out this very short survey, it’d be greatly appreciated.</p>
+
+<p>Thanks, the DockerCon Hands-on Labs team.</p>
+
+<p><a href="https://docs.google.com/forms/d/e/1FAIpQLSfu5jatKvKLdGZviRQ7SdXaCKKUmLNYGz2-WyvQKVoIpGMaDQ/viewform?usp=pp_url&amp;entry.413124055=Understanding+Docker+EE's+Role-based+Access+Control&amp;entry.879050699">Click Here for the survey</a></p>
+
+<hr />
+<p>You can find more information on Docker EE at <a href="http://www.docker.com/enterprise-edition">http://www.docker.com</a> as well as continue exploring using our hosted trial at <a href="https://dockertrial.com">https://dockertrial.com</a></p>
+
+            </div>
+        </article>
+    </div>
+
+    
+
+</div>
+
+<script>
+    (function() {
+        var font3 = document.createElement('link');
+        font3.type = 'text/css';
+        font3.rel = 'stylesheet';
+        font3.href = '/dceu-labs/css/syntax-highlighting.css';
+        var q = document.getElementsByTagName('link')[0];
+        q.parentNode.insertBefore(font3, q);
+    })();
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://rawgit.com/RickStrahl/jquery-resizable/master/dist/jquery-resizable.min.js"></script>
+<script src="https://rawgit.com/play-with-docker/sdk/hybrid/dist/pwd.js"></script>
+<script>
+    pwd.newSession([{selector: '.term1', type: ''}, {selector: '.term2', type: ''}, {selector: '.term3', type: ''}], {ImageName: '', baseUrl: 'https://dockercon.play-with-docker.com'});
+      $(".panel-left").resizable({
+      handleSelector: ".splitter",
+      resizeHeight: false,
+      onDragEnd: pwd.resize.bind(pwd)
+  });
+
+  window.onbeforeunload = function(e) {
+        pwd.closeSession(function(){});
+        return;
+    }
+</script>
+
+
+    
+<script async>
+    (function() {
+        var font = document.createElement('link'); 
+        font.type = 'text/css'; 
+        font.rel = 'stylesheet';
+        font.href = '//fonts.googleapis.com/css?family=Raleway:400,700';
+        var s = document.getElementsByTagName('link')[0]; 
+        s.parentNode.insertBefore(font, s);
+      })();
+</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+ <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-6096819-32"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-6096819-32');
+</script>
+
+
+  </body>
+
+</html>
